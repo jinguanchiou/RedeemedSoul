@@ -17,7 +17,7 @@ public class Riru3DController : MonoBehaviour
     void Update()
     {
         Vector3 direction = (player.position - transform.position).normalized;
-        transform.rotation = Quaternion.LookRotation(Vector3.up, direction);
+        transform.rotation = Quaternion.LookRotation(Vector3.right, direction);
     }
     public void Walk(bool Walk)
     {

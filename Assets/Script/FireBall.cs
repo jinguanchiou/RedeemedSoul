@@ -4,14 +4,10 @@ using UnityEngine;
 
 public class FireBall : MonoBehaviour
 {
-    public ExplodsionRang explodsionRang;
-    private PlayerHealth playerHealth;
     public Vector2 startSpeed;
-    public float delayExplodeTime;
-    public float hitBoxTime;
-    public float DestroyBallTime;
-
-
+    public int Damage;
+    public float DestroyTime;
+    public float becomeSmallerTime;
 
     private Rigidbody2D rb2d;
     private Animator anim;
@@ -20,13 +16,13 @@ public class FireBall : MonoBehaviour
     {
         rb2d = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
-        playerHealth = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerHealth>();
-        rb2d.velocity = transform.right * startSpeed.x + transform.up * startSpeed.y;
-        if (rb2d.velocity.x > 0.1f)
+
+        rb2d.velocity = transform.right * startSpeed.x;
+        if (rb2d.velocity.x < 0.1f)
         {
             transform.localRotation = Quaternion.Euler(0, 180, 0);
         }
-        if (rb2d.velocity.x < -0.1f)
+        if (rb2d.velocity.x > -0.1f)
         {
             transform.localRotation = Quaternion.Euler(0, 0, 0);
         }
@@ -35,28 +31,9 @@ public class FireBall : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        CheckGrounded();
+        StartCoroutine(CountDestroyTime());
     }
-    void CheckGrounded()
-    {
-        if(rb2d.IsTouchingLayers(LayerMask.GetMask("Ground"))
-           || rb2d.IsTouchingLayers(LayerMask.GetMask("MovingPlatform"))
-           || rb2d.IsTouchingLayers(LayerMask.GetMask("OneWayPlatform")) == true)
-        {
-            Explode();
-        }
-    }
-    void Explode()
-    {
-        rb2d.velocity = transform.right * 0 + transform.up * 0;
-        anim.SetTrigger("Explode");
-        Invoke("GenExplodsionRange", hitBoxTime);
-        Invoke("DestroyThisBall", DestroyBallTime);
-    }
-    void GenExplodsionRange()
-    {
-        Instantiate(explodsionRang, transform.position, Quaternion.identity);
-    }
+
     void DestroyThisBall()
     {
         Destroy(gameObject);
@@ -65,7 +42,15 @@ public class FireBall : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Enemy"))
         {
-            Explode();
+            other.GetComponent<EnemyMonsterGhost>().TakeDamage(Damage);
+            DestroyThisBall();
         }
+    }
+    IEnumerator CountDestroyTime()
+    {
+        yield return new WaitForSeconds(DestroyTime);
+        anim.SetBool("becomeSmaller", true);
+        yield return new WaitForSeconds(becomeSmallerTime);
+        DestroyThisBall();
     }
 }

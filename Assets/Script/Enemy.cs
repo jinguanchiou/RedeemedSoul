@@ -56,7 +56,7 @@ public class Enemy : MonoBehaviour
         {
             if (playerHealth != null)
             {
-                playerHealth.DamegePlayer(damage);
+                playerHealth.DamagePlayer(damage);
             }   
         }
     }

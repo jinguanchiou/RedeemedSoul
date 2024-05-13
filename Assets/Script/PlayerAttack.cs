@@ -44,9 +44,13 @@ public class PlayerAttack : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.gameObject.CompareTag("Enemy"))
+        if (other.gameObject.CompareTag("Enemy") && other.GetType().ToString() == "UnityEngine.CapsuleCollider2D")
         {
-            other.GetComponent<Enemy>().TakeDamage(damage);
+            other.GetComponent<EnemyMonsterGhost>().TakeDamage(damage);
+        }
+        if (other.gameObject.CompareTag("Riru"))
+        {
+            other.GetComponent<RiruAI>().TakeDamage(damage);
         }
     }
 }

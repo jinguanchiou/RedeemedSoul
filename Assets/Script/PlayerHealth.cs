@@ -10,6 +10,7 @@ public class PlayerHealth : MonoBehaviour
     public float dieTime;
     public float hitBoxCdTime;
 
+    private bool hasShield = false;
     private Renderer myRender;
     private Animator anim;
     private ScreenFlash sf;
@@ -32,26 +33,34 @@ public class PlayerHealth : MonoBehaviour
     {
 
     }
-    public void DamegePlayer(int damege)
+    public void Shield(bool Shield)
     {
-        sf.FlashScreen();
-        health -= damege;
-        if(health <0)
+        hasShield = Shield;
+    }
+    public void DamagePlayer(int damege)
+    {
+        if (!hasShield)
         {
-            health = 0;
+            sf.FlashScreen();
+            Debug.Log("Doublefuck");
+            health -= damege;
+            if (health < 0)
+            {
+                health = 0;
+            }
+            HealthBar.HealthCurrent = health;
+            if (health <= 0)
+            {
+                rb2d.velocity = new Vector2(0, 0);
+                //rb2d.gravityScale = 0.0f;
+                GameController.isGameAlive = false;
+                anim.SetTrigger("Die");
+                Invoke("KillPlayer", dieTime);
+            }
+            BlinkPlayer(Blinks, time);
+            polygonCollider2D.enabled = false;
+            StartCoroutine(ShowPlayerHitBox());
         }
-        HealthBar.HealthCurrent = health;
-        if (health <= 0)
-        {
-            rb2d.velocity = new Vector2(0, 0);
-            //rb2d.gravityScale = 0.0f;
-            GameController.isGameAlive = false;
-            anim.SetTrigger("Die");
-            Invoke("KillPlayer", dieTime);
-        }
-        BlinkPlayer(Blinks, time);
-        polygonCollider2D.enabled = false;
-        StartCoroutine(ShowPlayerHitBox());
     }
 
     IEnumerator ShowPlayerHitBox()

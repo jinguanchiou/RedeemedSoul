@@ -4,20 +4,21 @@ using UnityEngine;
 
 public class Riru3DController : MonoBehaviour
 {
-    public Transform player;
+    private bool hasMoved = false;
     private Animator RiruAnim;
+
 
     // Start is called before the first frame update
     void Start()
     {
+
         RiruAnim = GetComponent<Animator>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        Vector3 direction = (player.position - transform.position).normalized;
-        transform.rotation = Quaternion.LookRotation(Vector3.right, direction);
+        
     }
     public void Walk(bool Walk)
     {
@@ -38,5 +39,24 @@ public class Riru3DController : MonoBehaviour
     public void DoubleAttack()
     {
         RiruAnim.SetTrigger("DoubleAttack");
+    }
+    public void turn3D(Transform playerTransform, Transform transform2D)
+    {
+        if (playerTransform.position.x < transform2D.position.x && !hasMoved)
+        {
+            Quaternion turnRotation = Quaternion.Euler(0, 180, 0);
+            transform.rotation = turnRotation;
+            Vector3 targetPosition = transform.position - transform.right * 2;
+            transform.position = targetPosition;
+            hasMoved = true;
+        }
+        else if (playerTransform.position.x > transform2D.position.x && hasMoved)
+        {
+            Quaternion turnRotation = Quaternion.Euler(0, 0, 0);
+            transform.rotation = turnRotation;
+            Vector3 targetPosition = transform.position - transform.right * 2;
+            transform.position = targetPosition;
+            hasMoved = false;
+        }
     }
 }

@@ -78,6 +78,7 @@ public class PlayerController : MonoBehaviour
             }
         }
     }
+    
     void Run()
     {
         float moveDir = Input.GetAxis("Horizontal");
@@ -197,7 +198,6 @@ public class PlayerController : MonoBehaviour
                 gameObject.layer = LayerMask.NameToLayer("Player");
             }
         }
-           
     }
     void CheckAirStatus()
     {

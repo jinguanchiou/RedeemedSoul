@@ -8,6 +8,9 @@ public class PlayerAttack : MonoBehaviour
     public float startTime;
     public float time;
 
+    private bool isAttacking = false;
+    private bool AttackisFinish = false;
+    private bool isAttacking_2 = false;
     private Animator anim;
     private PolygonCollider2D collider2D;
 
@@ -24,22 +27,39 @@ public class PlayerAttack : MonoBehaviour
     }
     void Attack()
     {
-        if (Input.GetButtonDown("Attack"))
-        { 
-                anim.SetTrigger("Attack");
-                StartCoroutine(StartAttack());
+        if (Input.GetButtonDown("Attack") && !AttackisFinish && !isAttacking)
+        {
+            isAttacking = true;
+            anim.SetTrigger("Attack");
+            Debug.Log("AttackIng");
+            StartCoroutine(StartAttack());
+        }
+        if (Input.GetButtonDown("Attack") && AttackisFinish && !isAttacking_2)
+        {
+            isAttacking_2 = true;
+            anim.SetTrigger("Attack_2");
+            Debug.Log("Attack_2Ing");
+            StartCoroutine(StartAttack_2());
         }
     }
     IEnumerator StartAttack()
     {
         yield return new WaitForSeconds(startTime);
         collider2D.enabled = true;
-        StartCoroutine(disableHitBox());
-    }
-    IEnumerator disableHitBox()
-    {
         yield return new WaitForSeconds(time);
         collider2D.enabled = false;
+        isAttacking = false;
+        AttackisFinish = true;
+    }
+
+    IEnumerator StartAttack_2()
+    {
+        yield return new WaitForSeconds(startTime);
+        collider2D.enabled = true;
+        yield return new WaitForSeconds(time);
+        collider2D.enabled = false;
+        isAttacking_2 = false;
+        AttackisFinish = false;
     }
 
     void OnTriggerEnter2D(Collider2D other)

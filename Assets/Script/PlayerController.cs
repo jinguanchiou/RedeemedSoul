@@ -12,11 +12,14 @@ public class PlayerController : MonoBehaviour
 
     private Animator myAnim;
     private Rigidbody2D myRigidbody;
+    private Transform PlayerTransform;
     private bool isGround;
     private BoxCollider2D myFeet;
     private bool canDoubleJump;
     private bool isOneWayPlatform;
 
+    private bool canDush = true;
+    private bool isTeleporting = false;
     private bool isLadder;
     private bool isClimbing;
     private bool isJumping;
@@ -29,6 +32,7 @@ public class PlayerController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        PlayerTransform = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
         myRigidbody = GetComponent<Rigidbody2D>();
         myAnim = GetComponent<Animator>();
         myFeet = GetComponent<BoxCollider2D>();
@@ -78,7 +82,26 @@ public class PlayerController : MonoBehaviour
             }
         }
     }
-    
+    public void teleportationSkill(float DushSpeed, float DushTime, float CooldownTime)
+    {
+        if (!isTeleporting)
+        {
+            StartCoroutine(Dush(DushSpeed, DushTime, CooldownTime));
+        }
+    }
+    IEnumerator Dush(float DushSpeed, float DushTime, float CooldownTime)
+    {
+        canDush = false;
+        isTeleporting = true;
+        float originalGravity = myRigidbody.gravityScale;
+        myRigidbody.velocity = new Vector2(transform.localScale.x * DushSpeed, 0f);
+        Debug.Log("fuck");
+        yield return new WaitForSeconds(DushTime);
+        myRigidbody.gravityScale = originalGravity;
+        isTeleporting = false;
+        yield return new WaitForSeconds(CooldownTime);
+        canDush = true;
+    }
     void Run()
     {
         float moveDir = Input.GetAxis("Horizontal");

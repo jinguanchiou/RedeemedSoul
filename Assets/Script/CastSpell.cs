@@ -9,11 +9,14 @@ public class CastSpell : MonoBehaviour
     public GameObject Skill_03;
     public float startTime;
     private bool isAttacking = false;
+
+    private PlayerController PC;
     private Transform PlayerTransform;
     private Animator PlayerAnim;
     // Start is called before the first frame update
     void Start()
     {
+        PC = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>();
         PlayerAnim = GameObject.FindGameObjectWithTag("Player").GetComponent<Animator>();
         PlayerTransform = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
     }
@@ -59,6 +62,8 @@ public class CastSpell : MonoBehaviour
             PlayerAnim.SetTrigger("IceSpike");
         else if (Skill_01.name == "Shield")
             PlayerAnim.SetTrigger("Shield");
+        else if (Skill_01.name == "Dush")
+            PlayerAnim.SetTrigger("Dush");
     }
     public void SkillAnimeTrigger_02()
     {
@@ -68,6 +73,8 @@ public class CastSpell : MonoBehaviour
             PlayerAnim.SetTrigger("IceSpike");
         else if (Skill_02.name == "Shield")
             PlayerAnim.SetTrigger("Shield");
+        else if (Skill_02.name == "Dush")
+            PlayerAnim.SetTrigger("Dush");
     }
     public void SkillAnimeTrigger_03()
     {
@@ -77,6 +84,8 @@ public class CastSpell : MonoBehaviour
             PlayerAnim.SetTrigger("IceSpike");
         else if (Skill_03.name == "Shield")
             PlayerAnim.SetTrigger("Shield");
+        else if (Skill_03.name == "Dush")
+            PlayerAnim.SetTrigger("Dush");
     }
     public void SkillAnimeBool_01()
     {
@@ -112,6 +121,11 @@ public class CastSpell : MonoBehaviour
             Instantiate(Skill_01, transform.position, transform.rotation);
             yield return new WaitForSeconds(0.1f);
             isAttacking = false;
+        }
+        if (Skill_01.name == "Dush")
+        {
+            PC.teleportationSkill(30, 1, 0.1f);
+            
         }
     }
     IEnumerator StartTime_02()

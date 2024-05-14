@@ -5,7 +5,7 @@ using UnityEngine;
 public class Dush : MonoBehaviour
 {
     public float DushSpeed;
-    public float DushDistance;
+    public float DushCoolTime;
     public float DushTime;
     private PlayerHealth playerHealth;
     private PlayerController playerController;
@@ -14,6 +14,7 @@ public class Dush : MonoBehaviour
     {
         playerHealth = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerHealth>();
         playerController = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>();
+        DushStart();
     }
 
     // Update is called once per frame
@@ -23,12 +24,12 @@ public class Dush : MonoBehaviour
     }
     public void DushStart()
     {
-        playerHealth.Shield(true);
-        StartCoroutine(CountTime());
+        playerController.teleportationSkill(DushSpeed, DushTime, DushCoolTime);
+        StartCoroutine(DushDestroy());
     }
-    IEnumerator CountTime()
+    IEnumerator DushDestroy()
     {
         yield return new WaitForSeconds(DushTime);
-        playerHealth.Shield(false);
+        Destroy(gameObject);
     }
 }

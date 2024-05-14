@@ -31,14 +31,12 @@ public class PlayerAttack : MonoBehaviour
         {
             isAttacking = true;
             anim.SetTrigger("Attack");
-            Debug.Log("AttackIng");
             StartCoroutine(StartAttack());
         }
         if (Input.GetButtonDown("Attack") && AttackisFinish && !isAttacking_2)
         {
             isAttacking_2 = true;
             anim.SetTrigger("Attack_2");
-            Debug.Log("Attack_2Ing");
             StartCoroutine(StartAttack_2());
         }
     }
@@ -50,6 +48,7 @@ public class PlayerAttack : MonoBehaviour
         collider2D.enabled = false;
         isAttacking = false;
         AttackisFinish = true;
+        StartCoroutine(AttackController());
     }
 
     IEnumerator StartAttack_2()
@@ -59,6 +58,11 @@ public class PlayerAttack : MonoBehaviour
         yield return new WaitForSeconds(time);
         collider2D.enabled = false;
         isAttacking_2 = false;
+        AttackisFinish = false;
+    }
+    IEnumerator AttackController()
+    {
+        yield return new WaitForSeconds(0.2f);
         AttackisFinish = false;
     }
 

@@ -6,11 +6,12 @@ public class PlayerHealth : MonoBehaviour
 {
     public int health;
     public int Blinks;
+    public int ResistDamage;
     public float time;
     public float dieTime;
     public float hitBoxCdTime;
+    public bool hasShield = false;
 
-    private bool hasShield = false;
     private Renderer myRender;
     private Animator anim;
     private ScreenFlash sf;
@@ -33,22 +34,39 @@ public class PlayerHealth : MonoBehaviour
     {
 
     }
-    public void Shield(bool Shield)
+    public void Shield(int ShieldHealth)
     {
-        hasShield = Shield;
+        ResistDamage += ShieldHealth;
+    }
+    public void DestroyShield()
+    {
+        ResistDamage = 0;
     }
     public void DamagePlayer(int damege)
     {
-        if (!hasShield)
+        if (ResistDamage > 0)
         {
-            sf.FlashScreen();
-            Debug.Log("Doublefuck");
-            health -= damege;
-            if (health < 0)
-            {
-                health = 0;
-            }
+            hasShield = true;
+            ResistDamage -= damege;
+        }
+        if(ResistDamage <= 0)
+        {
+            health += ResistDamage;
             HealthBar.HealthCurrent = health;
+            Debug.Log("Doublefuck");
+            if (!hasShield)
+            {
+                health -= damege;
+                sf.FlashScreen();
+                if (health < 0)
+                {
+                    health = 0;
+                }
+                HealthBar.HealthCurrent = health;
+                BlinkPlayer(Blinks, time);
+                polygonCollider2D.enabled = false;
+                StartCoroutine(ShowPlayerHitBox());
+            }
             if (health <= 0)
             {
                 rb2d.velocity = new Vector2(0, 0);
@@ -57,12 +75,9 @@ public class PlayerHealth : MonoBehaviour
                 anim.SetTrigger("Die");
                 Invoke("KillPlayer", dieTime);
             }
-            BlinkPlayer(Blinks, time);
-            polygonCollider2D.enabled = false;
-            StartCoroutine(ShowPlayerHitBox());
+            hasShield = false;
         }
     }
-
     IEnumerator ShowPlayerHitBox()
     {
         yield return new WaitForSeconds(hitBoxCdTime);

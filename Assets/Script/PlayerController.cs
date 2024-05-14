@@ -19,6 +19,7 @@ public class PlayerController : MonoBehaviour
     private bool isOneWayPlatform;
 
     private bool canDush = true;
+    private bool Dushing = false;
     private bool isTeleporting = false;
     private bool isLadder;
     private bool isClimbing;
@@ -84,31 +85,35 @@ public class PlayerController : MonoBehaviour
     }
     public void teleportationSkill(float DushSpeed, float DushTime, float CooldownTime)
     {
-        if (!isTeleporting)
+        if (!Dushing)
         {
+            Dushing = true;
             StartCoroutine(Dush(DushSpeed, DushTime, CooldownTime));
         }
     }
     IEnumerator Dush(float DushSpeed, float DushTime, float CooldownTime)
     {
         canDush = false;
-        isTeleporting = true;
         float originalGravity = myRigidbody.gravityScale;
-        myRigidbody.velocity = new Vector2(transform.localScale.x * DushSpeed, 0f);
-        Debug.Log("fuck");
+        myRigidbody.gravityScale = 0f;
+        myRigidbody.velocity = new Vector2(transform.right.x * DushSpeed, 0f);
+        Debug.Log(myRigidbody.velocity);
         yield return new WaitForSeconds(DushTime);
         myRigidbody.gravityScale = originalGravity;
-        isTeleporting = false;
+        Dushing = false;
         yield return new WaitForSeconds(CooldownTime);
         canDush = true;
     }
     void Run()
     {
-        float moveDir = Input.GetAxis("Horizontal");
-        Vector2 playerVel = new Vector2(moveDir * runSpeed, myRigidbody.velocity.y);
-        myRigidbody.velocity = playerVel;
-        bool plyerHasXAxisSpeed = Mathf.Abs(myRigidbody.velocity.x) > Mathf.Epsilon;
-        myAnim.SetBool("Run", plyerHasXAxisSpeed);
+        if (!Dushing)
+        {
+            float moveDir = Input.GetAxis("Horizontal");
+            Vector2 playerVel = new Vector2(moveDir * runSpeed, myRigidbody.velocity.y);
+            myRigidbody.velocity = playerVel;
+            bool plyerHasXAxisSpeed = Mathf.Abs(myRigidbody.velocity.x) > Mathf.Epsilon;
+            myAnim.SetBool("Run", plyerHasXAxisSpeed);
+        }
     }
     void Jump()
     {

@@ -8,7 +8,6 @@ public class Shield : MonoBehaviour
     public float Duration;
 
     private Animator anim;
-    private CircleCollider2D ShieldRange;
     private Transform PlayerTransform;
     private Rigidbody2D rb2d;
     private PlayerHealth playerHealth;
@@ -20,15 +19,16 @@ public class Shield : MonoBehaviour
         rb2d = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
         sp = GetComponent<SpriteRenderer>();
-        ShieldRange = GetComponent<CircleCollider2D>();
         playerHealth = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerHealth>();
         PlayerTransform = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
+        playerHealth.DestroyShield();
+        Protect();
     }
 
     // Update is called once per frame
     void Update()
     {
-        Protect(true);
+        
         Duration -= Time.deltaTime;
         DurationCount();
         if (PlayerTransform != null)
@@ -40,6 +40,7 @@ public class Shield : MonoBehaviour
     void DurationCount()
     {
         Duration -= Time.deltaTime;
+        StartCoroutine(ShieldHealthGone());
         if (Duration <= 3)
         {
             StartCoroutine(DestroyShield());
@@ -54,36 +55,22 @@ public class Shield : MonoBehaviour
             yield return new WaitForSeconds(0.5f);
             sp.enabled = true;
         }
+        playerHealth.DestroyShield();
         anim.SetTrigger("Disappear");
         yield return new WaitForSeconds(0.5f);
-        Protect(false);
         Destroy(gameObject);
-    }
-    void TakeDamage(int Dameage)
-    {
-        health -= Dameage;
-        if(health <= 0)
-        {
-            StartCoroutine(ShieldHealthGone());
-            Protect(false);
-        }
     }
     IEnumerator ShieldHealthGone()
     {
-        anim.SetTrigger("Disappear");
-        yield return new WaitForSeconds(0.5f);
-        Destroy(gameObject);
-    }
-    void Protect(bool hasShield)
-    {
-        playerHealth.Shield(hasShield);
-    }
-    void OnTriggerEnter2D(Collider2D other)
-    {
-        if (other.gameObject.layer == LayerMask.NameToLayer("Shield"))
+        if (playerHealth.ResistDamage <= 0)
         {
-            Debug.Log("e04");
-            TakeDamage(1);
+            anim.SetTrigger("Disappear");
+            yield return new WaitForSeconds(0.5f);
+            Destroy(gameObject);
         }
+    }
+    void Protect()
+    {
+        playerHealth.Shield(health);
     }
 }

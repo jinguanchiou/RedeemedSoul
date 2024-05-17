@@ -26,27 +26,27 @@ public class CastSpell : MonoBehaviour
             SkillAnimeTrigger_01();
             StartCoroutine(StartTime_01());
         }
-        if (Input.GetKeyDown(KeyCode.I) && Skill_02 != null && Skill_02.tag == "TriggeredSkill")
+        else if (Input.GetKeyDown(KeyCode.I) && Skill_02 != null && Skill_02.tag == "TriggeredSkill")
         {
             SkillAnimeTrigger_02();
             StartCoroutine(StartTime_02());
         }
-        if (Input.GetKeyDown(KeyCode.O) && Skill_03 != null && Skill_03.tag == "TriggeredSkill")
+        else if (Input.GetKeyDown(KeyCode.O) && Skill_03 != null && Skill_03.tag == "TriggeredSkill")
         {
             SkillAnimeTrigger_03();
             StartCoroutine(StartTime_03());
         }
-        if (Skill_01 != null && Skill_01.tag == "BoolSkill")
+        else if (Skill_01 != null && Skill_01.tag == "BoolSkill")
         {
             SkillAnimeBool_01();
             StartCoroutine(StartTime_01());
         }
-        if (Skill_02 != null && Skill_02.tag == "BoolSkill")
+        else if (Skill_02 != null && Skill_02.tag == "BoolSkill")
         {
             SkillAnimeBool_02();
             StartCoroutine(StartTime_02());
         }
-        if (Skill_03 != null && Skill_03.tag == "BoolSkill")
+        else if (Skill_03 != null && Skill_03.tag == "BoolSkill")
         {
             SkillAnimeBool_03();
             StartCoroutine(StartTime_03());
@@ -147,7 +147,7 @@ public class CastSpell : MonoBehaviour
         }
         if (Skill_02.name == "Dush")
         {
-            Instantiate(Skill_01, transform.position, transform.rotation);
+            Instantiate(Skill_02, transform.position, transform.rotation);
         }
     }
     IEnumerator StartTime_03()
@@ -172,7 +172,7 @@ public class CastSpell : MonoBehaviour
         }
         if (Skill_03.name == "Dush")
         {
-            Instantiate(Skill_01, transform.position, transform.rotation);
+            Instantiate(Skill_03, transform.position, transform.rotation);
         }
     }
 }

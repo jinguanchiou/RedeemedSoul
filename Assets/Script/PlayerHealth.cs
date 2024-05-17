@@ -53,7 +53,6 @@ public class PlayerHealth : MonoBehaviour
         {
             health += ResistDamage;
             HealthBar.HealthCurrent = health;
-            Debug.Log("Doublefuck");
             if (!hasShield)
             {
                 health -= damege;

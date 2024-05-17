@@ -191,6 +191,12 @@ public class PlayerController : MonoBehaviour
             myAnim.SetBool("Fall", false);
             myAnim.SetBool("Idle", true);
         }
+        if(myRigidbody.velocity.y < -10f && !myAnim.GetBool("Jump"))
+        {
+            myAnim.SetBool("Fall", true);
+            myAnim.SetBool("Idle", false);
+            myAnim.SetBool("Run", false);
+        }
 
         myAnim.SetBool("Idle", false);
         if (myAnim.GetBool("DoubleJump"))

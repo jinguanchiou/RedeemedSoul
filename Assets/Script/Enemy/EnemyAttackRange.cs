@@ -5,9 +5,10 @@ using UnityEngine;
 public class EnemyAttackRange : MonoBehaviour
 {
     private CircleCollider2D EnemyCanAttackRange;
-    private bool isAttacking = false;
 
+    public bool isAttacking = false;
     public EnemyAttack Attack;
+    public FireAttackRange SpecialAttack;
 
     // Start is called before the first frame update
     void Start()
@@ -19,12 +20,13 @@ public class EnemyAttackRange : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Player") && other.GetType().ToString() == "UnityEngine.CapsuleCollider2D")
         {
-            if (!isAttacking)
-            {
-                isAttacking = true;
-                EnemyCanAttackRange.enabled = false;
-                StartCoroutine(ResetAttackFlag());
-            }
+            Debug.Log("A");
+                if (!isAttacking)
+                {
+                    isAttacking = true;
+                    EnemyCanAttackRange.enabled = false;
+                    StartCoroutine(ResetAttackFlag());
+                }
         }
     }
     IEnumerator ResetAttackFlag()

@@ -11,6 +11,7 @@ public class PlayerHealth : MonoBehaviour
     public float dieTime;
     public float hitBoxCdTime;
     public bool hasShield = false;
+    public bool isBurning = false;
 
     private Renderer myRender;
     private Animator anim;
@@ -42,12 +43,12 @@ public class PlayerHealth : MonoBehaviour
     {
         ResistDamage = 0;
     }
-    public void DamagePlayer(int damege)
+    public void DamagePlayer(int damage)
     {
         if (ResistDamage > 0)
         {
             hasShield = true;
-            ResistDamage -= damege;
+            ResistDamage -= damage;
         }
         if(ResistDamage <= 0)
         {
@@ -55,7 +56,7 @@ public class PlayerHealth : MonoBehaviour
             HealthBar.HealthCurrent = health;
             if (!hasShield)
             {
-                health -= damege;
+                health -= damage;
                 sf.FlashScreen();
                 if (health < 0)
                 {
@@ -82,6 +83,18 @@ public class PlayerHealth : MonoBehaviour
         yield return new WaitForSeconds(hitBoxCdTime);
         polygonCollider2D.enabled = true;
     }
+    public void Burning(int Frequency, int damage, float Time)
+    {
+        if (!isBurning)
+        { 
+            isBurning = true; 
+            for(int i = 0; i < Frequency; i++)
+            {
+
+            }
+        }
+    }
+    
 
     void KillPlayer()
     {

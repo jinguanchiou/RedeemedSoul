@@ -7,7 +7,6 @@ public class PoisonousFlame : MonoBehaviour
     public int Damage;
     private bool isAttacking = false;
     private PolygonCollider2D poisonousFlameRange;
-
     // Start is called before the first frame update
     void Start()
     {

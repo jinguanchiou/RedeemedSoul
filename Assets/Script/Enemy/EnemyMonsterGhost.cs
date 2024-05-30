@@ -6,6 +6,7 @@ public class EnemyMonsterGhost : MonoBehaviour
 {
     public int health;
     public float flashTime;
+    public bool Hit;
     public GameObject bloodEffect;
     public GameObject dropCoin;
     public GameObject floatPoint;
@@ -26,7 +27,7 @@ public class EnemyMonsterGhost : MonoBehaviour
     public Transform rightUpPos;
     private Animator Anim;
     private Rigidbody2D rb;
-    public Transform PlayerTransform;
+    private Transform PlayerTransform;
     private CircleCollider2D EnemyAttackRadius;
     
     // Start is called before the first frame update
@@ -44,7 +45,7 @@ public class EnemyMonsterGhost : MonoBehaviour
     // Update is called once per frame
     public void Update()
     {
-        if (health > 0)
+        if (health > 0 && !Hit)
         {
             Flip();
             WalkAI();
@@ -59,7 +60,7 @@ public class EnemyMonsterGhost : MonoBehaviour
             float distance = (transform.position - PlayerTransform.position).sqrMagnitude;
             if (distance < radius && distance >= AttackRadius)
             {
-                transform.position = Vector2.MoveTowards(transform.position, PlayerTransform.position, speed * Time.deltaTime);
+                transform.position = Vector2.MoveTowards(transform.position, PlayerTransform.position, speed* 2 * Time.deltaTime);
             }
         }
     }
@@ -133,7 +134,16 @@ public class EnemyMonsterGhost : MonoBehaviour
         health -= damage;
         FlashColor(flashTime);
         Instantiate(bloodEffect, transform.position, Quaternion.identity);
+        StartCoroutine(GetHit());
         GameController.camShake.Shake();
+    }
+    IEnumerator GetHit()
+    {
+        rb.velocity = new Vector2(transform.right.x *20, 0f);
+        Hit = true;
+        yield return new WaitForSeconds(0.2f);
+        rb.velocity = new Vector2(0f, 0f);
+        Hit = false;
     }
     void FlashColor(float time)
     {

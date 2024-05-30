@@ -586,10 +586,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: 15
   flashTime: 0.25
+  Hit: 0
   bloodEffect: {fileID: 1505449858145808585, guid: 4f2f05d5fea9fce4a92c73dac3f94639, type: 3}
   dropCoin: {fileID: 1225751242131519198, guid: e3d9f03177eb74c46bcc84bde97c53ef, type: 3}
   floatPoint: {fileID: 4670379567073532384, guid: a6fdd37d2e737e848b2698592d3e9408, type: 3}
   speed: 3
+  FindPlayerSpeed: 6
   startWaitTime: 0.2
   radius: 50
   AttackRadius: 10
@@ -597,4 +599,3 @@ MonoBehaviour:
   movePos: {fileID: 8746992557101842936}
   leftDownPos: {fileID: 8746992557707063671}
   rightUpPos: {fileID: 8746992557399564282}
-  PlayerTransform: {fileID: 0}

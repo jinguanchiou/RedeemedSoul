@@ -11,6 +11,8 @@ GameObject:
   - component: {fileID: 1531155732935358019}
   - component: {fileID: 875583139278935412}
   - component: {fileID: 3821867517326461047}
+  - component: {fileID: 8592135899650012132}
+  - component: {fileID: -4508901302834149936}
   m_Layer: 5
   m_Name: GameingSkillSlot
   m_TagString: Untagged
@@ -76,3 +78,41 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &8592135899650012132
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5018357939354267840}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8a8695521f0d02e499659fee002a26c2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Padding:
+    m_Left: 0
+    m_Right: 0
+    m_Top: 0
+    m_Bottom: 0
+  m_ChildAlignment: 4
+  m_StartCorner: 0
+  m_StartAxis: 0
+  m_CellSize: {x: 100, y: 100}
+  m_Spacing: {x: 0, y: 0}
+  m_Constraint: 0
+  m_ConstraintCount: 2
+--- !u!114 &-4508901302834149936
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5018357939354267840}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8c7fdc27f83464542bb223e03279b421, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  GameingSkillSlotID: 0
+  CoolTime: {fileID: 8636129548250675985, guid: 8376fb775b4013f4c9ad7b2c878d2781, type: 3}

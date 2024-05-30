@@ -13,10 +13,12 @@ public class PlayerAttack : MonoBehaviour
     private bool isAttacking_2 = false;
     private Animator anim;
     private PolygonCollider2D collider2D;
+    private PlayerController playerController;
 
     // Start is called before the first frame update
     void Start()
     {
+        playerController = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>();
         anim = GameObject.FindGameObjectWithTag("Player").GetComponent<Animator>();
         collider2D = GetComponent<PolygonCollider2D>();
     }
@@ -71,6 +73,7 @@ public class PlayerAttack : MonoBehaviour
         if (other.gameObject.CompareTag("Enemy") && other.GetType().ToString() == "UnityEngine.CapsuleCollider2D")
         {
             other.GetComponent<EnemyMonsterGhost>().TakeDamage(damage);
+            playerController.HitEnemy();
         }
         if (other.gameObject.CompareTag("Riru"))
         {

@@ -15,6 +15,7 @@ public class PlayerController : MonoBehaviour
     private Transform PlayerTransform;
     private bool isGround;
     private BoxCollider2D myFeet;
+    private PlayerAttack playerAttack;
     private bool canDoubleJump;
     private bool isOneWayPlatform;
 
@@ -27,12 +28,14 @@ public class PlayerController : MonoBehaviour
     private bool isFalling;
     private bool isDoubleJumping;
     private bool isDoubleFalling;
+    private bool HitEnemyBool= false;
 
     private float playerGravity;
 
     // Start is called before the first frame update
     void Start()
     {
+        playerAttack = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerAttack>();
         PlayerTransform = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
         myRigidbody = GetComponent<Rigidbody2D>();
         myAnim = GetComponent<Animator>();
@@ -43,7 +46,7 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (GameController.isGameAlive == true)
+        if (GameController.isGameAlive == true && !HitEnemyBool)
         {
             CheckAirStatus();
             Run();
@@ -97,7 +100,6 @@ public class PlayerController : MonoBehaviour
         float originalGravity = myRigidbody.gravityScale;
         myRigidbody.gravityScale = 0f;
         myRigidbody.velocity = new Vector2(transform.right.x * DushSpeed, 0f);
-        Debug.Log(myRigidbody.velocity);
         yield return new WaitForSeconds(DushTime);
         myRigidbody.gravityScale = originalGravity;
         Dushing = false;
@@ -176,6 +178,18 @@ public class PlayerController : MonoBehaviour
         {
             myAnim.SetTrigger("Attack");
         }
+    }
+    public void HitEnemy()
+    {
+        StartCoroutine(Hit());
+    }
+    IEnumerator Hit()
+    {
+        myRigidbody.velocity = new Vector2(transform.right.x * -10, 0f);
+        HitEnemyBool = true;
+        yield return new WaitForSeconds(0.1f);
+        myRigidbody.velocity = new Vector2(0f, 0f);
+        HitEnemyBool = false;
     }
     void SwitchAnimation()
     {

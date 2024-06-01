@@ -11,13 +11,31 @@ public class WorkingSkillSlot : MonoBehaviour, IDropHandler
     public void OnDrop(PointerEventData eventData)
     {
         GameObject dropped = eventData.pointerDrag;
-        DraggableItem draggableItem = dropped.GetComponent<DraggableItem>();
+        GameObject droppedClone;
+        droppedClone = Instantiate(dropped, transform.position, Quaternion.identity);
+        DraggableItem draggableItem = droppedClone.GetComponent<DraggableItem>();
 
         WorkingSkillSlot workingSkillSlot = draggableItem.parentAfterDrag.GetComponentInParent<WorkingSkillSlot>();
         SkillSlot skillSlot = draggableItem.parentAfterDrag.GetComponentInParent<SkillSlot>();
 
-        if (transform.childCount == 0 && draggableItem != null)
+        if (transform.childCount == 1 && draggableItem != null)
         {
+
+            if (workingSkillSlot != null)
+            {
+                return;
+            }
+            else if (skillSlot != null)
+            {
+                Transform childTransform = transform.GetChild(0);
+                Destroy(childTransform.gameObject);
+                droppedClone.transform.SetParent(transform);
+                PlayerBag.WorkingSkill[WorkingSkillSlotID] = PlayerBag.SkillList[draggableItem.parentAfterDrag.GetComponent<SkillSlot>().SkillSlotID];
+            }
+        }
+        else if (transform.childCount == 0 && draggableItem != null)
+        {
+            droppedClone.transform.SetParent(transform);
             if (workingSkillSlot != null)
             {
                 if (PlayerBag.WorkingSkill[WorkingSkillSlotID] != PlayerBag.WorkingSkill[draggableItem.parentAfterDrag.GetComponent<WorkingSkillSlot>().WorkingSkillSlotID])
@@ -29,28 +47,7 @@ public class WorkingSkillSlot : MonoBehaviour, IDropHandler
             else if(skillSlot != null)
             {
                 PlayerBag.WorkingSkill[WorkingSkillSlotID] = PlayerBag.SkillList[draggableItem.parentAfterDrag.GetComponent<SkillSlot>().SkillSlotID];
-                PlayerBag.SkillList[draggableItem.parentAfterDrag.GetComponent<SkillSlot>().SkillSlotID] = null;
             }
-            draggableItem.parentAfterDrag = transform;
-        }
-        if (transform.childCount == 1 && draggableItem != null)
-        {
-            if (workingSkillSlot != null)
-            {
-                var temp = PlayerBag.WorkingSkill[WorkingSkillSlotID];
-                PlayerBag.WorkingSkill[WorkingSkillSlotID] = PlayerBag.WorkingSkill[draggableItem.parentAfterDrag.GetComponent<WorkingSkillSlot>().WorkingSkillSlotID];
-                PlayerBag.WorkingSkill[draggableItem.parentAfterDrag.GetComponent<WorkingSkillSlot>().WorkingSkillSlotID] = temp;
-            }
-            else if(skillSlot != null)
-            {
-                var temp = PlayerBag.WorkingSkill[WorkingSkillSlotID];
-                PlayerBag.WorkingSkill[WorkingSkillSlotID] = PlayerBag.SkillList[draggableItem.parentAfterDrag.GetComponent<SkillSlot>().SkillSlotID];
-                PlayerBag.SkillList[draggableItem.parentAfterDrag.GetComponent<SkillSlot>().SkillSlotID] = temp;
-            }
-
-            Transform childTransform = transform.GetChild(0);
-            childTransform.SetParent(draggableItem.parentAfterDrag);
-            draggableItem.parentAfterDrag = transform;
         }
     }
     public void SetAsChild(Skill skill)

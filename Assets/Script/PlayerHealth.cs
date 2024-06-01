@@ -12,6 +12,7 @@ public class PlayerHealth : MonoBehaviour
     public float hitBoxCdTime;
     public bool hasShield = false;
     public bool isBurning = false;
+    public GameingUIInventory HPInventory;
 
     private Renderer myRender;
     private Animator anim;
@@ -21,8 +22,9 @@ public class PlayerHealth : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        HealthBar.HealthMax = health;
+        health = HPInventory.HP;
         HealthBar.HealthCurrent = health;
+        
         myRender = GetComponent<Renderer>();
         anim = GetComponent<Animator>();
         sf = GetComponent<ScreenFlash>();
@@ -62,6 +64,7 @@ public class PlayerHealth : MonoBehaviour
                 {
                     health = 0;
                 }
+                HPInventory.HP = health;
                 HealthBar.HealthCurrent = health;
                 BlinkPlayer(Blinks, time);
                 polygonCollider2D.enabled = false;

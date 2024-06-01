@@ -20,7 +20,6 @@ public class EnemyAttackRange : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Player") && other.GetType().ToString() == "UnityEngine.CapsuleCollider2D")
         {
-            Debug.Log("A");
                 if (!isAttacking)
                 {
                     isAttacking = true;

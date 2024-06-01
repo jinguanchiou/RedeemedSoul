@@ -62,7 +62,6 @@ public class BreathingFire : MonoBehaviour
     }
     void OnTriggerEnter2D(Collider2D other)
     {
-        Debug.Log("D");
         if (other.gameObject.CompareTag("Player") && other.GetType().ToString() == "UnityEngine.CapsuleCollider2D")
         {
             other.GetComponent<PlayerHealth>().DamagePlayer(damage);

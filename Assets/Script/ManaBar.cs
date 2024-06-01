@@ -7,7 +7,7 @@ public class ManaBar : MonoBehaviour
 {
     public Text ManaText;
     public static int ManaCurrent;
-    public static int ManaMax;
+    public GameingUIInventory ManaMax;
 
     private Image manaBar;
     // Start is called before the first frame update
@@ -20,7 +20,7 @@ public class ManaBar : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        manaBar.fillAmount = (float)ManaCurrent / (float)ManaMax;
-        ManaText.text = ManaCurrent.ToString() + "/" + ManaMax.ToString();
+        manaBar.fillAmount = (float)ManaCurrent / (float)ManaMax.MP_MAX;
+        ManaText.text = ManaCurrent.ToString() + "/" + ManaMax.MP_MAX.ToString();
     }
 }

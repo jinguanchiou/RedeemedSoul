@@ -48,7 +48,11 @@ public class InvectoryManager : MonoBehaviour
             instance.SkillSlot.Add(Instantiate(instance.emptySkillSlot));
             instance.SkillSlot[i].transform.SetParent(instance.SkillBar.transform);
             instance.SkillSlot[i].GetComponent<SkillSlot>().SkillSlotID = i;
-            instance.SkillSlot[i].GetComponent<SkillSlot>().SetAsChild(instance.PlayerBag.SkillList[i]);
+            if (instance.PlayerBag.SkillList[i] != null)
+            {
+                if (instance.PlayerBag.SkillList[i].CanUse)
+                    instance.SkillSlot[i].GetComponent<SkillSlot>().SetAsChild(instance.PlayerBag.SkillList[i]);
+            }
         }
         for (int i = 0; i < instance.PlayerBag.WorkingSkill.Count; i++)
         {

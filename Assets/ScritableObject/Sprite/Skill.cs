@@ -13,6 +13,7 @@ public class Skill : ScriptableObject
     public int ManaReduced;
     public float StartTime;
     public float CoolTime;
+    public bool CanUse;
     [TextArea]
     public string skillInfo;
 }

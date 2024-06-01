@@ -25,7 +25,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2054989872}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.206, y: 0.123, z: 0}
+  m_LocalPosition: {x: 0.265, y: 0.093, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -44,10 +44,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b7c4e751c06d2e64790cf42c815b3686, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Skill_01: {fileID: 2792658611184093521, guid: 0223001b0d5bf544480ecd19de510f42, type: 3}
-  Skill_02: {fileID: 8342076467566442454, guid: 22a40b914fd9c41449f6c0ca22108d4f, type: 3}
-  Skill_03: {fileID: 0}
-  startTime: 0.6
+  ManaPoint: 100
+  PlayerWorkingSkill: {fileID: 11400000, guid: ee80f1700788afa4ba124e6671f4685e, type: 2}
+  SkillBar: {fileID: 0}
 --- !u!1 &1512896782455734605
 GameObject:
   m_ObjectHideFlags: 0
@@ -236,7 +235,7 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 1
+  m_GravityScale: 2
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 0
@@ -309,18 +308,19 @@ PolygonCollider2D:
   m_AutoTiling: 0
   m_Points:
     m_Paths:
-    - - {x: 0.0859375, y: 0.2734375}
-      - {x: 0.0625, y: 0.3046875}
-      - {x: -0.0234375, y: 0.3046875}
-      - {x: -0.0859375, y: 0.2890625}
-      - {x: -0.109375, y: 0.0625}
-      - {x: -0.125, y: -0.0078125}
+    - - {x: 0.07429028, y: 0.018472442}
+      - {x: 0.067260556, y: 0.25476056}
+      - {x: 0.050048683, y: 0.27044648}
+      - {x: -0.014099026, y: 0.28289774}
+      - {x: -0.061034918, y: 0.25170863}
+      - {x: -0.09692373, y: 0.0625}
+      - {x: -0.072082, y: -0.0078125}
       - {x: -0.125, y: -0.203125}
       - {x: -0.1015625, y: -0.25}
       - {x: 0.1171875, y: -0.25}
       - {x: 0.125, y: -0.2421875}
       - {x: 0.125, y: -0.203125}
-      - {x: 0.109375, y: -0.171875}
+      - {x: 0.081359595, y: -0.19366474}
 --- !u!114 &1512896783009843652
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -333,9 +333,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 587034af9014267489f1a7c256c9bcc1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  runSpeed: 5
-  jumpSpeed: 10
-  doulbJumpSpeed: 8
+  runSpeed: 8
+  jumpSpeed: 15
+  doulbJumpSpeed: 15
   climbSpeed: 4
   restoreTime: 0.25
 --- !u!114 &1512896783009843655
@@ -350,11 +350,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3e47498e96e14a44aaac9e7c0d864f8e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 15
+  health: 200
   Blinks: 2
+  ResistDamage: 0
   time: 0.1
   dieTime: 1
   hitBoxCdTime: 1.5
+  hasShield: 0
+  isBurning: 0
 --- !u!95 &453286114
 Animator:
   serializedVersion: 5

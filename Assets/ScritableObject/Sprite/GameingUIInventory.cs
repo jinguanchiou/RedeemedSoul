@@ -8,5 +8,8 @@ public class GameingUIInventory : ScriptableObject
 {
     public int HP;
     public int MP;
-    public List<GameObject> SkillList = new List<GameObject>();
+    public int HP_Log;
+    public int MP_Log;
+    public int HP_MAX;
+    public int MP_MAX;
 }

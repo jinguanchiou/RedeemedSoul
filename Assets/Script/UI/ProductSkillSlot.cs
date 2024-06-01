@@ -1,17 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.EventSystems;
-using UnityEngine.UI;
 
-public class SkillSlot : MonoBehaviour, IDropHandler
+public class ProductSkillSlot : MonoBehaviour
 {
-    public int SkillSlotID;
-    public Inventory PlayerBag;
-    public void OnDrop(PointerEventData eventData)
-    {
-        
-    }
     public void SetAsChild(Skill skill)
     {
         if (skill == null)
@@ -25,7 +17,10 @@ public class SkillSlot : MonoBehaviour, IDropHandler
         }
         else if (transform.childCount >= 1)
         {
-            return;
+            Transform childTransform_1 = transform.GetChild(0);
+            Destroy(childTransform_1);
+            GameObject instantiatedSkillPrefab = Instantiate(skill.SkillImage, transform.position, Quaternion.identity);
+            instantiatedSkillPrefab.transform.SetParent(transform);
         }
     }
 }

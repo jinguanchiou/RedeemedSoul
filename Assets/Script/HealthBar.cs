@@ -7,7 +7,7 @@ public class HealthBar : MonoBehaviour
 {
     public Text healthText;
     public static int HealthCurrent;
-    public static int HealthMax;
+    public GameingUIInventory HealthMax;
 
     private Image healthBar;
     // Start is called before the first frame update
@@ -20,7 +20,7 @@ public class HealthBar : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        healthBar.fillAmount = (float)HealthCurrent / (float)HealthMax;
-        healthText.text = HealthCurrent.ToString() + "/" + HealthMax.ToString();
+        healthBar.fillAmount = (float)HealthCurrent / (float)HealthMax.HP_MAX;
+        healthText.text = HealthCurrent.ToString() + "/" + HealthMax.HP_MAX.ToString();
     }
 }

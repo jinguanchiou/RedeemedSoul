@@ -8,9 +8,10 @@ public class PlayerAttack : MonoBehaviour
     public float startTime;
     public float time;
 
-    private bool isAttacking = false;
+    public bool isAttacking_1 = false;
     private bool AttackisFinish = false;
-    private bool isAttacking_2 = false;
+    public bool isAttacking_2 = false;
+    public bool isAttacking = false;
     private Animator anim;
     private PolygonCollider2D collider2D;
     private PlayerController playerController;
@@ -26,12 +27,13 @@ public class PlayerAttack : MonoBehaviour
     void Update()
     {
         Attack();
+        AttackBool();
     }
     void Attack()
     {
-        if (Input.GetButtonDown("Attack") && !AttackisFinish && !isAttacking)
+        if (Input.GetButtonDown("Attack") && !AttackisFinish && !isAttacking_1)
         {
-            isAttacking = true;
+            isAttacking_1 = true;
             anim.SetTrigger("Attack");
             StartCoroutine(StartAttack());
         }
@@ -48,11 +50,21 @@ public class PlayerAttack : MonoBehaviour
         collider2D.enabled = true;
         yield return new WaitForSeconds(time);
         collider2D.enabled = false;
-        isAttacking = false;
+        isAttacking_1 = false;
         AttackisFinish = true;
         StartCoroutine(AttackController());
     }
-
+    public void AttackBool()
+    {
+        if (isAttacking_1 || isAttacking_2)
+        {
+            isAttacking = true;
+        }
+        if (!isAttacking_1 && !isAttacking_2)
+        {
+            isAttacking = false;
+        }
+    }
     IEnumerator StartAttack_2()
     {
         yield return new WaitForSeconds(startTime);
@@ -73,6 +85,7 @@ public class PlayerAttack : MonoBehaviour
         if (other.gameObject.CompareTag("Enemy") && other.GetType().ToString() == "UnityEngine.CapsuleCollider2D")
         {
             other.GetComponent<EnemyMonsterGhost>().TakeDamage(damage);
+            other.GetComponent<EnemyMonsterGhost>().PlayerHitMe();
             playerController.HitEnemy();
         }
         if (other.gameObject.CompareTag("Riru"))

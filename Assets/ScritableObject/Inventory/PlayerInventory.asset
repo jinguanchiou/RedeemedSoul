@@ -13,11 +13,11 @@ MonoBehaviour:
   m_Name: PlayerInventory
   m_EditorClassIdentifier: 
   SkillList:
-  - {fileID: 11400000, guid: 28a65368cf2a22946ad91fa4733b3038, type: 2}
-  - {fileID: 11400000, guid: 2c61c0fe8c16cf04287ab993360f1900, type: 2}
   - {fileID: 11400000, guid: a22f6dacbcdf5cf4f87823a4b03bc774, type: 2}
+  - {fileID: 11400000, guid: 28a65368cf2a22946ad91fa4733b3038, type: 2}
   - {fileID: 11400000, guid: ae8be08a70260a34ba56778751068ca5, type: 2}
   - {fileID: 11400000, guid: ee1d68d52887a9149b46757dc3e66c3e, type: 2}
+  - {fileID: 11400000, guid: 2c61c0fe8c16cf04287ab993360f1900, type: 2}
   - {fileID: 11400000, guid: 063d8fbf3dfa5074c8448d929bc1f5db, type: 2}
   - {fileID: 0}
   - {fileID: 0}
@@ -38,5 +38,5 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   WorkingSkill:
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 11400000, guid: 28a65368cf2a22946ad91fa4733b3038, type: 2}
+  - {fileID: 11400000, guid: 2c61c0fe8c16cf04287ab993360f1900, type: 2}

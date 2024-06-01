@@ -13,6 +13,7 @@ public class CastSpell : MonoBehaviour
     private bool Cooling_02IsCooling = false;
     public int ManaPoint;
     public Inventory PlayerWorkingSkill;
+    public GameingUIInventory MPInventory;
     public GameObject SkillBar;
     private bool isAttacking = false;
 
@@ -22,7 +23,7 @@ public class CastSpell : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        ManaBar.ManaMax = ManaPoint;
+        ManaPoint = MPInventory.MP;
         ManaBar.ManaCurrent = ManaPoint;
         PlayerAnim = GameObject.FindGameObjectWithTag("Player").GetComponent<Animator>();
         PlayerTransform = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
@@ -38,7 +39,7 @@ public class CastSpell : MonoBehaviour
         {
             Skill_02 = PlayerWorkingSkill.WorkingSkill[1].SkillOntology;
         }
-        if (Input.GetKeyDown(KeyCode.U) && Skill_01 != null && Skill_01.tag == "TriggeredSkill" && !Skill_01Cooling && ManaPoint >= PlayerWorkingSkill.WorkingSkill[0].ManaReduced)
+        if (Input.GetKeyDown(KeyCode.U) && Skill_01 != null && Skill_01.tag == "TriggeredSkill" && !Skill_01Cooling && ManaPoint >= PlayerWorkingSkill.WorkingSkill[0].ManaReduced && PlayerWorkingSkill.WorkingSkill[0] != null)
         {
             Skill_01Cooling = true;
             GameObject CoolDown_01 = SkillBar.transform.GetChild(0).GetChild(0).GetChild(0).gameObject;
@@ -47,11 +48,11 @@ public class CastSpell : MonoBehaviour
             SkillAnimeTrigger_01();
             StartCoroutine(StartTime_01());
         }
-        if(Skill_01Cooling && !Cooling_01IsCooling)
+        if(Skill_01Cooling && !Cooling_01IsCooling && PlayerWorkingSkill.WorkingSkill[0] != null)
         {
             StartCoroutine(CoolTime_01());
         }
-        if (Input.GetKeyDown(KeyCode.I) && Skill_02 != null && Skill_02.tag == "TriggeredSkill" && !Skill_02Cooling && ManaPoint >= PlayerWorkingSkill.WorkingSkill[1].ManaReduced)
+        if (Input.GetKeyDown(KeyCode.I) && Skill_02 != null && Skill_02.tag == "TriggeredSkill" && !Skill_02Cooling && ManaPoint >= PlayerWorkingSkill.WorkingSkill[1].ManaReduced && PlayerWorkingSkill.WorkingSkill[1] != null)
         {
             Skill_02Cooling = true;
             GameObject CoolDown_02 = SkillBar.transform.GetChild(1).GetChild(0).GetChild(0).gameObject;
@@ -60,7 +61,7 @@ public class CastSpell : MonoBehaviour
             SkillAnimeTrigger_02();
             StartCoroutine(StartTime_02());
         }
-        if(Skill_02Cooling && !Cooling_02IsCooling)
+        if(Skill_02Cooling && !Cooling_02IsCooling && PlayerWorkingSkill.WorkingSkill[1] != null)
         {
             StartCoroutine(CoolTime_02());
         }
@@ -99,9 +100,9 @@ public class CastSpell : MonoBehaviour
     }
     public void SkillAnimeBool()
     {
-        if (Skill_01.name == "PoisonousFlame")
+        if (Skill_01.name == "PoisonousFlame" && PlayerWorkingSkill.WorkingSkill[0] != null)
             PlayerAnim.SetBool("PoisonousFlame", ManaPoint >= PlayerWorkingSkill.WorkingSkill[0].ManaReduced && Input.GetKey(KeyCode.U));
-        if (Skill_02.name == "PoisonousFlame")
+        if (Skill_02.name == "PoisonousFlame" && PlayerWorkingSkill.WorkingSkill[1] != null)
             PlayerAnim.SetBool("PoisonousFlame", ManaPoint >= PlayerWorkingSkill.WorkingSkill[1].ManaReduced && Input.GetKey(KeyCode.I));
     }
 
@@ -165,11 +166,13 @@ public class CastSpell : MonoBehaviour
     public void UseSkill_01()
     {
         ManaPoint -= PlayerWorkingSkill.WorkingSkill[0].ManaReduced;
+        MPInventory.MP = ManaPoint;
         ManaBar.ManaCurrent = ManaPoint;
     }
     public void UseSkill_02()
     {
         ManaPoint -= PlayerWorkingSkill.WorkingSkill[1].ManaReduced;
+        MPInventory.MP = ManaPoint;
         ManaBar.ManaCurrent = ManaPoint;
     }
 }

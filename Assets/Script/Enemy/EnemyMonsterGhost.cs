@@ -134,8 +134,11 @@ public class EnemyMonsterGhost : MonoBehaviour
         health -= damage;
         FlashColor(flashTime);
         Instantiate(bloodEffect, transform.position, Quaternion.identity);
-        StartCoroutine(GetHit());
         GameController.camShake.Shake();
+    }
+    public void PlayerHitMe()
+    {
+        StartCoroutine(GetHit());
     }
     IEnumerator GetHit()
     {

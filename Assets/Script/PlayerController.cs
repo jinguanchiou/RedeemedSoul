@@ -9,13 +9,13 @@ public class PlayerController : MonoBehaviour
     public float doulbJumpSpeed;
     public float climbSpeed;
     public float restoreTime;
+    public PlayerAttack playerAttack;
 
     private Animator myAnim;
     private Rigidbody2D myRigidbody;
     private Transform PlayerTransform;
     private bool isGround;
     private BoxCollider2D myFeet;
-    private PlayerAttack playerAttack;
     private bool canDoubleJump;
     private bool isOneWayPlatform;
 
@@ -35,7 +35,6 @@ public class PlayerController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        playerAttack = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerAttack>();
         PlayerTransform = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
         myRigidbody = GetComponent<Rigidbody2D>();
         myAnim = GetComponent<Animator>();
@@ -49,15 +48,23 @@ public class PlayerController : MonoBehaviour
         if (GameController.isGameAlive == true && !HitEnemyBool)
         {
             CheckAirStatus();
-            Run();
+            if (!playerAttack.isAttacking)
+            {
+                Run();
+                Jump();
+                Climb();
+            }
+            if(playerAttack.isAttacking)
+            {
+                Stop();
+            }
             Flip();
-            Jump();
-            Climb();
             CheckGrounded();
             CheclLadder();
             SwitchAnimation();
             OneWayPlatformCheck();
             //Attack();
+
         }
     }
     void CheckGrounded()
@@ -116,6 +123,11 @@ public class PlayerController : MonoBehaviour
             bool plyerHasXAxisSpeed = Mathf.Abs(myRigidbody.velocity.x) > Mathf.Epsilon;
             myAnim.SetBool("Run", plyerHasXAxisSpeed);
         }
+    }
+    void Stop()
+    {
+        Vector2 playerVel = new Vector2(0, myRigidbody.velocity.y);
+        myRigidbody.velocity = playerVel;
     }
     void Jump()
     {

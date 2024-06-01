@@ -20,7 +20,6 @@ public class FireAttackRange : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Player") && other.GetType().ToString() == "UnityEngine.CapsuleCollider2D")
         {
-            Debug.Log("B");
                 if (!isAttacking)
                 {
                     isAttacking = true;

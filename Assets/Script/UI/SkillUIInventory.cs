@@ -77,6 +77,7 @@ public class SkillUIInventory : MonoBehaviour
             ResetWorkSlot();
             productSkillSlot.GetComponent<ProductSkillSlot>().SetAsChild(instance.PlayerBag.SkillList[5]);
             instance.PlayerBag.SkillList[5].CanUse = true;
+            RefreshSkill();
         }
     }
 }

@@ -18953,7 +18953,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!212 &1748169052
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -19014,8 +19014,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1748169050}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 25.32, y: 2.54, z: 0}
-  m_LocalScale: {x: 8.2434, y: 7.3226, z: 1}
+  m_LocalPosition: {x: 26.62, y: 2.93, z: 0}
+  m_LocalScale: {x: 1.7021366, y: 1.8851795, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 931952184}
@@ -19086,8 +19086,8 @@ CapsuleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.16302598, y: -0.018678023}
-  m_Size: {x: 0.5782249, y: 1.0218129}
+  m_Offset: {x: 0.5501788, y: -0.0642733}
+  m_Size: {x: 2.0931706, y: 3.6529377}
   m_Direction: 0
 --- !u!114 &1748169057
 MonoBehaviour:

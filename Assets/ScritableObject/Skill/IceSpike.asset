@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e81e810fc4fcf674a931b7953310bf59, type: 3}
+  m_Name: IceSpike
+  m_EditorClassIdentifier: 
+  skillName: IceSpike
+  SkillImage: {fileID: 4237374266340065290, guid: c247ab0a693dc1e459b55f086244093b, type: 3}
+  SkillOntology: {fileID: 8342076467566442454, guid: 22a40b914fd9c41449f6c0ca22108d4f, type: 3}
+  ManaReduced: 3
+  StartTime: 0.3
+  CoolTime: 5
+  CanUse: 1
+  skillInfo: 

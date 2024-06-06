@@ -86,6 +86,8 @@ public class CastSpell : MonoBehaviour
             PlayerAnim.SetTrigger("Shield");
         else if (Skill_01.name == "Dush")
             PlayerAnim.SetTrigger("Dush");
+        else if (Skill_01.name == "Tornado")
+            PlayerAnim.SetTrigger("Tornado");
     }
     public void SkillAnimeTrigger_02()
     {
@@ -97,6 +99,8 @@ public class CastSpell : MonoBehaviour
             PlayerAnim.SetTrigger("Shield");
         else if (Skill_02.name == "Dush")
             PlayerAnim.SetTrigger("Dush");
+        else if (Skill_02.name == "Tornado")
+            PlayerAnim.SetTrigger("Tornado");
     }
     public void SkillAnimeBool()
     {

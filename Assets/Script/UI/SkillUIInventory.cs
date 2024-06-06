@@ -79,6 +79,13 @@ public class SkillUIInventory : MonoBehaviour
             instance.PlayerBag.SkillList[5].CanUse = true;
             RefreshSkill();
         }
+        if (RightSkill.skillName == "FireBall" && LeftSkill.skillName == "Tornado" || RightSkill.skillName == "Tornado" && LeftSkill.skillName == "FireBall")
+        {
+            ResetWorkSlot();
+            productSkillSlot.GetComponent<ProductSkillSlot>().SetAsChild(instance.PlayerBag.SkillList[7]);
+            instance.PlayerBag.SkillList[7].CanUse = true;
+            RefreshSkill();
+        }
     }
 }
 

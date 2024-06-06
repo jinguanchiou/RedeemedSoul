@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e81e810fc4fcf674a931b7953310bf59, type: 3}
+  m_Name: FTornado
+  m_EditorClassIdentifier: 
+  skillName: FireTornado
+  SkillImage: {fileID: 5543826187266576413, guid: 1e580d442292af64f89228723e3f2f5e, type: 3}
+  SkillOntology: {fileID: 7284143901214529246, guid: ff9d67bf6b6a01f408bedf14afef94b5, type: 3}
+  ManaReduced: 10
+  StartTime: 0.7
+  CoolTime: 18
+  CanUse: 1
+  skillInfo: 

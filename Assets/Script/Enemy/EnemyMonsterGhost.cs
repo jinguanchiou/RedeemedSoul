@@ -136,6 +136,19 @@ public class EnemyMonsterGhost : MonoBehaviour
         Instantiate(bloodEffect, transform.position, Quaternion.identity);
         GameController.camShake.Shake();
     }
+    public void Burning(int damage, int frequency)
+    {
+        StartCoroutine(BurningIE(damage, frequency));
+    }
+    IEnumerator BurningIE(int damage, int frequency)
+    {
+        for(int i = 0; i < frequency; i++)
+        {
+            TakeDamage(damage);
+            yield return new WaitForSeconds(1);
+        }
+        
+    }
     public void PlayerHitMe()
     {
         StartCoroutine(GetHit());

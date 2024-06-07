@@ -8,6 +8,6 @@ using UnityEngine.Tilemaps;
 public class ConversationFunction : ScriptableObject
 {
     public List<string> LevelTextMesh = new List<string>();
-    public List<Image> avatar = new List<Image>();
+    public List<GameObject> avatar = new List<GameObject>();
     public bool LevelAlreadyTold = false;
 }

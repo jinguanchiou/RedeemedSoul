@@ -257,14 +257,15 @@ public class PlayerController : MonoBehaviour
         {
             gameObject.layer = LayerMask.NameToLayer("OneWayPlatform");
             Invoke("RestorePlayerLayer", restoreTime);
+            StartCoroutine(RestorePlayerLayer());
         }
-
-        void RestorePlayerLayer()
+    }
+    IEnumerator RestorePlayerLayer()
+    {
+        yield return new WaitForSeconds(0.75f);
+        if (gameObject.layer != LayerMask.NameToLayer("Player"))
         {
-            if (!isGround && gameObject.layer != LayerMask.NameToLayer("Player"))
-            {
-                gameObject.layer = LayerMask.NameToLayer("Player");
-            }
+            gameObject.layer = LayerMask.NameToLayer("Player");
         }
     }
     void CheckAirStatus()

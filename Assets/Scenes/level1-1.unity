@@ -1739,6 +1739,11 @@ Tilemap:
     e31: 0
     e32: 0
     e33: 1
+--- !u!224 &130617744 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 6324686526745750193, guid: 0c5939a7672028647b0ffbd90bb88570, type: 3}
+  m_PrefabInstance: {fileID: 398909246}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &234082044
 GameObject:
   m_ObjectHideFlags: 0
@@ -5591,22 +5596,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 3528132849037103433, guid: 0c5939a7672028647b0ffbd90bb88570, type: 3}
-      propertyPath: m_SizeDelta.x
-      value: 1354.9384
-      objectReference: {fileID: 0}
-    - target: {fileID: 3528132849037103433, guid: 0c5939a7672028647b0ffbd90bb88570, type: 3}
-      propertyPath: m_SizeDelta.y
-      value: 267.3801
-      objectReference: {fileID: 0}
-    - target: {fileID: 3528132849037103433, guid: 0c5939a7672028647b0ffbd90bb88570, type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: -0.3945
-      objectReference: {fileID: 0}
-    - target: {fileID: 3528132849037103433, guid: 0c5939a7672028647b0ffbd90bb88570, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: 3.952
-      objectReference: {fileID: 0}
     - target: {fileID: 3662795184488543432, guid: 0c5939a7672028647b0ffbd90bb88570, type: 3}
       propertyPath: m_Name
       value: Canvas
@@ -5695,36 +5684,13 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 7123971072587259129, guid: 0c5939a7672028647b0ffbd90bb88570, type: 3}
-      propertyPath: m_Color.b
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7123971072587259129, guid: 0c5939a7672028647b0ffbd90bb88570, type: 3}
-      propertyPath: m_Color.g
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7123971072587259129, guid: 0c5939a7672028647b0ffbd90bb88570, type: 3}
-      propertyPath: m_Color.r
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7123971072587259129, guid: 0c5939a7672028647b0ffbd90bb88570, type: 3}
-      propertyPath: m_FontData.m_MaxSize
-      value: 60
-      objectReference: {fileID: 0}
-    - target: {fileID: 7123971072587259129, guid: 0c5939a7672028647b0ffbd90bb88570, type: 3}
-      propertyPath: m_FontData.m_MinSize
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7123971072587259129, guid: 0c5939a7672028647b0ffbd90bb88570, type: 3}
-      propertyPath: m_FontData.m_FontSize
-      value: 45
-      objectReference: {fileID: 0}
-    - target: {fileID: 7379428406026254373, guid: 0c5939a7672028647b0ffbd90bb88570, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0c5939a7672028647b0ffbd90bb88570, type: 3}
+--- !u!224 &506620476 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 6467581459075375450, guid: 0c5939a7672028647b0ffbd90bb88570, type: 3}
+  m_PrefabInstance: {fileID: 398909246}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &520503685
 GameObject:
   m_ObjectHideFlags: 0
@@ -19977,6 +19943,8 @@ MonoBehaviour:
   Level1_1_01: {fileID: 11400000, guid: 8c4af4b060cde7949ba24c2f9d85a65e, type: 2}
   DialogBox: {fileID: 317677822}
   DialogBoxText: {fileID: 1493933404}
+  PlayerAvatar: {fileID: 506620476}
+  OtherAvatar: {fileID: 130617744}
 --- !u!61 &1572581466
 BoxCollider2D:
   m_ObjectHideFlags: 0

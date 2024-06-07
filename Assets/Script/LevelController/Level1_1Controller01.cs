@@ -8,7 +8,10 @@ public class Level1_1Controller01 : MonoBehaviour
     public ConversationFunction Level1_1_01;
     public GameObject DialogBox;
     public Text DialogBoxText;
+    public Transform PlayerAvatar;
+    public Transform OtherAvatar;
 
+    private GameObject Image_Log;
     private PlayerController playerController;
     private bool StartConversation = false;
     private int currentTextIndex = 0;
@@ -27,11 +30,14 @@ public class Level1_1Controller01 : MonoBehaviour
             {
                 DialogBoxText.text = Level1_1_01.LevelTextMesh[0];
                 DialogBox.SetActive(true);
+                GenerateImage();
                 currentTextIndex++;
             }
             if (Input.GetKeyDown(KeyCode.Space) && currentTextIndex < Level1_1_01.LevelTextMesh.Count)
             {
+                Destroy(Image_Log);
                 DialogBoxText.text = Level1_1_01.LevelTextMesh[currentTextIndex];
+                GenerateImage();
                 currentTextIndex++;
             }
             if(currentTextIndex >= Level1_1_01.LevelTextMesh.Count)
@@ -44,6 +50,16 @@ public class Level1_1Controller01 : MonoBehaviour
         {
             playerController.OnlockPlayer = false;
             Destroy(gameObject);
+        }
+    }
+    void GenerateImage()
+    {
+        if (Level1_1_01.avatar[currentTextIndex] != null)
+        {
+            if (Level1_1_01.avatar[currentTextIndex].name == "PlayerAvatar")
+            { Image_Log = Instantiate(Level1_1_01.avatar[currentTextIndex], PlayerAvatar); }
+            else
+            { Image_Log = Instantiate(Level1_1_01.avatar[currentTextIndex], OtherAvatar); }
         }
     }
     private void OnTriggerEnter2D(Collider2D other)

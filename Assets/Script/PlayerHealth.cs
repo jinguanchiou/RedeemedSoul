@@ -7,11 +7,14 @@ public class PlayerHealth : MonoBehaviour
     public int health;
     public int Blinks;
     public int ResistDamage;
+    public int Potion;
     public float time;
     public float dieTime;
     public float hitBoxCdTime;
     public bool hasShield = false;
     public bool isBurning = false;
+    public GameObject floatPoint;
+    public GameObject RestoreHPPoint;
     public GameingUIInventory HPInventory;
 
     private Renderer myRender;
@@ -35,7 +38,7 @@ public class PlayerHealth : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+        UsePotion();
     }
     public void Shield(int ShieldHealth)
     {
@@ -68,6 +71,8 @@ public class PlayerHealth : MonoBehaviour
                 HealthBar.HealthCurrent = health;
                 BlinkPlayer(Blinks, time);
                 polygonCollider2D.enabled = false;
+                GameObject gb = Instantiate(floatPoint, new Vector3(transform.position.x, transform.position.y + 2), Quaternion.identity) as GameObject;
+                gb.transform.GetChild(0).GetComponent<TextMesh>().text = damage.ToString();
                 StartCoroutine(ShowPlayerHitBox());
             }
             if (health <= 0)
@@ -86,19 +91,34 @@ public class PlayerHealth : MonoBehaviour
         yield return new WaitForSeconds(hitBoxCdTime);
         polygonCollider2D.enabled = true;
     }
-    public void Burning(int Frequency, int damage, float Time)
-    {
-        if (!isBurning)
-        { 
-            isBurning = true; 
-            for(int i = 0; i < Frequency; i++)
-            {
 
+    void UsePotion()
+    {
+        if (Input.GetKeyDown(KeyCode.O) && anim.GetCurrentAnimatorStateInfo(0).IsName("Idle"))
+        {
+            if (health + Potion < HPInventory.HP_MAX)
+            {
+                anim.SetTrigger("UsePotion");
+                health += Potion;
+                HPInventory.HP = health;
+                HealthBar.HealthCurrent = health;
             }
+            else if (health + Potion >= HPInventory.HP_MAX)
+            {
+                anim.SetTrigger("UsePotion");
+                health = HPInventory.HP_MAX;
+                HPInventory.HP = health;
+                HealthBar.HealthCurrent = health;
+            }
+            StartCoroutine(WaitTextMesh());
         }
     }
-    
-
+    IEnumerator WaitTextMesh()
+    {
+        yield return new WaitForSeconds(1);
+        GameObject gb = Instantiate(RestoreHPPoint, new Vector3(transform.position.x, transform.position.y + 2), Quaternion.identity) as GameObject;
+        gb.transform.GetChild(0).GetComponent<TextMesh>().text = "+" + Potion.ToString();
+    }
     void KillPlayer()
     {
         Destroy(gameObject);
@@ -117,5 +137,17 @@ public class PlayerHealth : MonoBehaviour
             yield return new WaitForSeconds(seconds);
         }
         myRender.enabled = true;
+    }
+    public void Burning(int damage, int frequency)
+    {
+        StartCoroutine(BurningIE(damage, frequency));
+    }
+    IEnumerator BurningIE(int damage, int frequency)
+    {
+        for (int i = 0; i < frequency; i++)
+        {
+            DamagePlayer(damage);
+            yield return new WaitForSeconds(1);
+        }
     }
 }

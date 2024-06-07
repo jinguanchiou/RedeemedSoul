@@ -14,7 +14,7 @@ public class ExitButton : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.O))
+        if (Input.GetKeyDown(KeyCode.B))
         {
             Exit.onClick.Invoke();
         }

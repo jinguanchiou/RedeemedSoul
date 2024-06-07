@@ -185,13 +185,13 @@ public class CastSpell : MonoBehaviour
     }
     public void RegainMana(int Mana)
     {
-        if (ManaPoint < MPInventory.MP_MAX)
+        if (ManaPoint + Mana < MPInventory.MP_MAX)
         {
             ManaPoint += Mana;
             MPInventory.MP = ManaPoint;
             ManaBar.ManaCurrent = ManaPoint;
         }
-        else if(ManaPoint + Mana >= MPInventory.MP_MAX && ManaPoint < MPInventory.MP_MAX)
+        else if(ManaPoint + Mana >= MPInventory.MP_MAX)
         {
             ManaPoint = MPInventory.MP_MAX;
             MPInventory.MP = ManaPoint;

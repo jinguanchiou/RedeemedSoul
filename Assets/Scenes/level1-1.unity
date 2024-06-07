@@ -19898,17 +19898,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &1542048115 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 1512896782455734603, guid: b4f673f468d044541b108c42f32fa02d, type: 3}
-  m_PrefabInstance: {fileID: 1951039932}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e8000601359fa284184789e7dd28f41a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1572581464
 GameObject:
   m_ObjectHideFlags: 0
@@ -24212,6 +24201,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 7342061678909012708, guid: 152740854cb0beb42ad910dff35a066c, type: 3}
+      propertyPath: Frequency
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 8746992558082812636, guid: 152740854cb0beb42ad910dff35a066c, type: 3}
       propertyPath: m_RootOrder
       value: 2
@@ -24288,25 +24281,9 @@ PrefabInstance:
       propertyPath: SkillBar
       value: 
       objectReference: {fileID: 1720566614}
-    - target: {fileID: 2054989874, guid: b4f673f468d044541b108c42f32fa02d, type: 3}
-      propertyPath: MPInventory
-      value: 
-      objectReference: {fileID: 11400000, guid: f05f77cb797d1574ebef420491b45251, type: 2}
-    - target: {fileID: 1512896783009843652, guid: b4f673f468d044541b108c42f32fa02d, type: 3}
-      propertyPath: playerAttack
-      value: 
-      objectReference: {fileID: 1542048115}
     - target: {fileID: 1512896783009843654, guid: b4f673f468d044541b108c42f32fa02d, type: 3}
       propertyPath: m_RootOrder
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1512896783009843654, guid: b4f673f468d044541b108c42f32fa02d, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 8.75
-      objectReference: {fileID: 0}
-    - target: {fileID: 1512896783009843654, guid: b4f673f468d044541b108c42f32fa02d, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 8.5
       objectReference: {fileID: 0}
     - target: {fileID: 1512896783009843654, guid: b4f673f468d044541b108c42f32fa02d, type: 3}
       propertyPath: m_LocalPosition.x
@@ -24349,9 +24326,13 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1512896783009843655, guid: b4f673f468d044541b108c42f32fa02d, type: 3}
-      propertyPath: HPInventory
+      propertyPath: floatPoint
       value: 
-      objectReference: {fileID: 11400000, guid: f05f77cb797d1574ebef420491b45251, type: 2}
+      objectReference: {fileID: 4670379567073532384, guid: a6fdd37d2e737e848b2698592d3e9408, type: 3}
+    - target: {fileID: 1512896783009843655, guid: b4f673f468d044541b108c42f32fa02d, type: 3}
+      propertyPath: RestoreHPPoint
+      value: 
+      objectReference: {fileID: 2586804626996381979, guid: 6bc0569763385cb43a6079dbb69bb402, type: 3}
     - target: {fileID: 1512896783009843659, guid: b4f673f468d044541b108c42f32fa02d, type: 3}
       propertyPath: m_Name
       value: test426

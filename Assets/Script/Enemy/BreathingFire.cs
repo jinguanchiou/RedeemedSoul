@@ -65,15 +65,7 @@ public class BreathingFire : MonoBehaviour
         if (other.gameObject.CompareTag("Player") && other.GetType().ToString() == "UnityEngine.CapsuleCollider2D")
         {
             other.GetComponent<PlayerHealth>().DamagePlayer(damage);
-            StartCoroutine(Burning());
-        }
-    }
-    IEnumerator Burning()
-    {
-        for (int i = 0; i < Frequency; i++)
-        {
-            yield return new WaitForSeconds(BurningIntervalTime);
-            playerHealth.DamagePlayer(BurningDamage);
+            other.GetComponent<PlayerHealth>().Burning(BurningDamage, Frequency);
         }
     }
 }

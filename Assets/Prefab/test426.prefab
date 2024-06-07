@@ -46,7 +46,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ManaPoint: 100
   PlayerWorkingSkill: {fileID: 11400000, guid: ee80f1700788afa4ba124e6671f4685e, type: 2}
-  MPInventory: {fileID: 0}
+  MPInventory: {fileID: 11400000, guid: f05f77cb797d1574ebef420491b45251, type: 2}
   SkillBar: {fileID: 0}
 --- !u!1 &1512896782455734605
 GameObject:
@@ -166,7 +166,7 @@ Transform:
   m_GameObject: {fileID: 1512896783009843659}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 4.8, y: 2.271, z: 0}
-  m_LocalScale: {x: 10, y: 10, z: 1}
+  m_LocalScale: {x: 8.75, y: 8.5, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1512896782455734602}
@@ -344,7 +344,8 @@ MonoBehaviour:
   doulbJumpSpeed: 15
   climbSpeed: 4
   restoreTime: 0.25
-  playerAttack: {fileID: 0}
+  OnlockPlayer: 0
+  playerAttack: {fileID: 1512896782455734603}
 --- !u!114 &1512896783009843655
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -360,12 +361,14 @@ MonoBehaviour:
   health: 200
   Blinks: 2
   ResistDamage: 0
+  Potion: 5
   time: 0.1
   dieTime: 1
   hitBoxCdTime: 1.5
   hasShield: 0
   isBurning: 0
-  HPInventory: {fileID: 0}
+  floatPoint: {fileID: 4670379567073532384, guid: a6fdd37d2e737e848b2698592d3e9408, type: 3}
+  HPInventory: {fileID: 11400000, guid: f05f77cb797d1574ebef420491b45251, type: 2}
 --- !u!95 &453286114
 Animator:
   serializedVersion: 5

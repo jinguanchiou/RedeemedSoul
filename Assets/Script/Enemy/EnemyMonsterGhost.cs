@@ -147,7 +147,6 @@ public class EnemyMonsterGhost : MonoBehaviour
             TakeDamage(damage);
             yield return new WaitForSeconds(1);
         }
-        
     }
     public void PlayerHitMe()
     {

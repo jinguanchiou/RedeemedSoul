@@ -9,6 +9,7 @@ public class PlayerController : MonoBehaviour
     public float doulbJumpSpeed;
     public float climbSpeed;
     public float restoreTime;
+    public bool OnlockPlayer;
     public PlayerAttack playerAttack;
 
     private Animator myAnim;
@@ -40,12 +41,13 @@ public class PlayerController : MonoBehaviour
         myAnim = GetComponent<Animator>();
         myFeet = GetComponent<BoxCollider2D>();
         playerGravity = myRigidbody.gravityScale;
+        OnlockPlayer = false;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (GameController.isGameAlive == true && !HitEnemyBool)
+        if (GameController.isGameAlive == true && !HitEnemyBool && !OnlockPlayer)
         {
             CheckAirStatus();
             if (!playerAttack.isAttacking)
@@ -64,8 +66,14 @@ public class PlayerController : MonoBehaviour
             SwitchAnimation();
             OneWayPlatformCheck();
             //Attack();
-
         }
+    }
+    public void IsConversation()
+    {
+        OnlockPlayer = true;
+        myRigidbody.velocity = new Vector2(0, 0);
+        myAnim.SetBool("Idle", true);
+        myAnim.SetBool("Run", false);
     }
     void CheckGrounded()
     {

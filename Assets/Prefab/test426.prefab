@@ -46,6 +46,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ManaPoint: 100
   PlayerWorkingSkill: {fileID: 11400000, guid: ee80f1700788afa4ba124e6671f4685e, type: 2}
+  MPInventory: {fileID: 0}
   SkillBar: {fileID: 0}
 --- !u!1 &1512896782455734605
 GameObject:
@@ -124,8 +125,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 2
+  regainPoint: 2
   startTime: 0.2
   time: 0.2
+  Mana: {fileID: 2054989874}
+  isAttacking_1: 0
+  isAttacking_2: 0
+  isAttacking: 0
 --- !u!1 &1512896783009843659
 GameObject:
   m_ObjectHideFlags: 0
@@ -338,6 +344,7 @@ MonoBehaviour:
   doulbJumpSpeed: 15
   climbSpeed: 4
   restoreTime: 0.25
+  playerAttack: {fileID: 0}
 --- !u!114 &1512896783009843655
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -358,6 +365,7 @@ MonoBehaviour:
   hitBoxCdTime: 1.5
   hasShield: 0
   isBurning: 0
+  HPInventory: {fileID: 0}
 --- !u!95 &453286114
 Animator:
   serializedVersion: 5

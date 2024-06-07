@@ -5,8 +5,10 @@ using UnityEngine;
 public class PlayerAttack : MonoBehaviour
 {
     public int damage;
+    public int regainPoint;
     public float startTime;
     public float time;
+    public CastSpell Mana;
 
     public bool isAttacking_1 = false;
     private bool AttackisFinish = false;
@@ -86,6 +88,7 @@ public class PlayerAttack : MonoBehaviour
         {
             other.GetComponent<EnemyMonsterGhost>().TakeDamage(damage);
             other.GetComponent<EnemyMonsterGhost>().PlayerHitMe();
+            Mana.RegainMana(regainPoint);
             playerController.HitEnemy();
         }
         if (other.gameObject.CompareTag("Riru"))

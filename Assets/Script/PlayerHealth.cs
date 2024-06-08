@@ -7,15 +7,17 @@ public class PlayerHealth : MonoBehaviour
     public int health;
     public int Blinks;
     public int ResistDamage;
-    public int Potion;
+    private int Potion;
     public float time;
     public float dieTime;
     public float hitBoxCdTime;
     public bool hasShield = false;
-    public bool isBurning = false;
+    
+    private Coroutine burningCoroutine;
     public GameObject floatPoint;
     public GameObject RestoreHPPoint;
     public GameingUIInventory HPInventory;
+    public PotionInventory potionInventory;
 
     private Renderer myRender;
     private Animator anim;
@@ -94,8 +96,9 @@ public class PlayerHealth : MonoBehaviour
 
     void UsePotion()
     {
-        if (Input.GetKeyDown(KeyCode.O) && anim.GetCurrentAnimatorStateInfo(0).IsName("Idle"))
+        if (Input.GetKeyDown(KeyCode.O) && anim.GetCurrentAnimatorStateInfo(0).IsName("Idle") && potionInventory.WorkingPotionList[0].Quantity >= 1)
         {
+            Potion = potionInventory.WorkingPotionList[0].RecoveryAmount;
             if (health + Potion < HPInventory.HP_MAX)
             {
                 anim.SetTrigger("UsePotion");
@@ -110,6 +113,7 @@ public class PlayerHealth : MonoBehaviour
                 HPInventory.HP = health;
                 HealthBar.HealthCurrent = health;
             }
+            potionInventory.WorkingPotionList[0].Quantity -= 1;
             StartCoroutine(WaitTextMesh());
         }
     }
@@ -140,7 +144,12 @@ public class PlayerHealth : MonoBehaviour
     }
     public void Burning(int damage, int frequency)
     {
-        StartCoroutine(BurningIE(damage, frequency));
+        if (burningCoroutine != null)
+        {
+            StopCoroutine(burningCoroutine);
+        }
+
+        burningCoroutine = StartCoroutine(BurningIE(damage, frequency));
     }
     IEnumerator BurningIE(int damage, int frequency)
     {
@@ -149,5 +158,7 @@ public class PlayerHealth : MonoBehaviour
             DamagePlayer(damage);
             yield return new WaitForSeconds(1);
         }
+
+        burningCoroutine = null;
     }
 }

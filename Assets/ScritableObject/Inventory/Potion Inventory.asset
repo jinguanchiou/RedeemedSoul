@@ -12,4 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 12b8bb06c991deb4f87db5e35ce69281, type: 3}
   m_Name: Potion Inventory
   m_EditorClassIdentifier: 
-  PotionValue: 0
+  PotionList:
+  - {fileID: 11400000, guid: 2aab3398e5454cd47905a47b3f867eea, type: 2}
+  - {fileID: 11400000, guid: 82c79ffc4baca7f44b1546c7e75474b0, type: 2}
+  - {fileID: 11400000, guid: d07e9fb905c81374f892589a39e47655, type: 2}
+  WorkingPotionList:
+  - {fileID: 11400000, guid: d07e9fb905c81374f892589a39e47655, type: 2}

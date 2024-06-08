@@ -41,7 +41,7 @@ public class InvectoryManager : MonoBehaviour
             Destroy(instance.SkillBar.transform.GetChild(i).gameObject);
             SkillSlot.Clear();
         }
-        for (int i = 0; i < instance.PlayerBag.WorkingSkill.Count; i++)
+        for (int i = 0; i < instance.PlayerBag.WorkingSkill.Count + 1; i++)
         {
             if (instance.WorkingSkillBar.transform.childCount == 0)
                 break;

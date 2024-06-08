@@ -361,7 +361,6 @@ MonoBehaviour:
   health: 200
   Blinks: 2
   ResistDamage: 0
-  Potion: 5
   time: 0.1
   dieTime: 1
   hitBoxCdTime: 1.5
@@ -369,6 +368,7 @@ MonoBehaviour:
   floatPoint: {fileID: 4670379567073532384, guid: a6fdd37d2e737e848b2698592d3e9408, type: 3}
   RestoreHPPoint: {fileID: 2586804626996381979, guid: 6bc0569763385cb43a6079dbb69bb402, type: 3}
   HPInventory: {fileID: 11400000, guid: f05f77cb797d1574ebef420491b45251, type: 2}
+  potionInventory: {fileID: 11400000, guid: 7c4905c77f26833459b0f6824e034634, type: 2}
 --- !u!95 &453286114
 Animator:
   serializedVersion: 5

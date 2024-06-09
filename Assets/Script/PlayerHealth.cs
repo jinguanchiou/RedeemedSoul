@@ -16,6 +16,7 @@ public class PlayerHealth : MonoBehaviour
     private Coroutine burningCoroutine;
     public GameObject floatPoint;
     public GameObject RestoreHPPoint;
+    public GameObject BurningHPPoint;
     public GameObject GUIBag;
     public PotionBarManger potionBarManger;
     public InvectoryManager invectoryManager;
@@ -77,7 +78,45 @@ public class PlayerHealth : MonoBehaviour
                 BlinkPlayer(Blinks, time);
                 polygonCollider2D.enabled = false;
                 GameObject gb = Instantiate(floatPoint, new Vector3(transform.position.x, transform.position.y + 2), Quaternion.identity) as GameObject;
-                gb.transform.GetChild(0).GetComponent<TextMesh>().text = "-" + damage.ToString();
+                gb.transform.GetChild(0).GetComponent<TextMesh>().text = "生命 -" + damage.ToString();
+                StartCoroutine(ShowPlayerHitBox());
+            }
+            if (health <= 0)
+            {
+                rb2d.velocity = new Vector2(0, 0);
+                //rb2d.gravityScale = 0.0f;
+                GameController.isGameAlive = false;
+                anim.SetTrigger("Die");
+                Invoke("KillPlayer", dieTime);
+            }
+            hasShield = false;
+        }
+    }
+    public void BurningPlayer(int damage)
+    {
+        if (ResistDamage > 0)
+        {
+            hasShield = true;
+            ResistDamage -= damage;
+        }
+        if (ResistDamage <= 0)
+        {
+            health += ResistDamage;
+            HealthBar.HealthCurrent = health;
+            if (!hasShield)
+            {
+                health -= damage;
+                sf.FlashScreen();
+                if (health < 0)
+                {
+                    health = 0;
+                }
+                HPInventory.HP = health;
+                HealthBar.HealthCurrent = health;
+                BlinkPlayer(Blinks, time);
+                polygonCollider2D.enabled = false;
+                GameObject gb = Instantiate(BurningHPPoint, new Vector3(transform.position.x, transform.position.y + 2), Quaternion.identity) as GameObject;
+                gb.transform.GetChild(0).GetComponent<TextMesh>().text = "燃燒 -" + damage.ToString();
                 StartCoroutine(ShowPlayerHitBox());
             }
             if (health <= 0)
@@ -131,7 +170,7 @@ public class PlayerHealth : MonoBehaviour
     {
         yield return new WaitForSeconds(1);
         GameObject gb = Instantiate(RestoreHPPoint, new Vector3(transform.position.x, transform.position.y + 2), Quaternion.identity) as GameObject;
-        gb.transform.GetChild(0).GetComponent<TextMesh>().text = "+" + Potion.ToString();
+        gb.transform.GetChild(0).GetComponent<TextMesh>().text = "生命 +" + Potion.ToString();
     }
     void KillPlayer()
     {
@@ -165,7 +204,7 @@ public class PlayerHealth : MonoBehaviour
     {
         for (int i = 0; i < frequency; i++)
         {
-            DamagePlayer(damage);
+            BurningPlayer(damage);
             yield return new WaitForSeconds(1);
         }
 

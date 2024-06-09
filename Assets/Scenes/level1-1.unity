@@ -5778,6 +5778,7 @@ GameObject:
   - component: {fileID: 813072338}
   - component: {fileID: 813072337}
   - component: {fileID: 813072341}
+  - component: {fileID: 813072342}
   m_Layer: 17
   m_Name: Merchant
   m_TagString: Untagged
@@ -5863,7 +5864,7 @@ SpriteRenderer:
   m_SortingLayerID: -491390627
   m_SortingLayer: 6
   m_SortingOrder: 0
-  m_Sprite: {fileID: 1051410611, guid: f0e2048178aa5504d867e0778bade352, type: 3}
+  m_Sprite: {fileID: -1332511938, guid: eda902e26743f0745a5d4325729d6830, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -5910,6 +5911,20 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &813072342
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 813072336}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f1d2e36dd4e2f8d499eb9410d095f322, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Anim: {fileID: 0}
+  AnimIsWorking: 0
 --- !u!1 &919330221
 GameObject:
   m_ObjectHideFlags: 0

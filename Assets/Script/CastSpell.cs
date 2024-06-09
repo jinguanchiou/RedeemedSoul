@@ -205,6 +205,6 @@ public class CastSpell : MonoBehaviour
     void WaitTextMesh(int Mana)
     {
         GameObject gb = Instantiate(RestoreMPPoint, new Vector3(PlayerTransform.position.x, PlayerTransform.position.y + 2), Quaternion.identity) as GameObject;
-        gb.transform.GetChild(0).GetComponent<TextMesh>().text = "+" + Mana.ToString();
+        gb.transform.GetChild(0).GetComponent<TextMesh>().text = "Å]¤O +" + Mana.ToString();
     }
 }

@@ -148,12 +148,9 @@ public class PlayerController : MonoBehaviour
                 myAnim.SetBool("Jump", true);
                 Vector2 JumpVel = new Vector2(0.0f, jumpSpeed);
                 myRigidbody.velocity = Vector2.up * JumpVel;
-                canDoubleJump = false;
-                AlreadyJumping = true;
             }
-            else if(!isGround && AlreadyJumping)
+            else if(!isGround)
             {
-                canDoubleJump = true;
                 if (canDoubleJump)
                 {
                     AlreadyJumping = false;
@@ -165,6 +162,8 @@ public class PlayerController : MonoBehaviour
                 }
             }
         }
+        if(isGround)
+            canDoubleJump = true;
     }
     void Climb()
     {

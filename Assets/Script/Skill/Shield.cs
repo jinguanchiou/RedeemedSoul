@@ -21,14 +21,12 @@ public class Shield : MonoBehaviour
         sp = GetComponent<SpriteRenderer>();
         playerHealth = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerHealth>();
         PlayerTransform = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
-        playerHealth.DestroyShield();
         Protect();
     }
 
     // Update is called once per frame
     void Update()
     {
-        
         Duration -= Time.deltaTime;
         DurationCount();
         if (PlayerTransform != null)
@@ -40,7 +38,6 @@ public class Shield : MonoBehaviour
     void DurationCount()
     {
         Duration -= Time.deltaTime;
-        StartCoroutine(ShieldHealthGone());
         if (Duration <= 3)
         {
             StartCoroutine(DestroyShield());
@@ -55,22 +52,34 @@ public class Shield : MonoBehaviour
             yield return new WaitForSeconds(0.5f);
             sp.enabled = true;
         }
-        playerHealth.DestroyShield();
         anim.SetTrigger("Disappear");
+        ProtectDisappear();
         yield return new WaitForSeconds(0.5f);
         Destroy(gameObject);
     }
-    IEnumerator ShieldHealthGone()
+    public void TakeDamage(int damage)
     {
-        if (playerHealth.ResistDamage <= 0)
+        int ResidualDamage = damage - health;
+        health -= damage;
+        if(health <= 0)
         {
-            anim.SetTrigger("Disappear");
-            yield return new WaitForSeconds(0.5f);
-            Destroy(gameObject);
+            StartCoroutine(ShieldHealthGone(ResidualDamage));
         }
+    }
+    IEnumerator ShieldHealthGone(int ResidualDamage)
+    {
+        anim.SetTrigger("Disappear");
+        ProtectDisappear();
+        playerHealth.DamagePlayer(ResidualDamage);
+        yield return new WaitForSeconds(0.5f);
+        Destroy(gameObject);
     }
     void Protect()
     {
-        playerHealth.Shield(health);
+        playerHealth.hasShield = true;
+    }
+    void ProtectDisappear()
+    {
+        playerHealth.hasShield = false;
     }
 }

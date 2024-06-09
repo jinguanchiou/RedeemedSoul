@@ -46,88 +46,55 @@ public class PlayerHealth : MonoBehaviour
     {
         UsePotion();
     }
-    public void Shield(int ShieldHealth)
-    {
-        ResistDamage += ShieldHealth;
-    }
-    public void DestroyShield()
-    {
-        ResistDamage = 0;
-    }
     public void DamagePlayer(int damage)
     {
-        if (ResistDamage > 0)
+        if (!hasShield)
         {
-            hasShield = true;
-            ResistDamage -= damage;
-        }
-        if(ResistDamage <= 0)
-        {
-            health += ResistDamage;
+            health -= damage;
+            sf.FlashScreen();
+            if (health < 0)
+            {
+                health = 0;
+            }
+            HPInventory.HP = health;
             HealthBar.HealthCurrent = health;
-            if (!hasShield)
-            {
-                health -= damage;
-                sf.FlashScreen();
-                if (health < 0)
-                {
-                    health = 0;
-                }
-                HPInventory.HP = health;
-                HealthBar.HealthCurrent = health;
-                BlinkPlayer(Blinks, time);
-                polygonCollider2D.enabled = false;
-                GameObject gb = Instantiate(floatPoint, new Vector3(transform.position.x, transform.position.y + 2), Quaternion.identity) as GameObject;
-                gb.transform.GetChild(0).GetComponent<TextMesh>().text = "生命 -" + damage.ToString();
-                StartCoroutine(ShowPlayerHitBox());
-            }
-            if (health <= 0)
-            {
-                rb2d.velocity = new Vector2(0, 0);
-                //rb2d.gravityScale = 0.0f;
-                GameController.isGameAlive = false;
-                anim.SetTrigger("Die");
-                Invoke("KillPlayer", dieTime);
-            }
-            hasShield = false;
+            BlinkPlayer(Blinks, time);
+            polygonCollider2D.enabled = false;
+            GameObject gb = Instantiate(floatPoint, new Vector3(transform.position.x, transform.position.y + 2), Quaternion.identity) as GameObject;
+            gb.transform.GetChild(0).GetComponent<TextMesh>().text = "生命 -" + damage.ToString();
+            StartCoroutine(ShowPlayerHitBox());
+        }
+        if (health <= 0)
+        {
+            rb2d.velocity = new Vector2(0, 0);
+            //rb2d.gravityScale = 0.0f;
+            GameController.isGameAlive = false;
+            anim.SetTrigger("Die");
+            Invoke("KillPlayer", dieTime);
         }
     }
     public void BurningPlayer(int damage)
     {
-        if (ResistDamage > 0)
+        health -= damage;
+        sf.FlashScreen();
+        if (health < 0)
         {
-            hasShield = true;
-            ResistDamage -= damage;
+            health = 0;
         }
-        if (ResistDamage <= 0)
+        HPInventory.HP = health;
+        HealthBar.HealthCurrent = health;
+        BlinkPlayer(Blinks, time);
+        polygonCollider2D.enabled = false;
+        GameObject gb = Instantiate(BurningHPPoint, new Vector3(transform.position.x, transform.position.y + 2), Quaternion.identity) as GameObject;
+        gb.transform.GetChild(0).GetComponent<TextMesh>().text = "燃燒 -" + damage.ToString();
+        StartCoroutine(ShowPlayerHitBox());
+        if (health <= 0)
         {
-            health += ResistDamage;
-            HealthBar.HealthCurrent = health;
-            if (!hasShield)
-            {
-                health -= damage;
-                sf.FlashScreen();
-                if (health < 0)
-                {
-                    health = 0;
-                }
-                HPInventory.HP = health;
-                HealthBar.HealthCurrent = health;
-                BlinkPlayer(Blinks, time);
-                polygonCollider2D.enabled = false;
-                GameObject gb = Instantiate(BurningHPPoint, new Vector3(transform.position.x, transform.position.y + 2), Quaternion.identity) as GameObject;
-                gb.transform.GetChild(0).GetComponent<TextMesh>().text = "燃燒 -" + damage.ToString();
-                StartCoroutine(ShowPlayerHitBox());
-            }
-            if (health <= 0)
-            {
-                rb2d.velocity = new Vector2(0, 0);
-                //rb2d.gravityScale = 0.0f;
-                GameController.isGameAlive = false;
-                anim.SetTrigger("Die");
-                Invoke("KillPlayer", dieTime);
-            }
-            hasShield = false;
+            rb2d.velocity = new Vector2(0, 0);
+            //rb2d.gravityScale = 0.0f;
+            GameController.isGameAlive = false;
+            anim.SetTrigger("Die");
+            Invoke("KillPlayer", dieTime);
         }
     }
     IEnumerator ShowPlayerHitBox()

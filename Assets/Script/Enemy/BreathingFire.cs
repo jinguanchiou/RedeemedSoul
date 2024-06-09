@@ -67,5 +67,9 @@ public class BreathingFire : MonoBehaviour
             other.GetComponent<PlayerHealth>().DamagePlayer(damage);
             other.GetComponent<PlayerHealth>().Burning(BurningDamage, Frequency);
         }
+        if (other.gameObject.layer == 18)
+        {
+            other.GetComponent<Shield>().TakeDamage(damage);
+        }
     }
 }

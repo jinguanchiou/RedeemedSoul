@@ -43,5 +43,9 @@ public class EnemyAttack : MonoBehaviour
         {
             other.GetComponent<PlayerHealth>().DamagePlayer(damage);
         }
+        if(other.gameObject.layer == 18)
+        {
+            other.GetComponent<Shield>().TakeDamage(damage);
+        }
     }
 }

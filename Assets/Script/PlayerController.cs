@@ -27,6 +27,7 @@ public class PlayerController : MonoBehaviour
     private bool isLadder;
     private bool isClimbing;
     private bool isJumping;
+    private bool AlreadyJumping;
     private bool isFalling;
     private bool isDoubleJumping;
     private bool isDoubleFalling;
@@ -147,12 +148,15 @@ public class PlayerController : MonoBehaviour
                 myAnim.SetBool("Jump", true);
                 Vector2 JumpVel = new Vector2(0.0f, jumpSpeed);
                 myRigidbody.velocity = Vector2.up * JumpVel;
-                canDoubleJump = true;
+                canDoubleJump = false;
+                AlreadyJumping = true;
             }
-            else
+            else if(!isGround && AlreadyJumping)
             {
+                canDoubleJump = true;
                 if (canDoubleJump)
                 {
+                    AlreadyJumping = false;
                     myAnim.SetBool("DoubleJump", true);
                     Instantiate(JumpSFX, new Vector3(transform.position.x, transform.position.y - 2.5f), transform.rotation);
                     Vector2 doubleJumpVel = new Vector2(0.0f, doulbJumpSpeed);

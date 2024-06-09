@@ -11,6 +11,7 @@ public class PlayerController : MonoBehaviour
     public float restoreTime;
     public bool OnlockPlayer;
     public PlayerAttack playerAttack;
+    public GameObject JumpSFX;
 
     private Animator myAnim;
     private Rigidbody2D myRigidbody;
@@ -153,6 +154,7 @@ public class PlayerController : MonoBehaviour
                 if (canDoubleJump)
                 {
                     myAnim.SetBool("DoubleJump", true);
+                    Instantiate(JumpSFX, new Vector3(transform.position.x, transform.position.y - 2.5f), transform.rotation);
                     Vector2 doubleJumpVel = new Vector2(0.0f, doulbJumpSpeed);
                     myRigidbody.velocity = Vector2.up * doubleJumpVel;
                     canDoubleJump = false;

@@ -176,12 +176,10 @@ public class PlayerHealth : MonoBehaviour
     {
         Destroy(gameObject);
     }
-
     void BlinkPlayer(int numBlinks, float seconds)
     {
         StartCoroutine(DoBlinks(numBlinks, seconds));
     }
-
     IEnumerator DoBlinks(int numBlinks, float seconds)
     {
         for(int i = 0 ; i < numBlinks * 2 ; i++)

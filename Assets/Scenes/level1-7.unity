@@ -19813,6 +19813,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 152740854cb0beb42ad910dff35a066c, type: 3}
+--- !u!95 &1391118276 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 1298123467, guid: 0c5939a7672028647b0ffbd90bb88570, type: 3}
+  m_PrefabInstance: {fileID: 108071550}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1539733964
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -19827,7 +19832,7 @@ PrefabInstance:
     - target: {fileID: 128827773532603414, guid: 761dbc54b63789547901b45c51300d0b, type: 3}
       propertyPath: camAnim
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1391118276}
     - target: {fileID: 128827773532603415, guid: 761dbc54b63789547901b45c51300d0b, type: 3}
       propertyPath: m_RootOrder
       value: 4

@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class InvectoryManager : MonoBehaviour
 {
@@ -13,6 +14,7 @@ public class InvectoryManager : MonoBehaviour
     public GameObject PotionBar;
     public GameObject emptySkillSlot;
     public GameObject WorkingSkillBar;
+    public GameObject WorkingPotionBar;
     public GameObject WorkingemptySkillSlot;
     public GameObject emptyPotionSlot;
     public GameObject WorkingemptyPotionSlot;
@@ -41,7 +43,7 @@ public class InvectoryManager : MonoBehaviour
             Destroy(instance.SkillBar.transform.GetChild(i).gameObject);
             SkillSlot.Clear();
         }
-        for (int i = 0; i < instance.PlayerBag.WorkingSkill.Count + 1; i++)
+        for (int i = 0; i < instance.PlayerBag.WorkingSkill.Count; i++)
         {
             if (instance.WorkingSkillBar.transform.childCount == 0)
                 break;
@@ -57,9 +59,9 @@ public class InvectoryManager : MonoBehaviour
         }
         for (int i = 0; i < instance.PotionBag.WorkingPotionList.Count; i++)
         {
-            if (instance.WorkingSkillBar.transform.childCount == 0)
+            if (instance.WorkingPotionBar.transform.childCount == 0)
                 break;
-            Destroy(instance.WorkingSkillBar.transform.GetChild(i).gameObject);
+            Destroy(instance.WorkingPotionBar.transform.GetChild(i).gameObject);
             WorkingPotionSlot.Clear();
         }
         for (int i = 0; i < instance.PlayerBag.SkillList.Count; i++)
@@ -86,13 +88,15 @@ public class InvectoryManager : MonoBehaviour
             instance.PotionSlot[i].transform.SetParent(instance.PotionBar.transform);
             instance.PotionSlot[i].GetComponentInChildren<PotionSlot>().PotionSlotID = i;
             instance.PotionSlot[i].GetComponentInChildren<PotionSlot>().SetAsChild(instance.PotionBag.PotionList[i]);
+            instance.PotionSlot[i].transform.GetChild(0).GetChild(0).GetComponentInChildren<TextMeshProUGUI>().text = instance.PotionBag.PotionList[i].Quantity.ToString();
         }
         for (int i = 0; i < instance.PotionBag.WorkingPotionList.Count; i++)
         {
             instance.WorkingPotionSlot.Add(Instantiate(instance.WorkingemptyPotionSlot));
-            instance.WorkingPotionSlot[i].transform.SetParent(instance.WorkingSkillBar.transform);
+            instance.WorkingPotionSlot[i].transform.SetParent(instance.WorkingPotionBar.transform);
             instance.WorkingPotionSlot[i].GetComponentInChildren<WorkingPotionSlot>().WorkingPotionSlotID = i;
             instance.WorkingPotionSlot[i].GetComponentInChildren<WorkingPotionSlot>().SetAsChild(instance.PotionBag.WorkingPotionList[i]);
+            instance.WorkingPotionSlot[i].transform.GetChild(0).GetChild(0).GetComponentInChildren<TextMeshProUGUI>().text = instance.PotionBag.WorkingPotionList[i].Quantity.ToString();
         }
     }
 }

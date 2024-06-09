@@ -9,9 +9,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0ad9ffd12ae991b409e74b0a84f1d0c2, type: 3}
-  m_Name: BigPotion
+  m_Script: {fileID: 11500000, guid: a87402bd7b3375645b6de8d6882a6109, type: 3}
+  m_Name: CoinQuantity
   m_EditorClassIdentifier: 
-  PotionImage: {fileID: 8900097144557821661, guid: 2b655b7f5cac345489d70537790f0081, type: 3}
-  RecoveryAmount: 20
-  Quantity: 100
+  CoinQuantity: 16

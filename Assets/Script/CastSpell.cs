@@ -15,6 +15,7 @@ public class CastSpell : MonoBehaviour
     public Inventory PlayerWorkingSkill;
     public GameingUIInventory MPInventory;
     public GameObject SkillBar;
+    public GameObject RestoreMPPoint;
     private bool isAttacking = false;
 
     
@@ -190,12 +191,20 @@ public class CastSpell : MonoBehaviour
             ManaPoint += Mana;
             MPInventory.MP = ManaPoint;
             ManaBar.ManaCurrent = ManaPoint;
+            WaitTextMesh(Mana);
         }
-        else if(ManaPoint + Mana >= MPInventory.MP_MAX)
+        else if(ManaPoint + Mana >= MPInventory.MP_MAX && ManaPoint < MPInventory.MP_MAX)
         {
+            Mana = MPInventory.MP_MAX - ManaPoint;
             ManaPoint = MPInventory.MP_MAX;
             MPInventory.MP = ManaPoint;
             ManaBar.ManaCurrent = ManaPoint;
+            WaitTextMesh(Mana);
         }
+    }
+    void WaitTextMesh(int Mana)
+    {
+        GameObject gb = Instantiate(RestoreMPPoint, new Vector3(PlayerTransform.position.x, PlayerTransform.position.y + 2), Quaternion.identity) as GameObject;
+        gb.transform.GetChild(0).GetComponent<TextMesh>().text = "+" + Mana.ToString();
     }
 }

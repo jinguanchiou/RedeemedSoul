@@ -7,11 +7,12 @@ public class CoinUI : MonoBehaviour
 {
     public int startCoinQuantity;
     public Text coinQuantity;
-
+    public Coin CoinQuantity;
     public static int CurrentCoinQuantity;
     // Start is called before the first frame update
     void Start()
     {
+        startCoinQuantity = CoinQuantity.CoinQuantity;
         CurrentCoinQuantity = startCoinQuantity;
     }
 

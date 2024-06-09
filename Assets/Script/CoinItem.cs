@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class CoinItem : MonoBehaviour
 {
+    public Coin CoinQuantity;
     // Start is called before the first frame update
     void Start()
     {
@@ -21,6 +22,7 @@ public class CoinItem : MonoBehaviour
         if (other.gameObject.CompareTag("Player") && 
             other.GetType().ToString() == "UnityEngine.CapsuleCollider2D")
         {
+            CoinQuantity.CoinQuantity += 1;
             CoinUI.CurrentCoinQuantity += 1;
             Destroy(gameObject);
         }

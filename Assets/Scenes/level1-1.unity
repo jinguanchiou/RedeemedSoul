@@ -5514,6 +5514,11 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 7379428406026254373, guid: 0c5939a7672028647b0ffbd90bb88570, type: 3}
   m_PrefabInstance: {fileID: 398909246}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &319884901 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1139490349, guid: 0c5939a7672028647b0ffbd90bb88570, type: 3}
+  m_PrefabInstance: {fileID: 398909246}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &393650112
 GameObject:
   m_ObjectHideFlags: 0
@@ -5749,6 +5754,17 @@ Animator:
   m_CorrespondingSourceObject: {fileID: 1298123467, guid: 0c5939a7672028647b0ffbd90bb88570, type: 3}
   m_PrefabInstance: {fileID: 398909246}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &531038801 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 309628355, guid: 0c5939a7672028647b0ffbd90bb88570, type: 3}
+  m_PrefabInstance: {fileID: 398909246}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c0d4d8f236e57fd4ab6223b719d4bd2f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &919330221
 GameObject:
   m_ObjectHideFlags: 0
@@ -19459,6 +19475,17 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1236771597}
   m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &1254042710 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 321095117, guid: 0c5939a7672028647b0ffbd90bb88570, type: 3}
+  m_PrefabInstance: {fileID: 398909246}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fa23e7cb5b1e75343846f49598d58a7d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1273304297
 GameObject:
   m_ObjectHideFlags: 0
@@ -24321,6 +24348,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1512896783009843655, guid: b4f673f468d044541b108c42f32fa02d, type: 3}
+      propertyPath: GUIBag
+      value: 
+      objectReference: {fileID: 319884901}
+    - target: {fileID: 1512896783009843655, guid: b4f673f468d044541b108c42f32fa02d, type: 3}
+      propertyPath: potionBarManger
+      value: 
+      objectReference: {fileID: 531038801}
+    - target: {fileID: 1512896783009843655, guid: b4f673f468d044541b108c42f32fa02d, type: 3}
+      propertyPath: invectoryManager
+      value: 
+      objectReference: {fileID: 1254042710}
     - target: {fileID: 1512896783009843659, guid: b4f673f468d044541b108c42f32fa02d, type: 3}
       propertyPath: m_Name
       value: test426

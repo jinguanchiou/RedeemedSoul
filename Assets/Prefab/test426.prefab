@@ -48,6 +48,7 @@ MonoBehaviour:
   PlayerWorkingSkill: {fileID: 11400000, guid: ee80f1700788afa4ba124e6671f4685e, type: 2}
   MPInventory: {fileID: 11400000, guid: f05f77cb797d1574ebef420491b45251, type: 2}
   SkillBar: {fileID: 0}
+  RestoreMPPoint: {fileID: 8966727362518600445, guid: bf20f6ab8b9315d4d85bb4b3e57eaf4c, type: 3}
 --- !u!1 &1512896782455734605
 GameObject:
   m_ObjectHideFlags: 0
@@ -367,6 +368,9 @@ MonoBehaviour:
   hasShield: 0
   floatPoint: {fileID: 4670379567073532384, guid: a6fdd37d2e737e848b2698592d3e9408, type: 3}
   RestoreHPPoint: {fileID: 2586804626996381979, guid: 6bc0569763385cb43a6079dbb69bb402, type: 3}
+  GUIBag: {fileID: 0}
+  potionBarManger: {fileID: 0}
+  invectoryManager: {fileID: 0}
   HPInventory: {fileID: 11400000, guid: f05f77cb797d1574ebef420491b45251, type: 2}
   potionInventory: {fileID: 11400000, guid: 7c4905c77f26833459b0f6824e034634, type: 2}
 --- !u!95 &453286114

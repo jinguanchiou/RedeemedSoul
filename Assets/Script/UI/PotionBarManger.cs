@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using TMPro;
 public class PotionBarManger : MonoBehaviour
 {
     static PotionBarManger instance;
@@ -36,6 +36,7 @@ public class PotionBarManger : MonoBehaviour
             instance.PotionSlot[i].transform.SetParent(instance.PotionBar.transform);
             instance.PotionSlot[i].GetComponentInChildren<PotionSlot>().PotionSlotID = i;
             instance.PotionSlot[i].GetComponentInChildren<PotionSlot>().SetAsChild(instance.PotionBag.WorkingPotionList[i]);
+            instance.PotionSlot[i].transform.GetChild(0).GetChild(0).GetComponentInChildren<TextMeshProUGUI>().text = instance.PotionBag.WorkingPotionList[i].Quantity.ToString();
         }
     }
 }

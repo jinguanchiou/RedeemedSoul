@@ -16,6 +16,9 @@ public class PlayerHealth : MonoBehaviour
     private Coroutine burningCoroutine;
     public GameObject floatPoint;
     public GameObject RestoreHPPoint;
+    public GameObject GUIBag;
+    public PotionBarManger potionBarManger;
+    public InvectoryManager invectoryManager;
     public GameingUIInventory HPInventory;
     public PotionInventory potionInventory;
 
@@ -74,7 +77,7 @@ public class PlayerHealth : MonoBehaviour
                 BlinkPlayer(Blinks, time);
                 polygonCollider2D.enabled = false;
                 GameObject gb = Instantiate(floatPoint, new Vector3(transform.position.x, transform.position.y + 2), Quaternion.identity) as GameObject;
-                gb.transform.GetChild(0).GetComponent<TextMesh>().text = damage.ToString();
+                gb.transform.GetChild(0).GetComponent<TextMesh>().text = "-" + damage.ToString();
                 StartCoroutine(ShowPlayerHitBox());
             }
             if (health <= 0)
@@ -105,19 +108,26 @@ public class PlayerHealth : MonoBehaviour
                 health += Potion;
                 HPInventory.HP = health;
                 HealthBar.HealthCurrent = health;
+                StartCoroutine(WaitTextMesh(Potion));
             }
             else if (health + Potion >= HPInventory.HP_MAX)
             {
                 anim.SetTrigger("UsePotion");
+                Potion = HPInventory.HP_MAX - health;
                 health = HPInventory.HP_MAX;
                 HPInventory.HP = health;
                 HealthBar.HealthCurrent = health;
+                StartCoroutine(WaitTextMesh(Potion));
             }
             potionInventory.WorkingPotionList[0].Quantity -= 1;
-            StartCoroutine(WaitTextMesh());
+            potionBarManger.RefreshPotion();
+            if (GUIBag.activeInHierarchy)
+            {
+                invectoryManager.RefreshSkill();
+            }
         }
     }
-    IEnumerator WaitTextMesh()
+    IEnumerator WaitTextMesh(int point)
     {
         yield return new WaitForSeconds(1);
         GameObject gb = Instantiate(RestoreHPPoint, new Vector3(transform.position.x, transform.position.y + 2), Quaternion.identity) as GameObject;

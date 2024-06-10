@@ -6,7 +6,7 @@ public class Shield : MonoBehaviour
 {
     public int health;
     public float Duration;
-
+    public GameObject ShieldPoint;
     private Animator anim;
     private Transform PlayerTransform;
     private Rigidbody2D rb2d;
@@ -61,7 +61,9 @@ public class Shield : MonoBehaviour
     {
         int ResidualDamage = damage - health;
         health -= damage;
-        if(health <= 0)
+        GameObject gb = Instantiate(ShieldPoint, new Vector3(transform.position.x, transform.position.y + 2), Quaternion.identity) as GameObject;
+        gb.transform.GetChild(0).GetComponent<TextMesh>().text = "Å@¬Þ -" + damage.ToString();
+        if (health <= 0)
         {
             StartCoroutine(ShieldHealthGone(ResidualDamage));
         }

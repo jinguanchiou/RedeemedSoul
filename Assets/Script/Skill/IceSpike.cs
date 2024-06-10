@@ -7,7 +7,6 @@ public class IceSpike : MonoBehaviour
     public Vector2 startSpeed;
     public int Damage;
     public float DestroyTime;
-
     private Rigidbody2D rb2d;
     private Animator anim;
     // Start is called before the first frame update

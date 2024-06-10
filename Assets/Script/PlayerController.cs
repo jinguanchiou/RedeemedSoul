@@ -10,6 +10,7 @@ public class PlayerController : MonoBehaviour
     public float climbSpeed;
     public float restoreTime;
     public bool OnlockPlayer;
+    public bool canOpenMall;
     public PlayerAttack playerAttack;
     public GameObject JumpSFX;
 
@@ -27,6 +28,7 @@ public class PlayerController : MonoBehaviour
     private bool isLadder;
     private bool isClimbing;
     private bool isJumping;
+    private bool isOpening;
     private bool AlreadyJumping;
     private bool isFalling;
     private bool isDoubleJumping;
@@ -67,6 +69,7 @@ public class PlayerController : MonoBehaviour
             CheclLadder();
             SwitchAnimation();
             OneWayPlatformCheck();
+            ToggleMall();
             //Attack();
         }
     }
@@ -241,7 +244,7 @@ public class PlayerController : MonoBehaviour
         if (myAnim.GetBool("DoubleJump"))
         {
             if (myRigidbody.velocity.y < 0.0f)
-                myAnim.SetBool("DoubleJump", false);
+            myAnim.SetBool("DoubleJump", false);
             myAnim.SetBool("DoubleFall", true);
         }
         else if (isGround)
@@ -250,7 +253,6 @@ public class PlayerController : MonoBehaviour
             myAnim.SetBool("Idle", true);
         }
     }
-
     void OneWayPlatformCheck()
     {
         if(isGround && gameObject.layer != LayerMask.NameToLayer("Player"))
@@ -271,6 +273,21 @@ public class PlayerController : MonoBehaviour
         if (gameObject.layer != LayerMask.NameToLayer("Player"))
         {
             gameObject.layer = LayerMask.NameToLayer("Player");
+        }
+    }
+    void ToggleMall()
+    {
+        if (canOpenMall && Input.GetKeyDown(KeyCode.E) && isOpening)
+        {
+            GameObject Merchant = GameObject.Find("Merchant");
+            Merchant.GetComponent<Merchant>().CloseMall();
+            isOpening = false;
+        }
+        else if (canOpenMall && Input.GetKeyDown(KeyCode.E))
+        {
+            GameObject Merchant = GameObject.Find("Merchant");
+            Merchant.GetComponent<Merchant>().OpenMall();
+            isOpening = true;
         }
     }
     void CheckAirStatus()

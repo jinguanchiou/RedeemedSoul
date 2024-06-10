@@ -21,4 +21,10 @@ public class CoinUI : MonoBehaviour
     {
         coinQuantity.text = CurrentCoinQuantity.ToString();
     }
+    public void Buy()
+    {
+        startCoinQuantity = CoinQuantity.CoinQuantity;
+        CurrentCoinQuantity = startCoinQuantity;
+        coinQuantity.text = CurrentCoinQuantity.ToString();
+    }
 }

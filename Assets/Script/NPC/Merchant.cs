@@ -113,6 +113,7 @@ public class Merchant : MonoBehaviour
         {
             other.GetComponent<PlayerController>().canOpenMall = false;
             CloseMall();
+            OpenQuantity = 0;
         }
     }
 }

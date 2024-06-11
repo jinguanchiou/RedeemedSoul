@@ -5,6 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class DoorToNextLevel : MonoBehaviour
 {
+    public ScenseContorller scenseContorller;
     // Start is called before the first frame update
     void Start()
     {
@@ -20,6 +21,8 @@ public class DoorToNextLevel : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Player") && other.GetType().ToString() == "UnityEngine.CapsuleCollider2D")
         {
+            scenseContorller.ScenseList[scenseContorller.i] = false;
+            scenseContorller.ScenseList[scenseContorller.i + 1] = true;
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
         }
     }

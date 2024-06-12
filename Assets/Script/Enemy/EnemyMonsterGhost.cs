@@ -19,8 +19,12 @@ public class EnemyMonsterGhost : MonoBehaviour
     public float radius;
     public float AttackRadius;
     private float waitTime;
+    private int toxin;
+    private float toxinTime;
+    private float speed_Log;
 
-
+    private Coroutine burningCoroutine;
+    private Coroutine frozenCoroutine;
     public EnemyAttack Attack;
     public Transform movePos;
     public Transform leftDownPos;
@@ -41,6 +45,7 @@ public class EnemyMonsterGhost : MonoBehaviour
         PlayerTransform = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
         waitTime = startWaitTime;
         movePos.position = GetRandomPos();
+        speed_Log = speed;
     }
     // Update is called once per frame
     public void Update()
@@ -50,6 +55,7 @@ public class EnemyMonsterGhost : MonoBehaviour
             Flip();
             WalkAI();
             AttackAI();
+            ToxinTime();
         }
         Dead();
     }
@@ -138,14 +144,57 @@ public class EnemyMonsterGhost : MonoBehaviour
     }
     public void Burning(int damage, int frequency)
     {
-        StartCoroutine(BurningIE(damage, frequency));
+        if (burningCoroutine != null)
+        {
+            StopCoroutine(burningCoroutine);
+        }
+        burningCoroutine = StartCoroutine(BurningIE(damage, frequency));
     }
     IEnumerator BurningIE(int damage, int frequency)
     {
-        for(int i = 0; i < frequency; i++)
+        for (int i = 0; i < frequency; i++)
         {
             TakeDamage(damage);
             yield return new WaitForSeconds(1);
+        }
+        burningCoroutine = null;
+    }
+    public void Frozen(float DecreasePercentage, float duration)
+    {
+        if (frozenCoroutine != null)
+        {
+            StopCoroutine(frozenCoroutine);
+        }
+        frozenCoroutine = StartCoroutine(FrozenIE(DecreasePercentage, duration));
+    }
+    IEnumerator FrozenIE(float DecreasePercentage, float duration)
+    {
+        if (speed_Log == speed)
+        {
+            speed *= DecreasePercentage;
+        }
+        yield return new WaitForSeconds(duration);
+        speed = speed_Log;
+        frozenCoroutine = null;
+    }
+    public void Toxin()
+    {
+        if (toxin < 8)
+        {
+            toxin++;
+        }
+        toxinTime = 3;
+        TakeDamage(toxin);
+    }
+    void ToxinTime()
+    {
+        if(toxinTime > 0)
+        {
+            toxinTime -= Time.deltaTime;
+        }
+        if(toxinTime <= 0)
+        {
+            toxin = 0;
         }
     }
     public void PlayerHitMe()

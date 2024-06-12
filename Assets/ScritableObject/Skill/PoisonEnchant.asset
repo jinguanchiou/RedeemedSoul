@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e81e810fc4fcf674a931b7953310bf59, type: 3}
+  m_Name: PoisonEnchant
+  m_EditorClassIdentifier: 
+  skillName: PoisonEnchant
+  SkillImage: {fileID: 1731824171347518107, guid: 8df2ad92c20b0274aa92f76f50aa49fa, type: 3}
+  SkillOntology: {fileID: 6061604207871155067, guid: 3b3503835cac2b04e9439e580e0692a5, type: 3}
+  ManaReduced: 20
+  StartTime: 0.3
+  CoolTime: 20
+  CanUse: 0
+  skillInfo: 

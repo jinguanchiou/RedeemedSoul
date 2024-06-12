@@ -130,6 +130,7 @@ MonoBehaviour:
   startTime: 0.2
   time: 0.2
   Mana: {fileID: 2054989874}
+  IceSpike: {fileID: 8342076467566442454, guid: 22a40b914fd9c41449f6c0ca22108d4f, type: 3}
   isAttacking_1: 0
   isAttacking_2: 0
   isAttacking: 0
@@ -341,11 +342,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   runSpeed: 8
-  jumpSpeed: 15
-  doulbJumpSpeed: 15
+  jumpSpeed: 12
+  doulbJumpSpeed: 12
   climbSpeed: 4
   restoreTime: 0.25
   OnlockPlayer: 0
+  canOpenMall: 0
   playerAttack: {fileID: 1512896782455734603}
   JumpSFX: {fileID: 5837063677235568715, guid: d2e2f7434309bdb4b87e288d6bb25052, type: 3}
 --- !u!114 &1512896783009843655

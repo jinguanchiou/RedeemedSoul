@@ -1,60 +1,65 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
 public class MallManager : MonoBehaviour
 {
     public Coin CoinQuantity;
     public CoinUI coinUI;
+    public GameObject XX;
     public PotionInventory potionInventory;
     public Inventory SkillInventory;
     public PotionBarManger PotionBarManger;
-    private int BigPotionPF;
-    private int NormalPotionPF;
-    private int SmallPotionPF;
-    private int MallSkillPF;
+
+    private void Start()
+    {
+        if (SkillInventory.SkillList[10].CanUse)
+        {
+            XX.SetActive(true);
+        }
+        else
+        {
+            XX.SetActive(false);
+        }
+    }
     public void BuyBigPotion()
     {
-        if (CoinQuantity.CoinQuantity >= 10 && BigPotionPF < 5)
+        if (CoinQuantity.CoinQuantity >= 10 && potionInventory.PotionList[2].Quantity < 15)
         {
             CoinQuantity.CoinQuantity -= 10;
             potionInventory.PotionList[2].Quantity += 1;
             coinUI.Buy();
             PotionBarManger.RefreshPotion();
-            BigPotionPF++;
         }
     }
     public void BuyNormalPotion()
     {
-        if (CoinQuantity.CoinQuantity >= 5 && NormalPotionPF < 5)
+        if (CoinQuantity.CoinQuantity >= 5 && potionInventory.PotionList[1].Quantity < 15)
         {
             CoinQuantity.CoinQuantity -= 5;
             potionInventory.PotionList[1].Quantity += 1;
             coinUI.Buy();
             PotionBarManger.RefreshPotion();
-            NormalPotionPF++;
         }
     }
     public void BuySmallPotion()
     {
-        if (CoinQuantity.CoinQuantity >= 3 && SmallPotionPF < 5)
+        if (CoinQuantity.CoinQuantity >= 3 && potionInventory.PotionList[0].Quantity < 15)
         {
             CoinQuantity.CoinQuantity -= 3;
             potionInventory.PotionList[0].Quantity += 1;
             coinUI.Buy();
             PotionBarManger.RefreshPotion();
-            SmallPotionPF++;
         }
     }
     public void BuyMallSkill()
     {
-        if (CoinQuantity.CoinQuantity >= 50 && MallSkillPF < 1)
+        if (CoinQuantity.CoinQuantity >= 50 && !SkillInventory.SkillList[10].CanUse)
         {
             CoinQuantity.CoinQuantity -= 50;
             SkillInventory.SkillList[10].CanUse = true;
             coinUI.Buy();
+            XX.SetActive(true);
             PotionBarManger.RefreshPotion();
-            MallSkillPF++;
         }
     }
 }

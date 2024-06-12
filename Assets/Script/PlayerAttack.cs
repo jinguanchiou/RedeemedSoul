@@ -9,6 +9,7 @@ public class PlayerAttack : MonoBehaviour
     public float startTime;
     public float time;
     public CastSpell Mana;
+    public GameObject IceSpike;
 
     public bool isAttacking_1 = false;
     private bool AttackisFinish = false;
@@ -37,6 +38,8 @@ public class PlayerAttack : MonoBehaviour
         {
             isAttacking_1 = true;
             anim.SetTrigger("Attack");
+            if (anim.GetBool("IceEnchant"))
+                Instantiate(IceSpike, transform.position, transform.rotation);
             StartCoroutine(StartAttack());
         }
         if (Input.GetButtonDown("Attack") && AttackisFinish && !isAttacking_2)
@@ -86,10 +89,44 @@ public class PlayerAttack : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Enemy") && other.GetType().ToString() == "UnityEngine.CapsuleCollider2D")
         {
-            other.GetComponent<EnemyMonsterGhost>().TakeDamage(damage);
-            other.GetComponent<EnemyMonsterGhost>().PlayerHitMe();
-            Mana.RegainMana(regainPoint);
-            playerController.HitEnemy();
+            if (anim.GetBool("Enchant"))
+            {
+                other.GetComponent<EnemyMonsterGhost>().TakeDamage(damage * 3);
+                other.GetComponent<EnemyMonsterGhost>().PlayerHitMe();
+                Mana.RegainMana(regainPoint);
+                playerController.HitEnemy();
+            }
+            else if (anim.GetBool("FireEnchant"))
+            {
+                other.GetComponent<EnemyMonsterGhost>().TakeDamage(damage);
+                other.GetComponent<EnemyMonsterGhost>().Burning(2, 3);
+                other.GetComponent<EnemyMonsterGhost>().PlayerHitMe();
+                Mana.RegainMana(regainPoint);
+                playerController.HitEnemy();
+            }
+            else if (anim.GetBool("IceEnchant"))
+            {
+                other.GetComponent<EnemyMonsterGhost>().TakeDamage(damage);
+                other.GetComponent<EnemyMonsterGhost>().Frozen(0.5f, 1);
+                other.GetComponent<EnemyMonsterGhost>().PlayerHitMe();
+                Mana.RegainMana(regainPoint);
+                playerController.HitEnemy();
+            }
+            else if (anim.GetBool("PoisonEnchant"))
+            {
+                other.GetComponent<EnemyMonsterGhost>().TakeDamage(damage);
+                other.GetComponent<EnemyMonsterGhost>().Toxin();
+                other.GetComponent<EnemyMonsterGhost>().PlayerHitMe();
+                Mana.RegainMana(regainPoint);
+                playerController.HitEnemy();
+            }
+            else
+            {
+                other.GetComponent<EnemyMonsterGhost>().TakeDamage(damage);
+                other.GetComponent<EnemyMonsterGhost>().PlayerHitMe();
+                Mana.RegainMana(regainPoint);
+                playerController.HitEnemy();
+            }
         }
         if (other.gameObject.CompareTag("Riru"))
         {

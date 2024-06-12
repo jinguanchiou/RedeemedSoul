@@ -44,6 +44,7 @@ public class FireBall : MonoBehaviour
         {
             other.GetComponent<EnemyMonsterGhost>().TakeDamage(Damage);
             other.GetComponent<EnemyMonsterGhost>().PlayerHitMe();
+            other.GetComponent<EnemyMonsterGhost>().Burning(3, 3);
             DestroyThisBall();
         }
     }

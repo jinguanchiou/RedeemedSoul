@@ -162,7 +162,6 @@ public class PlayerHealth : MonoBehaviour
         {
             StopCoroutine(burningCoroutine);
         }
-
         burningCoroutine = StartCoroutine(BurningIE(damage, frequency));
     }
     IEnumerator BurningIE(int damage, int frequency)

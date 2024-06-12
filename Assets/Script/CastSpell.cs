@@ -91,6 +91,10 @@ public class CastSpell : MonoBehaviour
             PlayerAnim.SetTrigger("Tornado");
         else if (Skill_01.name == "FireTornado")
             PlayerAnim.SetTrigger("Tornado");
+        else if (Skill_01.name == "IceTornado")
+            PlayerAnim.SetTrigger("Tornado");
+        else if (Skill_01.name == "PoisonTornado")
+            PlayerAnim.SetTrigger("Tornado");
     }
     public void SkillAnimeTrigger_02()
     {
@@ -105,6 +109,10 @@ public class CastSpell : MonoBehaviour
         else if (Skill_02.name == "Tornado")
             PlayerAnim.SetTrigger("Tornado");
         else if (Skill_02.name == "FireTornado")
+            PlayerAnim.SetTrigger("Tornado");
+        else if (Skill_02.name == "IceTornado")
+            PlayerAnim.SetTrigger("Tornado");
+        else if (Skill_02.name == "PoisonTornado")
             PlayerAnim.SetTrigger("Tornado");
     }
     public void SkillAnimeBool()

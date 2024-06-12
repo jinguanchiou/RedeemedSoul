@@ -25,7 +25,7 @@ public class PoisonousFlame : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Enemy"))
         {
-            other.GetComponent<EnemyMonsterGhost>().TakeDamage(Damage);
+            other.GetComponent<EnemyMonsterGhost>().Toxin();
         }
     }
     IEnumerator ResetPoisonousFlameRange()

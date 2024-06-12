@@ -42,6 +42,7 @@ public class IceSpike : MonoBehaviour
         {
             other.GetComponent<EnemyMonsterGhost>().TakeDamage(Damage);
             other.GetComponent<EnemyMonsterGhost>().PlayerHitMe();
+            other.GetComponent<EnemyMonsterGhost>().Frozen(0.5f, 2);
             DestroyThisIce();
         }
     }

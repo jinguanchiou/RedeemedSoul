@@ -31,7 +31,6 @@ public class FusionSkillSlot : MonoBehaviour, IDropHandler
                 Transform childTransform = transform.GetChild(0);
                 Destroy(childTransform.gameObject);
                 droppedClone.transform.SetParent(transform);
-                Debug.Log(transform.childCount);
                 FusionSkill.FusionSkill[FusionSkillSlotID] = null;
                 FusionSkill.FusionSkill[FusionSkillSlotID] = Skill.SkillList[draggableItem.parentAfterDrag.GetComponentInParent<SkillSlot>().SkillSlotID];
             }

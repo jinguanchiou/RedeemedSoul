@@ -46,6 +46,7 @@ public class PlayerController : MonoBehaviour
         myFeet = GetComponent<BoxCollider2D>();
         playerGravity = myRigidbody.gravityScale;
         OnlockPlayer = false;
+        GameController.isGameAlive = true;
     }
 
     // Update is called once per frame
@@ -252,6 +253,7 @@ public class PlayerController : MonoBehaviour
             myAnim.SetBool("DoubleFall", false);
             myAnim.SetBool("Idle", true);
         }
+        
     }
     void OneWayPlatformCheck()
     {

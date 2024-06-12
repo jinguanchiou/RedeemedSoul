@@ -26033,6 +26033,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 244687269}
     - target: {fileID: 1512896783009843655, guid: b4f673f468d044541b108c42f32fa02d, type: 3}
+      propertyPath: GameOverUI
+      value: 
+      objectReference: {fileID: 1554401859}
+    - target: {fileID: 1512896783009843655, guid: b4f673f468d044541b108c42f32fa02d, type: 3}
       propertyPath: HPInventory
       value: 
       objectReference: {fileID: 11400000, guid: f05f77cb797d1574ebef420491b45251, type: 2}
@@ -26283,6 +26287,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2c8de074fc22a544280d41a48a631b00, type: 3}
+--- !u!1 &1554401859 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1922043060, guid: 0c5939a7672028647b0ffbd90bb88570, type: 3}
+  m_PrefabInstance: {fileID: 244687264}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1563800489
 GameObject:
   m_ObjectHideFlags: 0

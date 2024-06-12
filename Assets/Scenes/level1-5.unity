@@ -206,25 +206,9 @@ PrefabInstance:
       propertyPath: SkillBar
       value: 
       objectReference: {fileID: 1973452583}
-    - target: {fileID: 2054989874, guid: b4f673f468d044541b108c42f32fa02d, type: 3}
-      propertyPath: MPInventory
-      value: 
-      objectReference: {fileID: 11400000, guid: f05f77cb797d1574ebef420491b45251, type: 2}
-    - target: {fileID: 1512896783009843652, guid: b4f673f468d044541b108c42f32fa02d, type: 3}
-      propertyPath: playerAttack
-      value: 
-      objectReference: {fileID: 1126850210}
     - target: {fileID: 1512896783009843654, guid: b4f673f468d044541b108c42f32fa02d, type: 3}
       propertyPath: m_RootOrder
       value: 14
-      objectReference: {fileID: 0}
-    - target: {fileID: 1512896783009843654, guid: b4f673f468d044541b108c42f32fa02d, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 8.75
-      objectReference: {fileID: 0}
-    - target: {fileID: 1512896783009843654, guid: b4f673f468d044541b108c42f32fa02d, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 8.5
       objectReference: {fileID: 0}
     - target: {fileID: 1512896783009843654, guid: b4f673f468d044541b108c42f32fa02d, type: 3}
       propertyPath: m_LocalPosition.x
@@ -271,9 +255,9 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1042928963}
     - target: {fileID: 1512896783009843655, guid: b4f673f468d044541b108c42f32fa02d, type: 3}
-      propertyPath: HPInventory
+      propertyPath: GameOverUI
       value: 
-      objectReference: {fileID: 11400000, guid: f05f77cb797d1574ebef420491b45251, type: 2}
+      objectReference: {fileID: 239700561}
     - target: {fileID: 1512896783009843655, guid: b4f673f468d044541b108c42f32fa02d, type: 3}
       propertyPath: potionBarManger
       value: 
@@ -341,6 +325,11 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 18
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &239700561 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1922043060, guid: 0c5939a7672028647b0ffbd90bb88570, type: 3}
+  m_PrefabInstance: {fileID: 1042928961}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &489233359
 GameObject:
   m_ObjectHideFlags: 0
@@ -36284,17 +36273,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f58faefbad286df44af01e9d9bf9f1e9, type: 3}
---- !u!114 &1126850210 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 1512896782455734603, guid: b4f673f468d044541b108c42f32fa02d, type: 3}
-  m_PrefabInstance: {fileID: 118099366}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e8000601359fa284184789e7dd28f41a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1251559431
 GameObject:
   m_ObjectHideFlags: 0

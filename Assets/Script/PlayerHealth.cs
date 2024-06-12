@@ -8,12 +8,15 @@ public class PlayerHealth : MonoBehaviour
     public int Blinks;
     public int ResistDamage;
     private int Potion;
+    private float minLocation = -0.5f;
+    private float maxLocation = 0.5f;
     public float time;
     public float dieTime;
     public float hitBoxCdTime;
     public bool hasShield = false;
     
     private Coroutine burningCoroutine;
+    public GameObject GameOverUI;
     public GameObject floatPoint;
     public GameObject RestoreHPPoint;
     public GameObject BurningHPPoint;
@@ -60,7 +63,8 @@ public class PlayerHealth : MonoBehaviour
             HealthBar.HealthCurrent = health;
             BlinkPlayer(Blinks, time);
             polygonCollider2D.enabled = false;
-            GameObject gb = Instantiate(floatPoint, new Vector3(transform.position.x, transform.position.y + 2), Quaternion.identity) as GameObject;
+            float randomLocation = Random.Range(minLocation, maxLocation);
+            GameObject gb = Instantiate(floatPoint, new Vector3(transform.position.x + randomLocation, transform.position.y + 2 + randomLocation), Quaternion.identity) as GameObject;
             gb.transform.GetChild(0).GetComponent<TextMesh>().text = "生命 -" + damage.ToString();
             StartCoroutine(ShowPlayerHitBox());
         }
@@ -70,6 +74,7 @@ public class PlayerHealth : MonoBehaviour
             //rb2d.gravityScale = 0.0f;
             GameController.isGameAlive = false;
             anim.SetTrigger("Die");
+            GameOverUI.SetActive(true);
             Invoke("KillPlayer", dieTime);
         }
     }
@@ -85,7 +90,8 @@ public class PlayerHealth : MonoBehaviour
         HealthBar.HealthCurrent = health;
         BlinkPlayer(Blinks, time);
         polygonCollider2D.enabled = false;
-        GameObject gb = Instantiate(BurningHPPoint, new Vector3(transform.position.x, transform.position.y + 2), Quaternion.identity) as GameObject;
+        float randomLocation = Random.Range(minLocation, maxLocation);
+        GameObject gb = Instantiate(BurningHPPoint, new Vector3(transform.position.x + randomLocation, transform.position.y + 2 + randomLocation), Quaternion.identity) as GameObject;
         gb.transform.GetChild(0).GetComponent<TextMesh>().text = "燃燒 -" + damage.ToString();
         StartCoroutine(ShowPlayerHitBox());
         if (health <= 0)
@@ -94,6 +100,7 @@ public class PlayerHealth : MonoBehaviour
             //rb2d.gravityScale = 0.0f;
             GameController.isGameAlive = false;
             anim.SetTrigger("Die");
+            GameOverUI.SetActive(true);
             Invoke("KillPlayer", dieTime);
         }
     }
@@ -136,7 +143,8 @@ public class PlayerHealth : MonoBehaviour
     IEnumerator WaitTextMesh(int point)
     {
         yield return new WaitForSeconds(1);
-        GameObject gb = Instantiate(RestoreHPPoint, new Vector3(transform.position.x, transform.position.y + 2), Quaternion.identity) as GameObject;
+        float randomLocation = Random.Range(minLocation, maxLocation);
+        GameObject gb = Instantiate(RestoreHPPoint, new Vector3(transform.position.x + randomLocation, transform.position.y + 2 + randomLocation), Quaternion.identity) as GameObject;
         gb.transform.GetChild(0).GetComponent<TextMesh>().text = "生命 +" + Potion.ToString();
     }
     void KillPlayer()

@@ -3591,6 +3591,11 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 2071265504496048718, guid: d4f36e02813e31e4e834db168b75bda0, type: 3}
   m_PrefabInstance: {fileID: 318715229}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &368295403 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1922043060, guid: 0c5939a7672028647b0ffbd90bb88570, type: 3}
+  m_PrefabInstance: {fileID: 108071550}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &403961134
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -25528,6 +25533,10 @@ PrefabInstance:
       propertyPath: GUIBag
       value: 
       objectReference: {fileID: 108071554}
+    - target: {fileID: 1512896783009843655, guid: b4f673f468d044541b108c42f32fa02d, type: 3}
+      propertyPath: GameOverUI
+      value: 
+      objectReference: {fileID: 368295403}
     - target: {fileID: 1512896783009843655, guid: b4f673f468d044541b108c42f32fa02d, type: 3}
       propertyPath: HPInventory
       value: 

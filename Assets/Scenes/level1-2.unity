@@ -5018,6 +5018,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1898608630}
     - target: {fileID: 1512896783009843655, guid: b4f673f468d044541b108c42f32fa02d, type: 3}
+      propertyPath: GameOverUI
+      value: 
+      objectReference: {fileID: 1501352384}
+    - target: {fileID: 1512896783009843655, guid: b4f673f468d044541b108c42f32fa02d, type: 3}
       propertyPath: potionBarManger
       value: 
       objectReference: {fileID: 123944949}
@@ -31370,6 +31374,11 @@ Tilemap:
     e31: 0
     e32: 0
     e33: 1
+--- !u!1 &1501352384 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1922043060, guid: 0c5939a7672028647b0ffbd90bb88570, type: 3}
+  m_PrefabInstance: {fileID: 868959956}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1612826786
 GameObject:
   m_ObjectHideFlags: 0

@@ -6,9 +6,16 @@ using UnityEngine.SceneManagement;
 public class MainMenu : MonoBehaviour
 {
     public GameingUIInventory ResetGameingUI;
+    public ScenseContorller scenseContorller;
     public void NewGame()
     {
-        SceneManager.LoadScene(3);
+        for(int i = 0; i < scenseContorller.ScenseList.Count; i++)
+        {
+            scenseContorller.ScenseList[i] = false;
+        }
+        scenseContorller.ScenseList[1] = true;
+        scenseContorller.i = 1;
+        SceneManager.LoadScene(1);
     }
     public void Resetall()
     {

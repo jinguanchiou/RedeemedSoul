@@ -8550,6 +8550,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fa23e7cb5b1e75343846f49598d58a7d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &1532825830 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1922043060, guid: 0c5939a7672028647b0ffbd90bb88570, type: 3}
+  m_PrefabInstance: {fileID: 1532825826}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1564791906
 GameObject:
   m_ObjectHideFlags: 0
@@ -41015,6 +41020,10 @@ PrefabInstance:
       propertyPath: GUIBag
       value: 
       objectReference: {fileID: 1532825828}
+    - target: {fileID: 1512896783009843655, guid: b4f673f468d044541b108c42f32fa02d, type: 3}
+      propertyPath: GameOverUI
+      value: 
+      objectReference: {fileID: 1532825830}
     - target: {fileID: 1512896783009843655, guid: b4f673f468d044541b108c42f32fa02d, type: 3}
       propertyPath: HPInventory
       value: 

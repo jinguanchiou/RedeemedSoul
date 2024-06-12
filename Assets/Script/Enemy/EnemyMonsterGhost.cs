@@ -22,6 +22,8 @@ public class EnemyMonsterGhost : MonoBehaviour
     private int toxin;
     private float toxinTime;
     private float speed_Log;
+    private float minLocation = -0.5f;
+    private float maxLocation = 0.5f;
 
     private Coroutine burningCoroutine;
     private Coroutine frozenCoroutine;
@@ -135,7 +137,8 @@ public class EnemyMonsterGhost : MonoBehaviour
     }
     public void TakeDamage(int damage)
     {
-        GameObject gb = Instantiate(floatPoint, transform.position, Quaternion.identity) as GameObject;
+        float randomLocation = Random.Range(minLocation, maxLocation);
+        GameObject gb = Instantiate(floatPoint, new Vector3(transform.position.x + randomLocation, transform.position.y + randomLocation), Quaternion.identity) as GameObject;
         gb.transform.GetChild(0).GetComponent<TextMesh>().text = damage.ToString();
         health -= damage;
         FlashColor(flashTime);

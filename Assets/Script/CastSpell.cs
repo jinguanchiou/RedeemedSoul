@@ -11,6 +11,8 @@ public class CastSpell : MonoBehaviour
     private bool Skill_02Cooling = true;
     private bool Cooling_01IsCooling = false;
     private bool Cooling_02IsCooling = false;
+    private float minLocation = -0.5f;
+    private float maxLocation = 0.5f;
     public int ManaPoint;
     public Inventory PlayerWorkingSkill;
     public GameingUIInventory MPInventory;
@@ -212,7 +214,8 @@ public class CastSpell : MonoBehaviour
     }
     void WaitTextMesh(int Mana)
     {
-        GameObject gb = Instantiate(RestoreMPPoint, new Vector3(PlayerTransform.position.x, PlayerTransform.position.y + 2), Quaternion.identity) as GameObject;
+        float randomLocation = Random.Range(minLocation, maxLocation);
+        GameObject gb = Instantiate(RestoreMPPoint, new Vector3(PlayerTransform.position.x + randomLocation, PlayerTransform.position.y + 2 + randomLocation), Quaternion.identity) as GameObject;
         gb.transform.GetChild(0).GetComponent<TextMesh>().text = "Å]¤O +" + Mana.ToString();
     }
 }

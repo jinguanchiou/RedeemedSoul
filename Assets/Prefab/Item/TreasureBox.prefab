@@ -227,5 +227,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a67292b010b680d4e832b72ff3212d0e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  TreasureBoxID: 0
+  treasureContorller: {fileID: 11400000, guid: 48f168f15c87ac94585eeb5da7096606, type: 2}
+  treasureBox: {fileID: 5722398700700044063}
   treasure: {fileID: 1225751242131519198, guid: e3d9f03177eb74c46bcc84bde97c53ef, type: 3}
+  treasureQuantity: 0
   delayTime: 0.5

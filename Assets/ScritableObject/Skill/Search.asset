@@ -12,11 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e81e810fc4fcf674a931b7953310bf59, type: 3}
   m_Name: Search
   m_EditorClassIdentifier: 
-  skillName: 
+  skillName: Search
   SkillImage: {fileID: 3508662529662232302, guid: 736f2f35b0cc1644e9a8a120702672c4, type: 3}
-  SkillOntology: {fileID: 0}
-  ManaReduced: 0
-  StartTime: 0
-  CoolTime: 0
+  SkillOntology: {fileID: 9221583099625584559, guid: 8e8332bf10eab6c4ca2625df3dbe3420, type: 3}
+  ManaReduced: 1
+  StartTime: 0.3
+  CoolTime: 3
   CanUse: 1
   skillInfo: 

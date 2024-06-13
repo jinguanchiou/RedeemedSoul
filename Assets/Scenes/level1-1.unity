@@ -5519,11 +5519,6 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 1139490349, guid: 0c5939a7672028647b0ffbd90bb88570, type: 3}
   m_PrefabInstance: {fileID: 398909246}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &345125634 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 5722398700700044063, guid: 781dbd411bd893e459cd96fc34439e3b, type: 3}
-  m_PrefabInstance: {fileID: 1747686809}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &398909246
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -24011,37 +24006,9 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 5722398700650364711, guid: 781dbd411bd893e459cd96fc34439e3b, type: 3}
-      propertyPath: m_Size.x
-      value: 0.7917003
-      objectReference: {fileID: 0}
-    - target: {fileID: 5722398700650364711, guid: 781dbd411bd893e459cd96fc34439e3b, type: 3}
-      propertyPath: m_Offset.x
-      value: 0.07964161
-      objectReference: {fileID: 0}
-    - target: {fileID: 5722398700700044056, guid: 781dbd411bd893e459cd96fc34439e3b, type: 3}
-      propertyPath: m_Size.x
-      value: 0.49723005
-      objectReference: {fileID: 0}
-    - target: {fileID: 5722398700700044056, guid: 781dbd411bd893e459cd96fc34439e3b, type: 3}
-      propertyPath: m_Offset.x
-      value: 0.054893136
-      objectReference: {fileID: 0}
-    - target: {fileID: 5722398700700044056, guid: 781dbd411bd893e459cd96fc34439e3b, type: 3}
-      propertyPath: m_SpriteTilingProperty.oldSize.x
-      value: 0.875
-      objectReference: {fileID: 0}
     - target: {fileID: 5722398700700044058, guid: 781dbd411bd893e459cd96fc34439e3b, type: 3}
       propertyPath: m_RootOrder
       value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5722398700700044058, guid: 781dbd411bd893e459cd96fc34439e3b, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 3.792891
-      objectReference: {fileID: 0}
-    - target: {fileID: 5722398700700044058, guid: 781dbd411bd893e459cd96fc34439e3b, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 3.370949
       objectReference: {fileID: 0}
     - target: {fileID: 5722398700700044058, guid: 781dbd411bd893e459cd96fc34439e3b, type: 3}
       propertyPath: m_LocalPosition.x
@@ -24083,21 +24050,9 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 5722398700700044059, guid: 781dbd411bd893e459cd96fc34439e3b, type: 3}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: 1857252826, guid: 9c05c3b132374f34e9a78d383dd1291f, type: 3}
     - target: {fileID: 5722398700700044063, guid: 781dbd411bd893e459cd96fc34439e3b, type: 3}
       propertyPath: m_Name
       value: TreasureBox
-      objectReference: {fileID: 0}
-    - target: {fileID: 5722398700700044133, guid: 781dbd411bd893e459cd96fc34439e3b, type: 3}
-      propertyPath: treasureBox
-      value: 
-      objectReference: {fileID: 345125634}
-    - target: {fileID: 5722398700700044133, guid: 781dbd411bd893e459cd96fc34439e3b, type: 3}
-      propertyPath: treasureQuantity
-      value: 10
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 781dbd411bd893e459cd96fc34439e3b, type: 3}

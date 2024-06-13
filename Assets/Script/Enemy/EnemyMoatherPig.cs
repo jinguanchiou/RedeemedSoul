@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyMontherPig : MonoBehaviour
+public class EnemyMoatherPig : MonoBehaviour
 {
     public int health;
     public float flashTime;
@@ -31,13 +31,11 @@ public class EnemyMontherPig : MonoBehaviour
     public Transform movePos;
     public Transform leftDownPos;
     public Transform rightUpPos;
-    private Transform target;
     private Animator Anim;
     private Rigidbody2D rb;
     private Transform PlayerTransform;
     private CircleCollider2D EnemyAttackRadius;
 
-    // Start is called before the first frame update
     public void Start()
     {
         EnemyAttackRadius = GetComponent<CircleCollider2D>();
@@ -50,18 +48,32 @@ public class EnemyMontherPig : MonoBehaviour
         movePos.position = GetRandomPos();
         speed_Log = speed;
     }
-    // Update is called once per frame
+
     public void Update()
     {
         if (health > 0 && !Hit)
         {
+            Flip();
             WalkAI();
             AttackAI();
+            ToxinTime();
         }
-        Idle();
-        Walk();
         Dead();
-        ToxinTime();
+    }
+    void Flip()
+    {
+        bool plyerHasXAxisSpeed = Mathf.Abs(rb.velocity.x) > Mathf.Epsilon;
+        if (plyerHasXAxisSpeed)
+        {
+            if (rb.velocity.x > 0.1f)
+            {
+                transform.localRotation = Quaternion.Euler(0, 0, 0);
+            }
+            if (rb.velocity.x < -0.1f)
+            {
+                transform.localRotation = Quaternion.Euler(0, 180, 0);
+            }
+        }
     }
     void AttackAI()
     {
@@ -70,20 +82,19 @@ public class EnemyMontherPig : MonoBehaviour
             float distance = (transform.position - PlayerTransform.position).sqrMagnitude;
             if (distance < radius && distance >= AttackRadius)
             {
-                AttackFlip();
                 transform.position = Vector2.MoveTowards(transform.position, PlayerTransform.position, speed * 2 * Time.deltaTime);
             }
         }
     }
+
     void WalkAI()
     {
         if (PlayerTransform != null)
         {
-            
             float distance = (transform.position - PlayerTransform.position).sqrMagnitude;
             if (distance > radius)
             {
-                WalkFlip();
+
                 if (Vector2.Distance(transform.position, movePos.position) >= 0.1f)
                 {
                     transform.position = Vector2.MoveTowards(transform.position, movePos.position, speed * Time.deltaTime);
@@ -94,37 +105,15 @@ public class EnemyMontherPig : MonoBehaviour
                     {
                         movePos.position = GetRandomPos();
                         waitTime = startWaitTime;
+                        Walk(true);
                     }
                     else
                     {
                         waitTime -= Time.deltaTime;
+                        Walk(false);
                     }
                 }
             }
-        }
-    }
-    void WalkFlip()
-    {
-        Vector2 direction = (movePos.position - transform.position).normalized;
-        if (direction.x > 0.1f)
-        {
-            transform.rotation = Quaternion.Euler(0, 180, 0);
-        }
-        if (direction.x < -0.1f)
-        {
-            transform.rotation = Quaternion.Euler(0, 0, 0);
-        }
-    }
-    void AttackFlip()
-    {
-        Vector2 direction = (PlayerTransform.position - transform.position).normalized;
-        if (direction.x > 0.1f)
-        {
-            transform.rotation = Quaternion.Euler(0, 180, 0);
-        }
-        if (direction.x < -0.1f)
-        {
-            transform.rotation = Quaternion.Euler(0, 0, 0);
         }
     }
     void Dead()
@@ -145,7 +134,8 @@ public class EnemyMontherPig : MonoBehaviour
     }
     public void TakeDamage(int damage)
     {
-        GameObject gb = Instantiate(floatPoint, transform.position, Quaternion.identity) as GameObject;
+        float randomLocation = Random.Range(minLocation, maxLocation);
+        GameObject gb = Instantiate(floatPoint, new Vector3(transform.position.x + randomLocation, transform.position.y + randomLocation), Quaternion.identity) as GameObject;
         gb.transform.GetChild(0).GetComponent<TextMesh>().text = damage.ToString();
         health -= damage;
         FlashColor(flashTime);
@@ -228,26 +218,13 @@ public class EnemyMontherPig : MonoBehaviour
     {
         sr.color = originalColor;
     }
-    void Walk()
+    void Walk(bool Walk)
     {
-        Vector2 direction = (movePos.position - transform.position).normalized;
-        if (direction.x <= 0.1f && direction.x >= -0.1f)
-        {
-            Anim.SetBool("Walk", false);
-        }
-        else
-            Anim.SetBool("Walk", true);
-
+        Anim.SetBool("Walk", Walk);
     }
-    void Idle()
+    void Idle(bool Idle)
     {
-        Vector2 direction = (movePos.position - transform.position).normalized;
-        if (direction.x <= 0.1f && direction.x >= -0.1f)
-        {
-            Anim.SetBool("Idle", true);
-        }
-        else
-            Anim.SetBool("Idle", false);
+        Anim.SetBool("Idle", Idle);
     }
     Vector2 GetRandomPos()
     {

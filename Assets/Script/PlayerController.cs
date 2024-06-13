@@ -19,6 +19,7 @@ public class PlayerController : MonoBehaviour
     private Transform PlayerTransform;
     private bool isGround;
     private BoxCollider2D myFeet;
+    private PolygonCollider2D HitBox;
     private bool canDoubleJump;
     private bool isOneWayPlatform;
 
@@ -41,6 +42,7 @@ public class PlayerController : MonoBehaviour
     void Start()
     {
         PlayerTransform = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
+        HitBox = GetComponent<PolygonCollider2D>();
         myRigidbody = GetComponent<Rigidbody2D>();
         myAnim = GetComponent<Animator>();
         myFeet = GetComponent<BoxCollider2D>();
@@ -66,13 +68,13 @@ public class PlayerController : MonoBehaviour
                 Stop();
             }
             Flip();
-            CheckGrounded();
             CheclLadder();
-            SwitchAnimation();
             OneWayPlatformCheck();
             ToggleMall();
             //Attack();
         }
+        CheckGrounded();
+        SwitchAnimation();
     }
     public void IsConversation()
     {
@@ -120,9 +122,11 @@ public class PlayerController : MonoBehaviour
         canDush = false;
         float originalGravity = myRigidbody.gravityScale;
         myRigidbody.gravityScale = 0f;
+        HitBox.enabled = false;
         myRigidbody.velocity = new Vector2(transform.right.x * DushSpeed, 0f);
         yield return new WaitForSeconds(DushTime);
         myRigidbody.gravityScale = originalGravity;
+        HitBox.enabled = true;
         Dushing = false;
         yield return new WaitForSeconds(CooldownTime);
         canDush = true;

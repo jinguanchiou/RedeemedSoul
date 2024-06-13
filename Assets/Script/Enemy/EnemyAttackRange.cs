@@ -8,7 +8,6 @@ public class EnemyAttackRange : MonoBehaviour
 
     public bool isAttacking = false;
     public EnemyAttack Attack;
-    public FireAttackRange SpecialAttack;
 
     // Start is called before the first frame update
     void Start()
@@ -20,12 +19,12 @@ public class EnemyAttackRange : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Player") && other.GetType().ToString() == "UnityEngine.CapsuleCollider2D")
         {
-                if (!isAttacking)
-                {
+            if (!isAttacking)
+            {
                     isAttacking = true;
                     EnemyCanAttackRange.enabled = false;
                     StartCoroutine(ResetAttackFlag());
-                }
+            }
         }
     }
     IEnumerator ResetAttackFlag()

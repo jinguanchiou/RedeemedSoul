@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: e45b8fab11b8a4342b4ed98dbfdd9619
+guid: b87514a286184d146a17a5876f489df9
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -47,7 +47,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 16
+  spritePixelsToUnits: 160
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -105,13 +105,97 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Die-Sheet_0
+      name: monster3-3_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 160
+        width: 192
+        height: 160
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a36ffefa792acf845a16cb37f2c1791f
+      internalID: 16424475
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: monster3-3_1
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 160
+        width: 192
+        height: 160
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7d0945df339ed804fafc30493b2def0f
+      internalID: -1732327720
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: monster3-3_2
+      rect:
+        serializedVersion: 2
+        x: 384
+        y: 160
+        width: 192
+        height: 160
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2257721480dcbc842983f9fd24923055
+      internalID: -1862084870
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: monster3-3_3
+      rect:
+        serializedVersion: 2
+        x: 576
+        y: 160
+        width: 192
+        height: 160
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6f4e7f094fb95f049999796b9ac48c13
+      internalID: 928510454
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: monster3-3_4
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 144
-        height: 96
+        width: 192
+        height: 160
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -119,20 +203,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ecd2ddc201c6cee44badcc2ac49a5f38
-      internalID: 1295294366
+      spriteID: 143c4c13ceafda04aba6a04a954b6953
+      internalID: -1378105230
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Die-Sheet_1
+      name: monster3-3_5
       rect:
         serializedVersion: 2
-        x: 144
+        x: 192
         y: 0
-        width: 144
-        height: 96
+        width: 192
+        height: 160
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -140,20 +224,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 89e80d0c7b9111c4eb86ac8000ff1270
-      internalID: -163898279
+      spriteID: b918c1b3f8a0c694db7a165d419222df
+      internalID: 831655645
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Die-Sheet_2
+      name: monster3-3_6
       rect:
         serializedVersion: 2
-        x: 288
+        x: 384
         y: 0
-        width: 144
-        height: 96
+        width: 192
+        height: 160
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -161,113 +245,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 4c04f7c831784a64dbc4c2b45af02cc3
-      internalID: -220805525
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Die-Sheet_3
-      rect:
-        serializedVersion: 2
-        x: 432
-        y: 0
-        width: 144
-        height: 96
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 1ac20fe5519356040bf2a63bddd01597
-      internalID: -2096232427
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Die-Sheet_4
-      rect:
-        serializedVersion: 2
-        x: 576
-        y: 0
-        width: 144
-        height: 96
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 0361fae9f1232dc4c9f80e2401c2b7b0
-      internalID: 1782941987
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Die-Sheet_5
-      rect:
-        serializedVersion: 2
-        x: 720
-        y: 0
-        width: 144
-        height: 96
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 4ec56e505d96c5e45b4f3d654c0c4012
-      internalID: -1973217572
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Die-Sheet_6
-      rect:
-        serializedVersion: 2
-        x: 864
-        y: 0
-        width: 144
-        height: 96
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: e3d02b83c5609c44fb38bc75df8f2ade
-      internalID: 993884500
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Die-Sheet_7
-      rect:
-        serializedVersion: 2
-        x: 1008
-        y: 0
-        width: 144
-        height: 96
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: b69158a04d4da0846b0488a7026f0257
-      internalID: 1079767701
+      spriteID: 68e1ba839ac6be94ab57df10a056782c
+      internalID: 1564302215
       vertices: []
       indices: 
       edges: []
@@ -283,14 +262,13 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Die-Sheet_0: 1295294366
-      Die-Sheet_1: -163898279
-      Die-Sheet_2: -220805525
-      Die-Sheet_3: -2096232427
-      Die-Sheet_4: 1782941987
-      Die-Sheet_5: -1973217572
-      Die-Sheet_6: 993884500
-      Die-Sheet_7: 1079767701
+      monster3-3_0: 16424475
+      monster3-3_1: -1732327720
+      monster3-3_2: -1862084870
+      monster3-3_3: 928510454
+      monster3-3_4: -1378105230
+      monster3-3_5: 831655645
+      monster3-3_6: 1564302215
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

@@ -106,16 +106,13 @@ public class EnemyMonsterGhost : MonoBehaviour
         if (PlayerTransform != null)
         {
             float distance = (transform.position.x - PlayerTransform.position.x);
-            if (PlayerTransform != null)
+            if (distance > 0.1f)
             {
-                if (distance > 0.1f)
-                {
-                    transform.localRotation = Quaternion.Euler(0, 0, 0);
-                }
-                if (distance < -0.1f)
-                {
-                    transform.localRotation = Quaternion.Euler(0, 180, 0);
-                }
+                transform.localRotation = Quaternion.Euler(0, 0, 0);
+            }
+            if (distance < -0.1f)
+            {
+                transform.localRotation = Quaternion.Euler(0, 180, 0);
             }
         }
     }

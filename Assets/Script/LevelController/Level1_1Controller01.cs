@@ -12,6 +12,7 @@ public class Level1_1Controller01 : MonoBehaviour
     public Transform OtherAvatar;
 
     private GameObject Image_Log;
+    public Animator Anim;
     private PlayerController playerController;
     private bool StartConversation = false;
     private int currentTextIndex = 0;
@@ -19,15 +20,18 @@ public class Level1_1Controller01 : MonoBehaviour
     void Start()
     {
         playerController = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>();
+        Anim = GetComponent<Animator>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        if(!Level1_1_01.LevelAlreadyTold && StartConversation)
+        Script();
+        if (!Level1_1_01.LevelAlreadyTold && StartConversation)
         {
             if (currentTextIndex == 0)
             {
+                playerController.IsConversation();
                 DialogBoxText.text = Level1_1_01.LevelTextMesh[0];
                 DialogBox.SetActive(true);
                 GenerateImage();
@@ -40,13 +44,13 @@ public class Level1_1Controller01 : MonoBehaviour
                 GenerateImage();
                 currentTextIndex++;
             }
-            if(currentTextIndex >= Level1_1_01.LevelTextMesh.Count)
+            if (currentTextIndex >= Level1_1_01.LevelTextMesh.Count)
             {
                 DialogBox.SetActive(false);
                 Level1_1_01.LevelAlreadyTold = true;
             }
         }
-        if(Level1_1_01.LevelAlreadyTold)
+        if (Level1_1_01.LevelAlreadyTold)
         {
             playerController.OnlockPlayer = false;
             Destroy(gameObject);
@@ -64,10 +68,24 @@ public class Level1_1Controller01 : MonoBehaviour
     }
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if(other.gameObject.CompareTag("Player"))
+        if (other.gameObject.CompareTag("Player"))
         {
             StartConversation = true;
-            playerController.IsConversation();
+        }
+    }
+    void Script()
+    {
+        if (DialogBoxText.text == "哦呀~醒過來了。")
+        {
+            Anim.SetBool("StandUp", true);
+        }
+        if (DialogBoxText.text == "阿…那個，我還有事先走了。")
+        {
+            transform.rotation = Quaternion.Euler(0, 0, 0);
+        }
+        if (DialogBoxText.text == "咕…居然情緒勒索。")
+        {
+            transform.rotation = Quaternion.Euler(0, 0, 0);
         }
     }
 }

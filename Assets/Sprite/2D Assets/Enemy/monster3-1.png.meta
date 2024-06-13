@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: cbceeada57841d94e90179b621b36e2d
+guid: 2ddb3bd2a00829a4faef80e2df0b2782
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -47,7 +47,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 16
+  spritePixelsToUnits: 128
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -67,7 +67,7 @@ TextureImporter:
   platformSettings:
   - serializedVersion: 3
     buildTarget: DefaultTexturePlatform
-    maxTextureSize: 1024
+    maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
     textureCompression: 0
@@ -105,13 +105,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Walk-Sheet_0
+      name: monster3-1_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 80
-        height: 64
+        width: 128
+        height: 128
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -119,20 +119,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 18e80130b5b734940aeb186d0acc2314
-      internalID: -606507706
+      spriteID: 3240bf061e9ad1940a9c0418ac97dfec
+      internalID: 365467068
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Walk-Sheet_1
+      name: monster3-1_1
       rect:
         serializedVersion: 2
-        x: 80
+        x: 128
         y: 0
-        width: 80
-        height: 64
+        width: 128
+        height: 128
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -140,20 +140,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: dbfc2fd198e1f8c4f871b322461d2c0a
-      internalID: -44725577
+      spriteID: ad69e6a264425a640b501ad4be088391
+      internalID: -31202929
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Walk-Sheet_2
+      name: monster3-1_2
       rect:
         serializedVersion: 2
-        x: 160
+        x: 256
         y: 0
-        width: 80
-        height: 64
+        width: 128
+        height: 128
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -161,20 +161,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: cde40aba557fcdd45a2fb07c8c914624
-      internalID: -979785528
+      spriteID: 4acf5506be563c34e9a3ec1c882718b5
+      internalID: -616432703
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Walk-Sheet_3
+      name: monster3-1_3
       rect:
         serializedVersion: 2
-        x: 240
+        x: 384
         y: 0
-        width: 80
-        height: 64
+        width: 128
+        height: 128
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -182,92 +182,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: f910fbd9a5198bb459e032e901e0d3bc
-      internalID: -698934608
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Walk-Sheet_4
-      rect:
-        serializedVersion: 2
-        x: 320
-        y: 0
-        width: 80
-        height: 64
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 2685916c57b764a4ab9ab82db56fe565
-      internalID: -1030490626
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Walk-Sheet_5
-      rect:
-        serializedVersion: 2
-        x: 400
-        y: 0
-        width: 80
-        height: 64
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 2968cd8aaaa2e774c94c9656f3f4e0ff
-      internalID: 2144079507
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Walk-Sheet_6
-      rect:
-        serializedVersion: 2
-        x: 480
-        y: 0
-        width: 80
-        height: 64
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: f1d8b43b8e90957439a7140515ecaf4e
-      internalID: -2036014099
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Walk-Sheet_7
-      rect:
-        serializedVersion: 2
-        x: 560
-        y: 0
-        width: 80
-        height: 64
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 9369100e0b5e37746abbe59c85b6e5c6
-      internalID: 2031540819
+      spriteID: 326b7b5200be1f1438b3266edad7329b
+      internalID: 1874632725
       vertices: []
       indices: 
       edges: []
@@ -283,14 +199,10 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Walk-Sheet_0: -606507706
-      Walk-Sheet_1: -44725577
-      Walk-Sheet_2: -979785528
-      Walk-Sheet_3: -698934608
-      Walk-Sheet_4: -1030490626
-      Walk-Sheet_5: 2144079507
-      Walk-Sheet_6: -2036014099
-      Walk-Sheet_7: 2031540819
+      monster3-1_0: 365467068
+      monster3-1_1: -31202929
+      monster3-1_2: -616432703
+      monster3-1_3: 1874632725
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

@@ -87,7 +87,7 @@ public class PlayerAttack : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.gameObject.CompareTag("Enemy") && other.GetType().ToString() == "UnityEngine.CapsuleCollider2D")
+        if (other.gameObject.CompareTag("Enemy") && other.GetType().ToString() == "UnityEngine.CapsuleCollider2D" && other.GetComponent<EnemyMonsterGhost>())
         {
             if (anim.GetBool("Enchant"))
             {
@@ -124,6 +124,42 @@ public class PlayerAttack : MonoBehaviour
             {
                 other.GetComponent<EnemyMonsterGhost>().TakeDamage(damage);
                 other.GetComponent<EnemyMonsterGhost>().PlayerHitMe();
+                Mana.RegainMana(regainPoint);
+                playerController.HitEnemy();
+            }
+        }
+        if (other.gameObject.CompareTag("Enemy") && other.GetType().ToString() == "UnityEngine.CapsuleCollider2D" && other.GetComponent<EnemyMontherPig>())
+        {
+            if (anim.GetBool("Enchant"))
+            {
+                other.GetComponent<EnemyMontherPig>().TakeDamage(damage * 3);
+                Mana.RegainMana(regainPoint);
+                playerController.HitEnemy();
+            }
+            else if (anim.GetBool("FireEnchant"))
+            {
+                other.GetComponent<EnemyMontherPig>().TakeDamage(damage);
+                other.GetComponent<EnemyMontherPig>().Burning(2, 3);
+                Mana.RegainMana(regainPoint);
+                playerController.HitEnemy();
+            }
+            else if (anim.GetBool("IceEnchant"))
+            {
+                other.GetComponent<EnemyMontherPig>().TakeDamage(damage);
+                other.GetComponent<EnemyMontherPig>().Frozen(0.5f, 1);
+                Mana.RegainMana(regainPoint);
+                playerController.HitEnemy();
+            }
+            else if (anim.GetBool("PoisonEnchant"))
+            {
+                other.GetComponent<EnemyMontherPig>().TakeDamage(damage);
+                other.GetComponent<EnemyMontherPig>().Toxin();
+                Mana.RegainMana(regainPoint);
+                playerController.HitEnemy();
+            }
+            else
+            {
+                other.GetComponent<EnemyMontherPig>().TakeDamage(damage);
                 Mana.RegainMana(regainPoint);
                 playerController.HitEnemy();
             }

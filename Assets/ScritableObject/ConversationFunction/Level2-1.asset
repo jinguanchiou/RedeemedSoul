@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f6aefd114d5b0694493e279d26c8c18b, type: 3}
+  m_Name: Level2-1
+  m_EditorClassIdentifier: 
+  LevelTextMesh:
+  - "\u9580\u6C92\u9396\uFF0C\u5148\u9032\u53BB\u770B\u770B\u5427\u3002"
+  - "\u55DA\u54C7...\u6709\u5920\u60E1\u52A3\u3002"
+  - "\u8B1B\u4EC0\u9EBC\u6771\u897F?"
+  - "\u6C92\u4E8B..."
+  - 
+  avatar:
+  - {fileID: 3437643653186405470, guid: 87f8457ab2d3a95468e10a30877f0b66, type: 3}
+  - {fileID: 1188176588261516224, guid: 4804ad453bb53654da84a28bac25d3c9, type: 3}
+  - {fileID: 3437643653186405470, guid: 87f8457ab2d3a95468e10a30877f0b66, type: 3}
+  - {fileID: 1188176588261516224, guid: 4804ad453bb53654da84a28bac25d3c9, type: 3}
+  - {fileID: 0}
+  LevelAlreadyTold: 0

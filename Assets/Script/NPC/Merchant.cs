@@ -104,6 +104,7 @@ public class Merchant : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Player"))
         {
+            Debug.Log("In");
             other.GetComponent<PlayerController>().canOpenMall = true;
         }
     }

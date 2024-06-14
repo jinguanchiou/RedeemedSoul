@@ -79,9 +79,13 @@ public class PlayerController : MonoBehaviour
     public void IsConversation()
     {
         OnlockPlayer = true;
-        myRigidbody.velocity = new Vector2(0, 0);
-        myAnim.SetBool("Idle", true);
-        myAnim.SetBool("Run", false);
+        myRigidbody.velocity = new Vector2(0, myRigidbody.velocity.y);
+        if (isGround)
+        {
+            myRigidbody.velocity = new Vector2(0, 0);
+            myAnim.SetBool("Idle", true);
+            myAnim.SetBool("Run", false);
+        }
     }
     void CheckGrounded()
     {

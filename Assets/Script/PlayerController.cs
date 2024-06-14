@@ -115,7 +115,7 @@ public class PlayerController : MonoBehaviour
     }
     public void teleportationSkill(float DushSpeed, float DushTime, float CooldownTime)
     {
-        if (!Dushing)
+        if (!Dushing && !OnlockPlayer)
         {
             Dushing = true;
             StartCoroutine(Dush(DushSpeed, DushTime, CooldownTime));

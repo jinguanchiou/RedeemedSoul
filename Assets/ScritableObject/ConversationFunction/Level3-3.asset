@@ -1,0 +1,29 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f6aefd114d5b0694493e279d26c8c18b, type: 3}
+  m_Name: Level3-3
+  m_EditorClassIdentifier: 
+  LevelTextMesh:
+  - "\u6211\u4E0D\u8A18\u5F97\u4ED6\u6709\u9019\u7A2E\u80FD\u529B\u3002\uFF0A\u9234\u862D\u5F88\u932F\u6115\uFF0A "
+  - "\u4ED6\u5F88\u5371\u96AA\uFF0C\u6211\u751A\u81F3\u89BA\u5F97\u4ED6\u5DF2\u7D93\u662F\u534A\u500B\u5F98\u5F8A\u8005\u4E86\u3002\uFF0A\u6C83\u723E\u7279\u81C9\u8272\u9670\u6C89\uFF0A "
+  - "\u5373\u4F7F\u5982\u6B64\uFF0C\u6211\u4E5F\u5F97\u5E6B\u52A9\u4ED6\u2026"
+  - ...
+  - "\uFF0A\u773E\u4EBA\u7E7C\u7E8C\u524D\u9032\uFF0A"
+  - 
+  avatar:
+  - {fileID: 3437643653186405470, guid: 87f8457ab2d3a95468e10a30877f0b66, type: 3}
+  - {fileID: 9026487860300796766, guid: c9f72d8ff03c36742993c39f8141014d, type: 3}
+  - {fileID: 1188176588261516224, guid: 4804ad453bb53654da84a28bac25d3c9, type: 3}
+  - {fileID: 9026487860300796766, guid: c9f72d8ff03c36742993c39f8141014d, type: 3}
+  - {fileID: 1188176588261516224, guid: 4804ad453bb53654da84a28bac25d3c9, type: 3}
+  - {fileID: 0}
+  LevelAlreadyTold: 0

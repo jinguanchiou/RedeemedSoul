@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e81e810fc4fcf674a931b7953310bf59, type: 3}
+  m_Name: Tornado
+  m_EditorClassIdentifier: 
+  skillName: Tornado
+  SkillImage: {fileID: 1476105308136157810, guid: 1c5d9ae6b797e6d4f8b635132396a09d, type: 3}
+  SkillOntology: {fileID: 1307041042661012748, guid: 875a25390c63e9f41b6af46d024fb267, type: 3}
+  ManaReduced: 8
+  StartTime: 0.5
+  CoolTime: 15
+  CanUse: 1
+  skillInfo: 

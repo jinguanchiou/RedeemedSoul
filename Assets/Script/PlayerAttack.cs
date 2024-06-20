@@ -164,9 +164,41 @@ public class PlayerAttack : MonoBehaviour
                 playerController.HitEnemy();
             }
         }
-        if (other.gameObject.CompareTag("Riru"))
+        if (other.gameObject.CompareTag("Riru") && other.GetType().ToString() == "UnityEngine.CapsuleCollider2D" && other.GetComponent<RiruAI>())
         {
-            other.GetComponent<RiruAI>().TakeDamage(damage);
+            if (anim.GetBool("Enchant"))
+            {
+                other.GetComponent<RiruAI>().TakeDamage(damage * 3);
+                Mana.RegainMana(regainPoint);
+                playerController.HitEnemy();
+            }
+            else if (anim.GetBool("FireEnchant"))
+            {
+                other.GetComponent<RiruAI>().TakeDamage(damage);
+                other.GetComponent<RiruAI>().Burning(2, 3);
+                Mana.RegainMana(regainPoint);
+                playerController.HitEnemy();
+            }
+            else if (anim.GetBool("IceEnchant"))
+            {
+                other.GetComponent<RiruAI>().TakeDamage(damage);
+                other.GetComponent<RiruAI>().Frozen(0.5f, 1);
+                Mana.RegainMana(regainPoint);
+                playerController.HitEnemy();
+            }
+            else if (anim.GetBool("PoisonEnchant"))
+            {
+                other.GetComponent<RiruAI>().TakeDamage(damage);
+                other.GetComponent<RiruAI>().Toxin();
+                Mana.RegainMana(regainPoint);
+                playerController.HitEnemy();
+            }
+            else
+            {
+                other.GetComponent<RiruAI>().TakeDamage(damage);
+                Mana.RegainMana(regainPoint);
+                playerController.HitEnemy();
+            }
         }
     }
 }

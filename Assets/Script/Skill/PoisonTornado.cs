@@ -54,7 +54,18 @@ public class PoisonTornado : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Enemy"))
         {
-            other.GetComponent<EnemyMonsterGhost>().Toxin();
+            if (other.GetComponent<EnemyMonsterGhost>())
+            {
+                other.GetComponent<EnemyMonsterGhost>().Toxin();
+            }
+            if (other.GetComponent<EnemyMontherPig>())
+            {
+                other.GetComponent<EnemyMontherPig>().Toxin();
+            }
+        }
+        if (other.gameObject.CompareTag("Riru"))
+        {
+            other.GetComponent<RiruAI>().Toxin();
         }
     }
     IEnumerator CountInLoopTime()

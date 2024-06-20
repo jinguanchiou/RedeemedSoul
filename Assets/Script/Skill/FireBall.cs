@@ -42,9 +42,23 @@ public class FireBall : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Enemy"))
         {
-            other.GetComponent<EnemyMonsterGhost>().TakeDamage(Damage);
-            other.GetComponent<EnemyMonsterGhost>().PlayerHitMe();
-            other.GetComponent<EnemyMonsterGhost>().Burning(3, 3);
+            if (other.GetComponent<EnemyMonsterGhost>())
+            {
+                other.GetComponent<EnemyMonsterGhost>().TakeDamage(Damage);
+                other.GetComponent<EnemyMonsterGhost>().PlayerHitMe();
+                other.GetComponent<EnemyMonsterGhost>().Burning(3, 3);
+            }
+            if(other.GetComponent<EnemyMontherPig>())
+            {
+                other.GetComponent<EnemyMontherPig>().TakeDamage(Damage);
+                other.GetComponent<EnemyMontherPig>().Burning(3, 3);
+            }
+            DestroyThisBall();
+        }
+        if(other.gameObject.CompareTag("Riru"))
+        {
+            other.GetComponent<RiruAI>().TakeDamage(Damage);
+            other.GetComponent<RiruAI>().Burning(3, 3);
             DestroyThisBall();
         }
     }

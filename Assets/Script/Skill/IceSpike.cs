@@ -40,9 +40,23 @@ public class IceSpike : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Enemy"))
         {
-            other.GetComponent<EnemyMonsterGhost>().TakeDamage(Damage);
-            other.GetComponent<EnemyMonsterGhost>().PlayerHitMe();
-            other.GetComponent<EnemyMonsterGhost>().Frozen(0.5f, 2);
+            if (other.GetComponent<EnemyMonsterGhost>())
+            {
+                other.GetComponent<EnemyMonsterGhost>().TakeDamage(Damage);
+                other.GetComponent<EnemyMonsterGhost>().PlayerHitMe();
+                other.GetComponent<EnemyMonsterGhost>().Frozen(0.5f, 2);
+            }
+            if(other.GetComponent<EnemyMontherPig>())
+            {
+                other.GetComponent<EnemyMontherPig>().TakeDamage(Damage);
+                other.GetComponent<EnemyMontherPig>().Frozen(0.5f, 2);
+            }
+            DestroyThisIce();
+        }
+        if (other.gameObject.CompareTag("Riru"))
+        {
+            other.GetComponent<RiruAI>().TakeDamage(Damage);
+            other.GetComponent<RiruAI>().Frozen(0.5f, 2);
             DestroyThisIce();
         }
     }

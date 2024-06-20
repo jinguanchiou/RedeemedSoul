@@ -7,6 +7,7 @@ public class SkillUIInventory : MonoBehaviour
 {
     static SkillUIInventory instance;
     public Inventory PlayerBag;
+    public Coin CoinQuantity;
     public FusionInventory WorkingSkill;
     public GameObject SkillBar;
     public GameObject emptySkillSlot;
@@ -72,7 +73,11 @@ public class SkillUIInventory : MonoBehaviour
     {
         Skill RightSkill = WorkingSkill.FusionSkill[0];
         Skill LeftSkill = WorkingSkill.FusionSkill[1];
-        if(RightSkill.skillName == "FireBall" && LeftSkill.skillName == "FireBall")
+        if (RightSkill.skillName != null && LeftSkill.skillName != null)
+        {
+            CoinQuantity.CoinQuantity -= 50;
+        }
+        if (RightSkill.skillName == "FireBall" && LeftSkill.skillName == "FireBall")
         {
             ResetWorkSlot();
             productSkillSlot.GetComponent<ProductSkillSlot>().SetAsChild(instance.PlayerBag.SkillList[5]);

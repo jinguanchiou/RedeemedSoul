@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e81e810fc4fcf674a931b7953310bf59, type: 3}
+  m_Name: PoisonTornado
+  m_EditorClassIdentifier: 
+  skillName: PoisonTornado
+  SkillImage: {fileID: 3297294477402938151, guid: 0828909c74e8b0248a1d92f096205c2b, type: 3}
+  SkillOntology: {fileID: 6879473289930704096, guid: f0f55d0ef752c6748836489f0088e40f, type: 3}
+  ManaReduced: 10
+  StartTime: 0.5
+  CoolTime: 20
+  CanUse: 0
+  skillInfo: 

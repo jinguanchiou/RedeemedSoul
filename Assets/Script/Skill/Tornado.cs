@@ -54,8 +54,20 @@ public class Tornado : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Enemy"))
         {
-            other.GetComponent<EnemyMonsterGhost>().TakeDamage(Damage);
-            other.GetComponent<EnemyMonsterGhost>().PlayerHitMe();
+            if (other.GetComponent<EnemyMonsterGhost>())
+            {
+                other.GetComponent<EnemyMonsterGhost>().TakeDamage(Damage);
+                other.GetComponent<EnemyMonsterGhost>().PlayerHitMe();
+            }
+            if (other.GetComponent<EnemyMontherPig>())
+            {
+                other.GetComponent<EnemyMontherPig>().TakeDamage(Damage);
+                other.GetComponent<EnemyMonsterGhost>().PlayerHitMe();
+            }
+        }
+        if (other.gameObject.CompareTag("Riru"))
+        {
+            other.GetComponent<RiruAI>().TakeDamage(Damage);
         }
     }
     IEnumerator CountInLoopTime()

@@ -27,7 +27,6 @@ public class RenderTextureToSprite : MonoBehaviour
         if (RiruRotation != RiruLastRotation)
         {
             RiruIsMove = true;
-            Debug.Log("RiruIsMove");
         }
         else
         {

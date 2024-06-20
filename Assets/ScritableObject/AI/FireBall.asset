@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e81e810fc4fcf674a931b7953310bf59, type: 3}
+  m_Name: FireBall
+  m_EditorClassIdentifier: 
+  skillName: FireBall
+  SkillImage: {fileID: 3536304050195555643, guid: 2f4744433a79e7e42b6cf777f3a50009, type: 3}
+  SkillOntology: {fileID: 2792658611184093521, guid: 6c6f0ba827b7b2a46a9eacfaa5b5b6e7, type: 3}
+  ManaReduced: 5
+  StartTime: 0.3
+  CoolTime: 5
+  CanUse: 1
+  skillInfo: "\u706B\u7403\u8853\r:\n\u9700\u89815\u9B54\u529B\uFF0C\u51B7\u537B5\u79D2\u3002\r\n\u521D\u968E\u5143\u7D20\u7684\u61C9\u7528\u3002\u300C\u8AB0\u80FD\u60F3\u5230\u9019\u661F\u661F\u4E4B\u706B\u4EA6\u53EF\u71CE\u539F\u5462\uFF1F\u300D\r\n\u6309\u4E0B\u65BD\u653E\uFF0C\u671D\u524D\u65B9\u65BD\u653E\u706B\u7403\uFF0C\u5C0D\u5DF2\u547D\u4E2D\u6575\u4EBA\u9020\u621010\u50B7\u5BB3\uFF0C\u6301\u7E8C\u71C3\u71D23\u9EDE\u50B7\u5BB32\u6B21\u3002"

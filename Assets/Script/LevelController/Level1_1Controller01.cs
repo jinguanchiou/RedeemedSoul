@@ -29,6 +29,12 @@ public class Level1_1Controller01 : MonoBehaviour
     {
         EnemyMontherRb.bodyType = RigidbodyType2D.Static;
         playerController = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>();
+        if (Level1_1_01.LevelAlreadyTold)
+        {
+            playerController.OnlockPlayer = false;
+            monsterPig.OnLock = false;
+            Destroy(gameObject);
+        }
     }
 
     // Update is called once per frame
@@ -138,7 +144,7 @@ public class Level1_1Controller01 : MonoBehaviour
         {
             Lock = true;
             StartConversation = false;
-            Rb.velocity = new Vector2(Rb.velocity.x, 4);
+            Rb.velocity = new Vector2(Rb.velocity.x, 6);
             yield return new WaitForSeconds(3);
             Rb.velocity = new Vector2(0f, 0f);
             StartConversation = true;

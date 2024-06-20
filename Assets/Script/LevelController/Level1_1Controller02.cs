@@ -104,6 +104,8 @@ public class Level1_1Controller02 : MonoBehaviour
             if (currentTextIndex >= Level1_1_02.LevelTextMesh.Count)
             {
                 DialogBox.SetActive(false);
+                Debug.Log(currentTextIndex);
+                Debug.Log(Level1_1_02.LevelTextMesh.Count);
                 Level1_1_02.LevelAlreadyTold = true;
             }
         }
@@ -160,7 +162,7 @@ public class Level1_1Controller02 : MonoBehaviour
             {
                 Lock = true;
                 StartConversation = false;
-                PlayerRb.velocity = new Vector2(PlayerRb.velocity.x, 4);
+                PlayerRb.velocity = new Vector2(PlayerRb.velocity.x, 6);
                 yield return new WaitForSeconds(2);
                 Rb.velocity = new Vector2(0f, 0f);
                 StartConversation = true;

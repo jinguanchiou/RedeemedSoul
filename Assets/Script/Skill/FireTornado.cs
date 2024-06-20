@@ -56,9 +56,22 @@ public class FireTornado : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Enemy"))
         {
-            other.GetComponent<EnemyMonsterGhost>().TakeDamage(Damage);
-            other.GetComponent<EnemyMonsterGhost>().PlayerHitMe();
-            other.GetComponent<EnemyMonsterGhost>().Burning(BurningDamage, Frequency);
+            if (other.GetComponent<EnemyMonsterGhost>())
+            {
+                other.GetComponent<EnemyMonsterGhost>().TakeDamage(Damage);
+                other.GetComponent<EnemyMonsterGhost>().PlayerHitMe();
+                other.GetComponent<EnemyMonsterGhost>().Burning(BurningDamage, Frequency);
+            }
+            if (other.GetComponent<EnemyMontherPig>())
+            {
+                other.GetComponent<EnemyMontherPig>().TakeDamage(Damage);
+                other.GetComponent<EnemyMontherPig>().Burning(3, 3);
+            }
+        }
+        if (other.gameObject.CompareTag("Riru"))
+        {
+            other.GetComponent<RiruAI>().TakeDamage(Damage);
+            other.GetComponent<RiruAI>().Burning(3, 3);
         }
     }
     IEnumerator CountInLoopTime()

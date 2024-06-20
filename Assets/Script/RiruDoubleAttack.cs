@@ -5,15 +5,23 @@ using UnityEngine;
 public class RiruDoubleAttack : MonoBehaviour
 {
     public int damage;
-    public Transform playerTransform;
-    private PlayerHealth playerHealth;
+    private Transform Transform_log;
+    private bool Trigger;
+    private PolygonCollider2D polygon;
+    private Transform playerTransform;
+    private PlayerHealthAI playerHealth;
+    private Riru3DController Riru3D;
     private RiruAI riruAI;
     private bool hasTurn;
     // Start is called before the first frame update
     void Start()
     {
-        playerHealth = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerHealth>();
+        Trigger = true;
+        polygon = GetComponent<PolygonCollider2D>();
+        playerTransform = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
+        playerHealth = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerHealthAI>();
         riruAI = GameObject.FindGameObjectWithTag("Riru").GetComponent<RiruAI>();
+        Riru3D = GameObject.FindGameObjectWithTag("Riru3D").GetComponent<Riru3DController>();
     }
 
     // Update is called once per frame
@@ -23,6 +31,19 @@ public class RiruDoubleAttack : MonoBehaviour
         {
             turnAttack();
         }
+        if (Trigger && polygon.enabled)
+        {
+            Trigger = false;
+            Transform_log = null;
+        }
+        else if (!Trigger && !polygon.enabled)
+        {
+            Trigger = true;
+            if (Transform_log == null)
+            {
+                riruAI.FormDoubleAttack(false);
+            }
+        }
     }
     void OnTriggerEnter2D(Collider2D other)
     {
@@ -30,24 +51,33 @@ public class RiruDoubleAttack : MonoBehaviour
         {
             if (playerHealth != null)
             {
-                playerHealth.GetComponent<PlayerHealth>().DamagePlayer(damage);
-                riruAI.GetComponent<RiruAI>().FormDoubleAttack(true);
+                playerHealth.GetComponent<PlayerHealthAI>().DamagePlayer(damage);
+                riruAI.FormDoubleAttack(true);
+                Transform_log = other.transform;
             }
+        }
+        if (other.gameObject.layer == 18 && other.GetComponent<Shield>())
+        {
+            other.GetComponent<Shield>().TakeDamage(damage);
+            riruAI.FormDoubleAttack(true);
         }
     }
     void turnAttack()
     {
-        if (playerTransform.position.x < transform.position.x && !hasTurn && playerTransform != null)
+        if (!Riru3D.isDoubleAttack)
         {
-            Quaternion turnRotation = Quaternion.Euler(0, 180, 0);
-            transform.rotation = turnRotation;
-            hasTurn = true;
-        }
-        else if (playerTransform.position.x > transform.position.x && hasTurn && playerTransform != null)
-        {
-            Quaternion turnRotation = Quaternion.Euler(0, 0, 0);
-            transform.rotation = turnRotation;
-            hasTurn = false;
+            if (playerTransform.position.x < transform.position.x && !hasTurn && playerTransform != null)
+            {
+                Quaternion turnRotation = Quaternion.Euler(0, 180, 0);
+                transform.rotation = turnRotation;
+                hasTurn = true;
+            }
+            else if (playerTransform.position.x > transform.position.x && hasTurn && playerTransform != null)
+            {
+                Quaternion turnRotation = Quaternion.Euler(0, 0, 0);
+                transform.rotation = turnRotation;
+                hasTurn = false;
+            }
         }
     }
 }

@@ -73,58 +73,61 @@ public class SkillUIInventory : MonoBehaviour
     {
         Skill RightSkill = WorkingSkill.FusionSkill[0];
         Skill LeftSkill = WorkingSkill.FusionSkill[1];
-        if (RightSkill.skillName != null && LeftSkill.skillName != null)
+        if (CoinQuantity.CoinQuantity >= 25)
         {
-            CoinQuantity.CoinQuantity -= 50;
-        }
-        if (RightSkill.skillName == "FireBall" && LeftSkill.skillName == "FireBall")
-        {
-            ResetWorkSlot();
-            productSkillSlot.GetComponent<ProductSkillSlot>().SetAsChild(instance.PlayerBag.SkillList[5]);
-            instance.PlayerBag.SkillList[5].CanUse = true;
-            RefreshSkill();
-        }
-        if (RightSkill.skillName == "FireBall" && LeftSkill.skillName == "Tornado" || RightSkill.skillName == "Tornado" && LeftSkill.skillName == "FireBall")
-        {
-            ResetWorkSlot();
-            productSkillSlot.GetComponent<ProductSkillSlot>().SetAsChild(instance.PlayerBag.SkillList[7]);
-            instance.PlayerBag.SkillList[7].CanUse = true;
-            RefreshSkill();
-        }
-        if (RightSkill.skillName == "IceSpike" && LeftSkill.skillName == "Tornado" || RightSkill.skillName == "Tornado" && LeftSkill.skillName == "IceSpike")
-        {
-            ResetWorkSlot();
-            productSkillSlot.GetComponent<ProductSkillSlot>().SetAsChild(instance.PlayerBag.SkillList[8]);
-            instance.PlayerBag.SkillList[8].CanUse = true;
-            RefreshSkill();
-        }
-        if (RightSkill.skillName == "PoisonousFlame" && LeftSkill.skillName == "Tornado" || RightSkill.skillName == "Tornado" && LeftSkill.skillName == "PoisonousFlame")
-        {
-            ResetWorkSlot();
-            productSkillSlot.GetComponent<ProductSkillSlot>().SetAsChild(instance.PlayerBag.SkillList[9]);
-            instance.PlayerBag.SkillList[9].CanUse = true;
-            RefreshSkill();
-        }
-        if (RightSkill.skillName == "FireBall" && LeftSkill.skillName == "Enchant" || RightSkill.skillName == "Enchant" && LeftSkill.skillName == "FireBall")
-        {
-            ResetWorkSlot();
-            productSkillSlot.GetComponent<ProductSkillSlot>().SetAsChild(instance.PlayerBag.SkillList[11]);
-            instance.PlayerBag.SkillList[11].CanUse = true;
-            RefreshSkill();
-        }
-        if (RightSkill.skillName == "IceSpike" && LeftSkill.skillName == "Enchant" || RightSkill.skillName == "Enchant" && LeftSkill.skillName == "IceSpike")
-        {
-            ResetWorkSlot();
-            productSkillSlot.GetComponent<ProductSkillSlot>().SetAsChild(instance.PlayerBag.SkillList[12]);
-            instance.PlayerBag.SkillList[12].CanUse = true;
-            RefreshSkill();
-        }
-        if (RightSkill.skillName == "PoisonousFlame" && LeftSkill.skillName == "Enchant" || RightSkill.skillName == "Enchant" && LeftSkill.skillName == "PoisonousFlame")
-        {
-            ResetWorkSlot();
-            productSkillSlot.GetComponent<ProductSkillSlot>().SetAsChild(instance.PlayerBag.SkillList[13]);
-            instance.PlayerBag.SkillList[13].CanUse = true;
-            RefreshSkill();
+            if (RightSkill.skillName != null && LeftSkill.skillName != null)
+            {
+                CoinQuantity.CoinQuantity -= 25;
+            }
+            if (RightSkill.skillName == "FireBall" && LeftSkill.skillName == "FireBall")
+            {
+                ResetWorkSlot();
+                productSkillSlot.GetComponent<ProductSkillSlot>().SetAsChild(instance.PlayerBag.SkillList[5]);
+                instance.PlayerBag.SkillList[5].CanUse = true;
+                RefreshSkill();
+            }
+            if (RightSkill.skillName == "FireBall" && LeftSkill.skillName == "Tornado" || RightSkill.skillName == "Tornado" && LeftSkill.skillName == "FireBall")
+            {
+                ResetWorkSlot();
+                productSkillSlot.GetComponent<ProductSkillSlot>().SetAsChild(instance.PlayerBag.SkillList[7]);
+                instance.PlayerBag.SkillList[7].CanUse = true;
+                RefreshSkill();
+            }
+            if (RightSkill.skillName == "IceSpike" && LeftSkill.skillName == "Tornado" || RightSkill.skillName == "Tornado" && LeftSkill.skillName == "IceSpike")
+            {
+                ResetWorkSlot();
+                productSkillSlot.GetComponent<ProductSkillSlot>().SetAsChild(instance.PlayerBag.SkillList[8]);
+                instance.PlayerBag.SkillList[8].CanUse = true;
+                RefreshSkill();
+            }
+            if (RightSkill.skillName == "PoisonousFlame" && LeftSkill.skillName == "Tornado" || RightSkill.skillName == "Tornado" && LeftSkill.skillName == "PoisonousFlame")
+            {
+                ResetWorkSlot();
+                productSkillSlot.GetComponent<ProductSkillSlot>().SetAsChild(instance.PlayerBag.SkillList[9]);
+                instance.PlayerBag.SkillList[9].CanUse = true;
+                RefreshSkill();
+            }
+            if (RightSkill.skillName == "FireBall" && LeftSkill.skillName == "Enchant" || RightSkill.skillName == "Enchant" && LeftSkill.skillName == "FireBall")
+            {
+                ResetWorkSlot();
+                productSkillSlot.GetComponent<ProductSkillSlot>().SetAsChild(instance.PlayerBag.SkillList[11]);
+                instance.PlayerBag.SkillList[11].CanUse = true;
+                RefreshSkill();
+            }
+            if (RightSkill.skillName == "IceSpike" && LeftSkill.skillName == "Enchant" || RightSkill.skillName == "Enchant" && LeftSkill.skillName == "IceSpike")
+            {
+                ResetWorkSlot();
+                productSkillSlot.GetComponent<ProductSkillSlot>().SetAsChild(instance.PlayerBag.SkillList[12]);
+                instance.PlayerBag.SkillList[12].CanUse = true;
+                RefreshSkill();
+            }
+            if (RightSkill.skillName == "PoisonousFlame" && LeftSkill.skillName == "Enchant" || RightSkill.skillName == "Enchant" && LeftSkill.skillName == "PoisonousFlame")
+            {
+                ResetWorkSlot();
+                productSkillSlot.GetComponent<ProductSkillSlot>().SetAsChild(instance.PlayerBag.SkillList[13]);
+                instance.PlayerBag.SkillList[13].CanUse = true;
+                RefreshSkill();
+            }
         }
     }
 }

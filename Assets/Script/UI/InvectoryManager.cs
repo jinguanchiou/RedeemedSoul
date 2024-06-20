@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.EventSystems;
 using TMPro;
 
 public class InvectoryManager : MonoBehaviour
@@ -10,6 +11,7 @@ public class InvectoryManager : MonoBehaviour
 
     public Inventory PlayerBag;
     public PotionInventory PotionBag;
+    public Text SkillText;
     public GameObject SkillBar;
     public GameObject PotionBar;
     public GameObject emptySkillSlot;
@@ -34,6 +36,26 @@ public class InvectoryManager : MonoBehaviour
             Destroy(this);
         instance = this;
     }
+    public void OnPointerEnter(PointerEventData eventData)
+    {
+        Debug.Log(eventData);
+        SkillSlot skillSlot = eventData.pointerEnter.GetComponent<SkillSlot>();
+        if (skillSlot != null)
+        {
+            int skillID = skillSlot.SkillSlotID;
+            SkillText.text = PlayerBag.SkillList[skillID].skillInfo;
+            SkillText.gameObject.SetActive(true);
+        }
+    }
+    public void OnPointerExit(PointerEventData eventData)
+    {
+        SkillSlot skillSlot = eventData.pointerEnter.GetComponent<SkillSlot>();
+        if (skillSlot != null)
+        {
+            SkillText.gameObject.SetActive(false);
+        }
+    }
+
     public void RefreshSkill()
     {
         for (int i = 0; i < instance.PlayerBag.SkillList.Count; i++)

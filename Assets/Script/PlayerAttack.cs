@@ -133,6 +133,8 @@ public class PlayerAttack : MonoBehaviour
             if (anim.GetBool("Enchant"))
             {
                 other.GetComponent<EnemyMontherPig>().TakeDamage(damage * 3);
+                if (other.GetComponent<EnemyFireMan>())
+                    other.GetComponent<EnemyFireMan>().PlayerHitMe();
                 Mana.RegainMana(regainPoint);
                 playerController.HitEnemy();
             }
@@ -140,6 +142,8 @@ public class PlayerAttack : MonoBehaviour
             {
                 other.GetComponent<EnemyMontherPig>().TakeDamage(damage);
                 other.GetComponent<EnemyMontherPig>().Burning(2, 3);
+                if (other.GetComponent<EnemyFireMan>())
+                    other.GetComponent<EnemyFireMan>().PlayerHitMe();
                 Mana.RegainMana(regainPoint);
                 playerController.HitEnemy();
             }
@@ -147,6 +151,8 @@ public class PlayerAttack : MonoBehaviour
             {
                 other.GetComponent<EnemyMontherPig>().TakeDamage(damage);
                 other.GetComponent<EnemyMontherPig>().Frozen(0.5f, 1);
+                if (other.GetComponent<EnemyFireMan>())
+                    other.GetComponent<EnemyFireMan>().PlayerHitMe();
                 Mana.RegainMana(regainPoint);
                 playerController.HitEnemy();
             }
@@ -154,12 +160,16 @@ public class PlayerAttack : MonoBehaviour
             {
                 other.GetComponent<EnemyMontherPig>().TakeDamage(damage);
                 other.GetComponent<EnemyMontherPig>().Toxin();
+                if (other.GetComponent<EnemyFireMan>())
+                    other.GetComponent<EnemyFireMan>().PlayerHitMe();
                 Mana.RegainMana(regainPoint);
                 playerController.HitEnemy();
             }
             else
             {
                 other.GetComponent<EnemyMontherPig>().TakeDamage(damage);
+                if (other.GetComponent<EnemyFireMan>())
+                    other.GetComponent<EnemyFireMan>().PlayerHitMe();
                 Mana.RegainMana(regainPoint);
                 playerController.HitEnemy();
             }

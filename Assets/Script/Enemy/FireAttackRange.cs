@@ -8,7 +8,6 @@ public class FireAttackRange : MonoBehaviour
     public bool isAttacking = false;
 
     public BreathingFire Attack;
-    public EnemyAttackRange NormalAttack;
 
     // Start is called before the first frame update
     void Start()

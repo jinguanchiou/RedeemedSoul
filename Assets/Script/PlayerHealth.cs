@@ -8,6 +8,8 @@ public class PlayerHealth : MonoBehaviour
     public int Blinks;
     public int ResistDamage;
     private int Potion;
+    private int Toxin;
+    private float ToxinTime;
     private float minLocation = -0.5f;
     private float maxLocation = 0.5f;
     public float time;
@@ -20,6 +22,7 @@ public class PlayerHealth : MonoBehaviour
     public GameObject floatPoint;
     public GameObject RestoreHPPoint;
     public GameObject BurningHPPoint;
+    public GameObject PoisonHPPoint;
     public GameObject GUIBag;
     public PotionBarManger potionBarManger;
     public InvectoryManager invectoryManager;
@@ -48,6 +51,8 @@ public class PlayerHealth : MonoBehaviour
     void Update()
     {
         UsePotion();
+        ToxinTimeCount();
+        Debug.Log(ToxinTime);
     }
     public void DamagePlayer(int damage)
     {
@@ -102,6 +107,49 @@ public class PlayerHealth : MonoBehaviour
             anim.SetTrigger("Die");
             GameOverUI.SetActive(true);
             Invoke("KillPlayer", dieTime);
+        }
+    }
+    public void PoisonPlayer()
+    {
+        health -= Toxin;
+        ToxinTime = 3;
+
+        if (Toxin < 8)
+        {
+            Toxin++;
+        }
+        sf.FlashScreen();
+        if (health < 0)
+        {
+            health = 0;
+        }
+        HPInventory.HP = health;
+        HealthBar.HealthCurrent = health;
+        BlinkPlayer(Blinks, time);
+        polygonCollider2D.enabled = false;
+        float randomLocation = Random.Range(minLocation, maxLocation);
+        GameObject gb = Instantiate(PoisonHPPoint, new Vector3(transform.position.x + randomLocation, transform.position.y + 2 + randomLocation), Quaternion.identity) as GameObject;
+        gb.transform.GetChild(0).GetComponent<TextMesh>().text = "¤¤¬r -" + Toxin.ToString();
+        StartCoroutine(ShowPlayerHitBox());
+        if (health <= 0)
+        {
+            rb2d.velocity = new Vector2(0, 0);
+            //rb2d.gravityScale = 0.0f;
+            GameController.isGameAlive = false;
+            anim.SetTrigger("Die");
+            GameOverUI.SetActive(true);
+            Invoke("KillPlayer", dieTime);
+        }
+    }
+    void ToxinTimeCount()
+    {
+        if (ToxinTime > 0)
+        {
+            ToxinTime -= Time.deltaTime;
+        }
+        if (ToxinTime <= 0)
+        {
+            Toxin = 0;
         }
     }
     IEnumerator ShowPlayerHitBox()

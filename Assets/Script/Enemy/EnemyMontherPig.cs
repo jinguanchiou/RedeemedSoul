@@ -11,31 +11,30 @@ public class EnemyMontherPig : MonoBehaviour
     public GameObject dropCoin;
     public GameObject floatPoint;
 
-    private SpriteRenderer sr;
-    private Color originalColor;
+    protected SpriteRenderer sr;
+    protected Color originalColor;
 
     public float speed;
     public float startWaitTime;
     public float radius;
     public float AttackRadius;
-    private float waitTime;
-    private int toxin;
-    private float toxinTime;
-    private float speed_Log;
-    private float minLocation = -0.5f;
-    private float maxLocation = 0.5f;
+    protected float waitTime;
+    protected int toxin;
+    protected float toxinTime;
+    protected float speed_Log;
+    protected float minLocation = -0.5f;
+    protected float maxLocation = 0.5f;
 
-    private Coroutine burningCoroutine;
-    private Coroutine frozenCoroutine;
-    public EnemyAttack Attack;
+    protected Coroutine burningCoroutine;
+    protected Coroutine frozenCoroutine;
     public Transform movePos;
     public Transform leftDownPos;
     public Transform rightUpPos;
-    private Transform target;
-    private Animator Anim;
-    private Rigidbody2D rb;
-    private Transform PlayerTransform;
-    private CircleCollider2D EnemyAttackRadius;
+    protected Transform target;
+    protected Animator Anim;
+    protected Rigidbody2D rb;
+    protected Transform PlayerTransform;
+    protected CircleCollider2D EnemyAttackRadius;
 
     // Start is called before the first frame update
     public void Start()
@@ -63,7 +62,7 @@ public class EnemyMontherPig : MonoBehaviour
         Dead();
         ToxinTime();
     }
-    void AttackAI()
+    private void AttackAI()
     {
         if (PlayerTransform != null)
         {
@@ -75,7 +74,7 @@ public class EnemyMontherPig : MonoBehaviour
             }
         }
     }
-    void WalkAI()
+    private void WalkAI()
     {
         if (PlayerTransform != null)
         {
@@ -103,7 +102,7 @@ public class EnemyMontherPig : MonoBehaviour
             }
         }
     }
-    void WalkFlip()
+    private void WalkFlip()
     {
         Vector2 direction = (movePos.position - transform.position).normalized;
         if (direction.x > 0.1f)
@@ -115,7 +114,7 @@ public class EnemyMontherPig : MonoBehaviour
             transform.rotation = Quaternion.Euler(0, 0, 0);
         }
     }
-    void AttackFlip()
+    private void AttackFlip()
     {
         Vector2 direction = (PlayerTransform.position - transform.position).normalized;
         if (direction.x > 0.1f)
@@ -127,7 +126,7 @@ public class EnemyMontherPig : MonoBehaviour
             transform.rotation = Quaternion.Euler(0, 0, 0);
         }
     }
-    void Dead()
+    private void Dead()
     {
         if (health <= 0)
         {
@@ -196,7 +195,7 @@ public class EnemyMontherPig : MonoBehaviour
         toxinTime = 3;
         TakeDamage(toxin);
     }
-    void ToxinTime()
+    public void ToxinTime()
     {
         if (toxinTime > 0)
         {
@@ -219,27 +218,28 @@ public class EnemyMontherPig : MonoBehaviour
         rb.velocity = new Vector2(0f, 0f);
         Hit = false;
     }
-    void FlashColor(float time)
+    public void FlashColor(float time)
     {
         sr.color = Color.red;
         Invoke("ResetColor", time);
     }
-    void ResetColor()
+    public void ResetColor()
     {
         sr.color = originalColor;
     }
-    void Walk()
+    private void Walk()
     {
         Vector2 direction = (movePos.position - transform.position).normalized;
         if (direction.x <= 0.1f && direction.x >= -0.1f)
         {
             Anim.SetBool("Walk", false);
+            
         }
         else
             Anim.SetBool("Walk", true);
 
     }
-    void Idle()
+    private void Idle()
     {
         Vector2 direction = (movePos.position - transform.position).normalized;
         if (direction.x <= 0.1f && direction.x >= -0.1f)

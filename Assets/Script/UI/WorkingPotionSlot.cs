@@ -36,8 +36,9 @@ public class WorkingPotionSlot : MonoBehaviour, IDropHandler
                 Destroy(droppedClone);
                 return;
             }
-            else if (droppedClone.tag == "Potion")
+            else if (droppedClone.tag == "Potion" && draggableItem.parentAfterDrag.GetComponent<PotionSlot>())
             {
+                Destroy(droppedClone);
                 droppedClone.transform.SetParent(transform);
                 PotionBag.WorkingPotionList[WorkingPotionSlotID] = PotionBag.PotionList[draggableItem.parentAfterDrag.GetComponent<PotionSlot>().PotionSlotID];
             }

@@ -17,10 +17,9 @@ public class WorkingSkillSlot : MonoBehaviour, IDropHandler
 
         WorkingSkillSlot workingSkillSlot = draggableItem.parentAfterDrag.GetComponentInParent<WorkingSkillSlot>();
         SkillSlot skillSlot = draggableItem.parentAfterDrag.GetComponentInParent<SkillSlot>();
-
+        Debug.Log(transform.childCount);
         if (transform.childCount == 1 && draggableItem != null)
         {
-
             if (workingSkillSlot != null)
             {
                 return;
@@ -42,6 +41,10 @@ public class WorkingSkillSlot : MonoBehaviour, IDropHandler
                 {
                     PlayerBag.WorkingSkill[WorkingSkillSlotID] = PlayerBag.WorkingSkill[draggableItem.parentAfterDrag.GetComponent<WorkingSkillSlot>().WorkingSkillSlotID];
                     PlayerBag.WorkingSkill[draggableItem.parentAfterDrag.GetComponent<WorkingSkillSlot>().WorkingSkillSlotID] = null;
+                }
+                else if(PlayerBag.WorkingSkill[WorkingSkillSlotID] == PlayerBag.WorkingSkill[draggableItem.parentAfterDrag.GetComponent<WorkingSkillSlot>().WorkingSkillSlotID])
+                {
+                    Destroy(droppedClone);
                 }
             }
             else if(skillSlot != null)

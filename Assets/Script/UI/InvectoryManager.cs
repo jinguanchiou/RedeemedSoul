@@ -5,7 +5,7 @@ using UnityEngine.UI;
 using UnityEngine.EventSystems;
 using TMPro;
 
-public class InvectoryManager : MonoBehaviour
+public class InvectoryManager : MonoBehaviour, IPointerEnterHandler
 {
     static InvectoryManager instance;
 
@@ -38,21 +38,12 @@ public class InvectoryManager : MonoBehaviour
     }
     public void OnPointerEnter(PointerEventData eventData)
     {
-        Debug.Log(eventData);
-        SkillSlot skillSlot = eventData.pointerEnter.GetComponent<SkillSlot>();
+        SkillSlot skillSlot = eventData.pointerCurrentRaycast.gameObject.GetComponent<SkillSlot>();
         if (skillSlot != null)
         {
             int skillID = skillSlot.SkillSlotID;
             SkillText.text = PlayerBag.SkillList[skillID].skillInfo;
             SkillText.gameObject.SetActive(true);
-        }
-    }
-    public void OnPointerExit(PointerEventData eventData)
-    {
-        SkillSlot skillSlot = eventData.pointerEnter.GetComponent<SkillSlot>();
-        if (skillSlot != null)
-        {
-            SkillText.gameObject.SetActive(false);
         }
     }
 

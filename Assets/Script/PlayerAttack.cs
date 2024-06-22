@@ -38,6 +38,7 @@ public class PlayerAttack : MonoBehaviour
         {
             isAttacking_1 = true;
             anim.SetTrigger("Attack");
+            GameManager.instance.audioManager.Play(1, "seSlash", false);
             if (anim.GetBool("IceEnchant"))
                 Instantiate(IceSpike, transform.position, transform.rotation);
             StartCoroutine(StartAttack());
@@ -46,6 +47,7 @@ public class PlayerAttack : MonoBehaviour
         {
             isAttacking_2 = true;
             anim.SetTrigger("Attack_2");
+            GameManager.instance.audioManager.Play(1, "seSlash", false);
             StartCoroutine(StartAttack_2());
         }
     }
@@ -89,6 +91,7 @@ public class PlayerAttack : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Enemy") && other.GetType().ToString() == "UnityEngine.CapsuleCollider2D" && other.GetComponent<EnemyMonsterGhost>())
         {
+            GameManager.instance.audioManager.Play(1, "seSlashHit", false);
             if (anim.GetBool("Enchant"))
             {
                 other.GetComponent<EnemyMonsterGhost>().TakeDamage(damage * 3);
@@ -130,6 +133,7 @@ public class PlayerAttack : MonoBehaviour
         }
         if (other.gameObject.CompareTag("Enemy") && other.GetType().ToString() == "UnityEngine.CapsuleCollider2D" && other.GetComponent<EnemyMontherPig>())
         {
+            GameManager.instance.audioManager.Play(1, "seSlashHit", false);
             if (anim.GetBool("Enchant"))
             {
                 other.GetComponent<EnemyMontherPig>().TakeDamage(damage * 3);
@@ -176,6 +180,7 @@ public class PlayerAttack : MonoBehaviour
         }
         if (other.gameObject.CompareTag("Riru") && other.GetType().ToString() == "UnityEngine.CapsuleCollider2D" && other.GetComponent<RiruAI>())
         {
+            GameManager.instance.audioManager.Play(1, "seSlashHit", false);
             if (anim.GetBool("Enchant"))
             {
                 other.GetComponent<RiruAI>().TakeDamage(damage * 3);

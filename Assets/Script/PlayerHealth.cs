@@ -190,6 +190,7 @@ public class PlayerHealth : MonoBehaviour
     }
     IEnumerator WaitTextMesh(int point)
     {
+        GameManager.instance.audioManager.Play(1, "seGulp", false);
         yield return new WaitForSeconds(1);
         float randomLocation = Random.Range(minLocation, maxLocation);
         GameObject gb = Instantiate(RestoreHPPoint, new Vector3(transform.position.x + randomLocation, transform.position.y + 2 + randomLocation), Quaternion.identity) as GameObject;

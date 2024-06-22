@@ -21,6 +21,7 @@ public class Shield : MonoBehaviour
         sp = GetComponent<SpriteRenderer>();
         playerHealth = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerHealth>();
         PlayerTransform = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
+        GameManager.instance.audioManager.Play(2, "seSnap", false);
         Protect();
     }
 

@@ -72,6 +72,11 @@ public class EnemyMontherPig : MonoBehaviour
                 AttackFlip();
                 transform.position = Vector2.MoveTowards(transform.position, PlayerTransform.position, speed * 2 * Time.deltaTime);
             }
+            if(distance < AttackRadius)
+            {
+                Anim.SetBool("Idle", true);
+                Anim.SetBool("Walk", false);
+            }
         }
     }
     private void WalkAI()

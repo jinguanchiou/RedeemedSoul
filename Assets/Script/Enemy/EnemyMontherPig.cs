@@ -229,7 +229,7 @@ public class EnemyMontherPig : MonoBehaviour
     }
     private void Walk()
     {
-        Vector2 direction = (movePos.position - transform.position).normalized;
+        Vector2 direction = (movePos.position - transform.position);
         if (direction.x <= 0.1f && direction.x >= -0.1f)
         {
             Anim.SetBool("Walk", false);
@@ -241,7 +241,7 @@ public class EnemyMontherPig : MonoBehaviour
     }
     private void Idle()
     {
-        Vector2 direction = (movePos.position - transform.position).normalized;
+        Vector2 direction = (movePos.position - transform.position);
         if (direction.x <= 0.1f && direction.x >= -0.1f)
         {
             Anim.SetBool("Idle", true);

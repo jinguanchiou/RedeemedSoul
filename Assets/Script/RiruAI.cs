@@ -72,6 +72,8 @@ public class RiruAI : Agent
 
 
     public SpriteRenderer ThrustAttackEffect;
+    public SpriteRenderer BlockEffect;
+    public SpriteRenderer DoubleAttackEffect;
     public RiruThrustAttack ThrustAttackTurn;
     public RiruJumpAttack JumpAttackTurn;
     public RiruDoubleAttack riruDoubleTurn;
@@ -218,16 +220,18 @@ public class RiruAI : Agent
             if (BlockCoolDownTime <= 0)
             {
                 Block.enabled = true;
+                BlockEffect.enabled = true; 
             }
         }
         else
         {
             riru3DContuoller.Walk(false);
             Block.enabled = false;
+            BlockEffect.enabled = false;
         }
         if (JumpAttackCoolDownTime <= 0)
         {
-            if (JumpAttackAction == 1 && !riru3DContuoller.isWalk && riru3DContuoller.isIdle && CanJump)
+            if (JumpAttackAction == 1 && !riru3DContuoller.isWalk && riru3DContuoller.isIdle && CanJump && !riru3DContuoller.isThrustAttack && !riru3DContuoller.isDoubleAttack)
             {
                 CanJump = false;
                 riru3DContuoller.JunpAttack();
@@ -266,7 +270,7 @@ public class RiruAI : Agent
        
         if (ThrustAttackCoolDownTime <= 0)
         {
-            if (ThrustAttackAction == 1 && !riru3DContuoller.isWalk && riru3DContuoller.isIdle)
+            if (ThrustAttackAction == 1 && !riru3DContuoller.isWalk && riru3DContuoller.isIdle && !riru3DContuoller.isJumpAttack && !riru3DContuoller.isDoubleAttack)
             {
                 riru3DContuoller.ThrustAttack();
                 StartCoroutine(StartThrustAttack());
@@ -275,9 +279,8 @@ public class RiruAI : Agent
         }
         if (DoubleAttackCoolDownTime <= 0)
         {
-            if (DoubleAttackAction == 1 && !riru3DContuoller.isWalk && riru3DContuoller.isIdle)
+            if (DoubleAttackAction == 1 && !riru3DContuoller.isWalk && riru3DContuoller.isIdle && !riru3DContuoller.isThrustAttack && !riru3DContuoller.isJumpAttack)
             {
-                riru3DContuoller.DoubleAttack();
                 StartCoroutine(StartDoubleAttack());
                 DoubleAttackCoolDownTime = DoubleAttackCoolDownTime_log;
             }
@@ -525,9 +528,17 @@ public class RiruAI : Agent
     {
         for (int i = 0; i < 3; i++)
         {
-            yield return new WaitForSeconds(startDoubleAttackTime + (i * 0.1f));
+            yield return new WaitForSeconds(startDoubleAttackTime);
+            DoubleAttackEffect.enabled = true;
+            yield return new WaitForSeconds(startDoubleAttackTime);
+            DoubleAttackEffect.enabled = false;
+        }
+        riru3DContuoller.DoubleAttack();
+        for (int i = 0; i < 3; i++)
+        {
+            yield return new WaitForSeconds(startDoubleAttackTime);
             DoubleAttackBox.enabled = true;
-            yield return new WaitForSeconds(startDoubleAttackTime + (i * 0.1f));
+            yield return new WaitForSeconds(startDoubleAttackTime);
             DoubleAttackBox.enabled = false;
         }
     }

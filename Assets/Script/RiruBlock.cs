@@ -7,6 +7,7 @@ public class RiruBlock : MonoBehaviour
     private Transform playerTransform;
     private Riru3DController Riru3D;
     private RiruAI riruAI;
+    private SpriteRenderer Sr;
     private bool hasTurn;
     private PolygonCollider2D polygon;
     private int Count;
@@ -14,6 +15,7 @@ public class RiruBlock : MonoBehaviour
     void Start()
     {
         polygon = GetComponent<PolygonCollider2D>();
+        Sr = GetComponent<SpriteRenderer>();
         playerTransform = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
         riruAI = GameObject.FindGameObjectWithTag("Riru").GetComponent<RiruAI>();
         Riru3D = GameObject.FindGameObjectWithTag("Riru3D").GetComponent<Riru3DController>();
@@ -36,6 +38,7 @@ public class RiruBlock : MonoBehaviour
             if (Count > 2)
             {
                 polygon.enabled = false;
+                Sr.enabled = false;
                 riruAI.BlockCoolDownTime = riruAI.BlockCoolDownTime_log;
                 Count = 0;
             }

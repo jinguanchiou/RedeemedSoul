@@ -354,8 +354,8 @@ CapsuleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.0074579576, y: -0.004736676}
-  m_Size: {x: 0.2294141, y: 0.533073}
+  m_Offset: {x: -0.0074579576, y: 0.010047239}
+  m_Size: {x: 0.2294141, y: 0.5035053}
   m_Direction: 0
 --- !u!114 &6624347249494694784
 MonoBehaviour:
@@ -379,7 +379,6 @@ MonoBehaviour:
   startWaitTime: 3
   radius: 50
   AttackRadius: 20
-  Attack: {fileID: 0}
   movePos: {fileID: 6624347247906230383}
   leftDownPos: {fileID: 6624347248759847543}
   rightUpPos: {fileID: 6624347249931281480}

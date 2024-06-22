@@ -107,11 +107,11 @@ PolygonCollider2D:
   m_AutoTiling: 0
   m_Points:
     m_Paths:
-    - - {x: 0.9489014, y: 1.0766371}
-      - {x: -1.2030416, y: -0.22358832}
-      - {x: -0.9224274, y: -1.374049}
-      - {x: -1.2414098, y: -2.229929}
-      - {x: 1.0116619, y: -2.3769994}
+    - - {x: 0.9809159, y: 1.043682}
+      - {x: -3.2199411, y: 0.33666107}
+      - {x: -2.7792563, y: -1.7365634}
+      - {x: -3.1622663, y: -2.8890464}
+      - {x: 1.0116619, y: -2.1792638}
       - {x: 1.87924, y: -0.6505174}
 --- !u!114 &1512896782455734603
 MonoBehaviour:
@@ -150,8 +150,8 @@ GameObject:
   - component: {fileID: 1512896783009843653}
   - component: {fileID: 1512896783009843652}
   - component: {fileID: 1512896783009843655}
-  - component: {fileID: 453286114}
   - component: {fileID: 453286123}
+  - component: {fileID: 1092378909}
   m_Layer: 7
   m_Name: test426
   m_TagString: Player
@@ -373,12 +373,28 @@ MonoBehaviour:
   floatPoint: {fileID: 4670379567073532384, guid: a6fdd37d2e737e848b2698592d3e9408, type: 3}
   RestoreHPPoint: {fileID: 2586804626996381979, guid: 6bc0569763385cb43a6079dbb69bb402, type: 3}
   BurningHPPoint: {fileID: 6129161093187977890, guid: 888320f213d09dc4c98f8f6f946db7e8, type: 3}
+  PoisonHPPoint: {fileID: 4670379567073532384, guid: 262d6bef019c9b748a92013e0a564d78, type: 3}
   GUIBag: {fileID: 0}
   potionBarManger: {fileID: 0}
   invectoryManager: {fileID: 0}
   HPInventory: {fileID: 11400000, guid: f05f77cb797d1574ebef420491b45251, type: 2}
   potionInventory: {fileID: 11400000, guid: 7c4905c77f26833459b0f6824e034634, type: 2}
---- !u!95 &453286114
+--- !u!114 &453286123
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1512896783009843659}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 49cd84ce445ba164baf04b7d6b117320, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  img: {fileID: 0}
+  time: 0.25
+  flashColor: {r: 1, g: 1, b: 1, a: 0.2901961}
+--- !u!95 &1092378909
 Animator:
   serializedVersion: 5
   m_ObjectHideFlags: 0
@@ -399,18 +415,3 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!114 &453286123
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1512896783009843659}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 49cd84ce445ba164baf04b7d6b117320, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  img: {fileID: 0}
-  time: 0.25
-  flashColor: {r: 1, g: 1, b: 1, a: 0.2901961}

@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class Level2_6_2Controller : MonoBehaviour
+public class Level1_6Controller : MonoBehaviour
 {
-    public ConversationFunction Level2_6_2;
+    public ConversationFunction Level1_6;
     public GameObject DialogBox;
     public GameObject woltor;
     public Text DialogBoxText;
@@ -21,7 +21,7 @@ public class Level2_6_2Controller : MonoBehaviour
     void Start()
     {
         playerController = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>();
-        if (Level2_6_2.LevelAlreadyTold)
+        if (Level1_6.LevelAlreadyTold)
         {
             playerController.OnlockPlayer = false;
             Destroy(gameObject);
@@ -32,30 +32,30 @@ public class Level2_6_2Controller : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (!Level2_6_2.LevelAlreadyTold && StartConversation)
+        if (!Level1_6.LevelAlreadyTold && StartConversation)
         {
             if (currentTextIndex == 0)
             {
                 playerController.IsConversation();
-                DialogBoxText.text = Level2_6_2.LevelTextMesh[0];
+                DialogBoxText.text = Level1_6.LevelTextMesh[0];
                 DialogBox.SetActive(true);
                 GenerateImage();
                 currentTextIndex++;
             }
-            if (Input.GetKeyDown(KeyCode.Space) && currentTextIndex < Level2_6_2.LevelTextMesh.Count)
+            if (Input.GetKeyDown(KeyCode.Space) && currentTextIndex < Level1_6.LevelTextMesh.Count)
             {
                 Destroy(Image_Log);
-                DialogBoxText.text = Level2_6_2.LevelTextMesh[currentTextIndex];
+                DialogBoxText.text = Level1_6.LevelTextMesh[currentTextIndex];
                 GenerateImage();
                 currentTextIndex++;
             }
-            if (currentTextIndex >= Level2_6_2.LevelTextMesh.Count)
+            if (currentTextIndex >= Level1_6.LevelTextMesh.Count)
             {
                 DialogBox.SetActive(false);
-                Level2_6_2.LevelAlreadyTold = true;
+                Level1_6.LevelAlreadyTold = true;
             }
         }
-        if (Level2_6_2.LevelAlreadyTold)
+        if (Level1_6.LevelAlreadyTold)
         {
             playerController.OnlockPlayer = false;
             Destroy(gameObject);
@@ -64,12 +64,12 @@ public class Level2_6_2Controller : MonoBehaviour
     }
     void GenerateImage()
     {
-        if (Level2_6_2.avatar[currentTextIndex] != null)
+        if (Level1_6.avatar[currentTextIndex] != null)
         {
-            if (Level2_6_2.avatar[currentTextIndex].name == "PlayerAvatar")
-            { Image_Log = Instantiate(Level2_6_2.avatar[currentTextIndex], PlayerAvatar); }
+            if (Level1_6.avatar[currentTextIndex].name == "PlayerAvatar")
+            { Image_Log = Instantiate(Level1_6.avatar[currentTextIndex], PlayerAvatar); }
             else
-            { Image_Log = Instantiate(Level2_6_2.avatar[currentTextIndex], OtherAvatar); }
+            { Image_Log = Instantiate(Level1_6.avatar[currentTextIndex], OtherAvatar); }
         }
     }
     private void OnTriggerEnter2D(Collider2D other)

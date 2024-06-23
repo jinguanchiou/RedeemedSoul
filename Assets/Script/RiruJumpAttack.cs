@@ -51,7 +51,7 @@ public class RiruJumpAttack : MonoBehaviour
         {
             if (playerHealth != null && other != null)
             {
-                playerHealth.GetComponent<PlayerHealthAI>().DamagePlayer(damage);
+                playerHealth.GetComponent<PlayerHealth>().DamagePlayer(damage);
                 riruAI.FormJumpAttack(true);
                 Transform_log = other.transform;
             }

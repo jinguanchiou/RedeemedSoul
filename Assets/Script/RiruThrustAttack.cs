@@ -46,7 +46,7 @@ public class RiruThrustAttack : MonoBehaviour
             if (playerHealth != null)
             {
                 Debug.Log("HitBox");
-                playerHealth.GetComponent<PlayerHealthAI>().DamagePlayer(damage);
+                playerHealth.GetComponent<PlayerHealth>().DamagePlayer(damage);
                 riruAI.FormThrustAttack(true);
                 Playertransform = other.transform;
             }

@@ -12,13 +12,13 @@ public class FirePillar : MonoBehaviour
     private RiruAI riruAI;
     private Animator Anim;
     private BoxCollider2D HitBox;
-    private PlayerHealthAI playerHealth;
+    private PlayerHealth playerHealth;
     private GameObject PlayerHitBox;
     void Start()
     {
         Anim = GetComponent<Animator>();
         riruAI = GameObject.FindGameObjectWithTag("Riru").GetComponent<RiruAI>();
-        playerHealth = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerHealthAI>();
+        playerHealth = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerHealth>();
         HitBox = GetComponent<BoxCollider2D>();
     }
 
@@ -66,8 +66,8 @@ public class FirePillar : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Player") && other.GetType().ToString() == "UnityEngine.CapsuleCollider2D")
         {
-            playerHealth.GetComponent<PlayerHealthAI>().DamagePlayer(damage);
-            playerHealth.GetComponent<PlayerHealthAI>().Burning(2, 2);
+            playerHealth.GetComponent<PlayerHealth>().DamagePlayer(damage);
+            playerHealth.GetComponent<PlayerHealth>().Burning(2, 2);
             riruAI.FormFirePillar(true);
             PlayerHitBox = other.gameObject;
         }

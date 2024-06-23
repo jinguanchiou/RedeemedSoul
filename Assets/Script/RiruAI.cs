@@ -26,6 +26,7 @@ public class RiruAI : Agent
     public float ThrustAttackTime;
     public float DoubleAttackTime;
 
+    public bool OnLock;
     private bool AnimeIsPlaying = false;
     private bool isGround;
     private bool wasGrounded;
@@ -47,6 +48,7 @@ public class RiruAI : Agent
     private bool ThrustAttackIsAction;
     private FirePillarList currentFirePillarList;
     private bool FirePillarListIsDestroy;
+    
 
     public GameObject floatPoint;
     public GameObject FloorEffects;
@@ -211,87 +213,89 @@ public class RiruAI : Agent
         int DoubleAttackAction = actions.DiscreteActions[2];
         int EnchantAction = actions.DiscreteActions[3];
 
-        
 
-        if (moveX != 0 && !riru3DContuoller.isDoubleAttack && !riru3DContuoller.isJumpAttack && !riru3DContuoller.isThrustAttack && !riru3DContuoller.isBlocking && !riru3DContuoller.isActioning)
+        if (!OnLock)
         {
-            transform.localPosition += new Vector3(moveX, 0.0f) * Time.deltaTime * movementSpeed;
-            riru3DContuoller.Walk(true);
-            if (BlockCoolDownTime <= 0)
+            if (moveX != 0 && !riru3DContuoller.isDoubleAttack && !riru3DContuoller.isJumpAttack && !riru3DContuoller.isThrustAttack && !riru3DContuoller.isBlocking && !riru3DContuoller.isActioning)
             {
-                Block.enabled = true;
-                BlockEffect.enabled = true; 
-            }
-        }
-        else
-        {
-            riru3DContuoller.Walk(false);
-            Block.enabled = false;
-            BlockEffect.enabled = false;
-        }
-        if (JumpAttackCoolDownTime <= 0)
-        {
-            if (JumpAttackAction == 1 && !riru3DContuoller.isWalk && riru3DContuoller.isIdle && CanJump && !riru3DContuoller.isThrustAttack && !riru3DContuoller.isDoubleAttack)
-            {
-                CanJump = false;
-                riru3DContuoller.JunpAttack();
-                if (JumpAttackmoveY > 0.1f)
+                transform.localPosition += new Vector3(moveX, 0.0f) * Time.deltaTime * movementSpeed;
+                riru3DContuoller.Walk(true);
+                if (BlockCoolDownTime <= 0)
                 {
-                    AddReward(2);
+                    Block.enabled = true;
+                    BlockEffect.enabled = true;
                 }
-                if (JumpAttackmoveY <= 0)
+            }
+            else
+            {
+                riru3DContuoller.Walk(false);
+                Block.enabled = false;
+                BlockEffect.enabled = false;
+            }
+            if (JumpAttackCoolDownTime <= 0)
+            {
+                if (JumpAttackAction == 1 && !riru3DContuoller.isWalk && riru3DContuoller.isIdle && CanJump && !riru3DContuoller.isThrustAttack && !riru3DContuoller.isDoubleAttack)
                 {
-                    AddReward(-2);
+                    CanJump = false;
+                    riru3DContuoller.JunpAttack();
+                    if (JumpAttackmoveY > 0.1f)
+                    {
+                        AddReward(2);
+                    }
+                    if (JumpAttackmoveY <= 0)
+                    {
+                        AddReward(-2);
+                    }
+                    StartCoroutine(StartJumpAttack(JumpAttackmoveY));
+                    currentJumpAttacks++;
                 }
-                StartCoroutine(StartJumpAttack(JumpAttackmoveY));
-                currentJumpAttacks++;
+                if (currentJumpAttacks < maxJumpAttacks)
+                {
+                    jumpAttackTimer = jumpAttackWindow;
+                }
+                else if (currentJumpAttacks >= maxJumpAttacks)
+                {
+                    Debug.Log(currentJumpAttacks);
+                    currentJumpAttacks = 0;
+                    JumpAttackCoolDownTime = JumpAttackCoolDownTime_log;
+                }
             }
-            if (currentJumpAttacks < maxJumpAttacks)
+            if (jumpAttackTimer > 0)
             {
-                jumpAttackTimer = jumpAttackWindow;
-            }
-            else if(currentJumpAttacks >= maxJumpAttacks)
-            {
-                Debug.Log(currentJumpAttacks);
-                currentJumpAttacks = 0;
-                JumpAttackCoolDownTime = JumpAttackCoolDownTime_log;
-            }
-        }
-        if (jumpAttackTimer > 0)
-        {
-            
-            jumpAttackTimer -= Time.deltaTime;
-            if (jumpAttackTimer <= 0)
-            {
-                currentJumpAttacks = 0;
-                JumpAttackCoolDownTime = JumpAttackCoolDownTime_log;
-            }
-        }
-       
-        if (ThrustAttackCoolDownTime <= 0)
-        {
-            if (ThrustAttackAction == 1 && !riru3DContuoller.isWalk && riru3DContuoller.isIdle && !riru3DContuoller.isJumpAttack && !riru3DContuoller.isDoubleAttack)
-            {
-                riru3DContuoller.ThrustAttack();
-                StartCoroutine(StartThrustAttack());
-                ThrustAttackCoolDownTime = ThrustAttackCoolDownTime_log;
-            }
-        }
-        if (DoubleAttackCoolDownTime <= 0)
-        {
-            if (DoubleAttackAction == 1 && !riru3DContuoller.isWalk && riru3DContuoller.isIdle && !riru3DContuoller.isThrustAttack && !riru3DContuoller.isJumpAttack)
-            {
-                StartCoroutine(StartDoubleAttack());
-                DoubleAttackCoolDownTime = DoubleAttackCoolDownTime_log;
-            }
-        }
-        if (EnchantCoolDownTime <= 0)
-        {
-            if (EnchantAction == 1 && !riru3DContuoller.isWalk && riru3DContuoller.isIdle)
-            {
-                riru3DContuoller.Enchant();
 
-                EnchantCoolDownTime = EnchantCoolDownTime_log;
+                jumpAttackTimer -= Time.deltaTime;
+                if (jumpAttackTimer <= 0)
+                {
+                    currentJumpAttacks = 0;
+                    JumpAttackCoolDownTime = JumpAttackCoolDownTime_log;
+                }
+            }
+
+            if (ThrustAttackCoolDownTime <= 0)
+            {
+                if (ThrustAttackAction == 1 && !riru3DContuoller.isWalk && riru3DContuoller.isIdle && !riru3DContuoller.isJumpAttack && !riru3DContuoller.isDoubleAttack)
+                {
+                    riru3DContuoller.ThrustAttack();
+                    StartCoroutine(StartThrustAttack());
+                    ThrustAttackCoolDownTime = ThrustAttackCoolDownTime_log;
+                }
+            }
+            if (DoubleAttackCoolDownTime <= 0)
+            {
+                if (DoubleAttackAction == 1 && !riru3DContuoller.isWalk && riru3DContuoller.isIdle && !riru3DContuoller.isThrustAttack && !riru3DContuoller.isJumpAttack)
+                {
+                    StartCoroutine(StartDoubleAttack());
+                    DoubleAttackCoolDownTime = DoubleAttackCoolDownTime_log;
+                }
+            }
+            if (EnchantCoolDownTime <= 0)
+            {
+                if (EnchantAction == 1 && !riru3DContuoller.isWalk && riru3DContuoller.isIdle)
+                {
+                    riru3DContuoller.Enchant();
+
+                    EnchantCoolDownTime = EnchantCoolDownTime_log;
+                }
             }
         }
         AddReward(-0.001f);

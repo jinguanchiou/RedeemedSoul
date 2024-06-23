@@ -12121,6 +12121,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: ToNextLevel (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 1400437943440093865, guid: b77c8fb8bd36c674d92a2da2d145c4f9, type: 3}
+      propertyPath: m_Layer
+      value: 14
+      objectReference: {fileID: 0}
     - target: {fileID: 1400437943440093866, guid: b77c8fb8bd36c674d92a2da2d145c4f9, type: 3}
       propertyPath: m_RootOrder
       value: 3
@@ -15527,7 +15531,7 @@ PrefabInstance:
       objectReference: {fileID: 11400000, guid: f05f77cb797d1574ebef420491b45251, type: 2}
     - target: {fileID: 1512896783009843652, guid: b4f673f468d044541b108c42f32fa02d, type: 3}
       propertyPath: runSpeed
-      value: 15
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 1512896783009843652, guid: b4f673f468d044541b108c42f32fa02d, type: 3}
       propertyPath: playerAttack

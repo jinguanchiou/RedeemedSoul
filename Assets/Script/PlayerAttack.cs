@@ -127,6 +127,7 @@ public class PlayerAttack : MonoBehaviour
             {
                 other.GetComponent<EnemyMonsterGhost>().TakeDamage(damage);
                 other.GetComponent<EnemyMonsterGhost>().PlayerHitMe();
+                Debug.Log("Hit");
                 Mana.RegainMana(regainPoint);
                 playerController.HitEnemy();
             }

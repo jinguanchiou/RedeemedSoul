@@ -52,7 +52,6 @@ public class PlayerHealth : MonoBehaviour
     {
         UsePotion();
         ToxinTimeCount();
-        Debug.Log(ToxinTime);
     }
     public void DamagePlayer(int damage)
     {

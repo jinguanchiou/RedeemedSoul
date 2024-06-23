@@ -136,7 +136,7 @@ public class CastSpell : MonoBehaviour
             }
             else
             {
-                playerController.UseBool(false);
+                playerController.UseingBoolSkill = false;
             }
             PlayerAnim.SetBool("PoisonousFlame", ManaPoint >= PlayerWorkingSkill.WorkingSkill[0].ManaReduced && Input.GetKey(KeyCode.U));
         }
@@ -148,7 +148,7 @@ public class CastSpell : MonoBehaviour
             }
             else
             {
-                playerController.UseBool(false);
+                playerController.UseingBoolSkill = false;
             }
             PlayerAnim.SetBool("PoisonousFlame", ManaPoint >= PlayerWorkingSkill.WorkingSkill[1].ManaReduced && Input.GetKey(KeyCode.I));
         }

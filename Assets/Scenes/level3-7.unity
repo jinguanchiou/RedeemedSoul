@@ -10574,6 +10574,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 6721707745141576960, guid: 2c8de074fc22a544280d41a48a631b00, type: 3}
+      propertyPath: PlayerTransform
+      value: 
+      objectReference: {fileID: 1053355980}
     - target: {fileID: 6721707745141576961, guid: 2c8de074fc22a544280d41a48a631b00, type: 3}
       propertyPath: m_Name
       value: PlayerTransformContorller

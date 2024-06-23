@@ -9,7 +9,7 @@ public class RiruJumpAttack : MonoBehaviour
     private Transform Transform_log;
     private bool Trigger;
     private PolygonCollider2D polygon;
-    private PlayerHealth playerHealth;
+    private PlayerHealthAI playerHealth;
     private Riru3DController Riru3D;
     private RiruAI riruAI;
     private bool hasTurn;
@@ -18,7 +18,7 @@ public class RiruJumpAttack : MonoBehaviour
     {
         Trigger = true;
         polygon = GetComponent<PolygonCollider2D>();
-        playerHealth = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerHealth>();
+        playerHealth = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerHealthAI>();
         riruAI = GameObject.FindGameObjectWithTag("Riru").GetComponent<RiruAI>();
         playerTransform = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
         Riru3D = GameObject.FindGameObjectWithTag("Riru3D").GetComponent<Riru3DController>();

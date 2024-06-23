@@ -5659,30 +5659,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1139490349, guid: 0c5939a7672028647b0ffbd90bb88570, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1413230242062818462, guid: 0c5939a7672028647b0ffbd90bb88570, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1971313316246868588, guid: 0c5939a7672028647b0ffbd90bb88570, type: 3}
-      propertyPath: m_Text
-      value: 1-1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2106612575034138641, guid: 0c5939a7672028647b0ffbd90bb88570, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2170481586872577312, guid: 0c5939a7672028647b0ffbd90bb88570, type: 3}
-      propertyPath: m_Value
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3470375593845205587, guid: 0c5939a7672028647b0ffbd90bb88570, type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 3662795184488543432, guid: 0c5939a7672028647b0ffbd90bb88570, type: 3}
       propertyPath: m_Name
       value: Canvas
@@ -5770,26 +5746,6 @@ PrefabInstance:
     - target: {fileID: 3662795184488543436, guid: 0c5939a7672028647b0ffbd90bb88570, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5348935479476762747, guid: 0c5939a7672028647b0ffbd90bb88570, type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5472228951281749100, guid: 0c5939a7672028647b0ffbd90bb88570, type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7379428406026254373, guid: 0c5939a7672028647b0ffbd90bb88570, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8804519128721090078, guid: 0c5939a7672028647b0ffbd90bb88570, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 9021215423249857700, guid: 0c5939a7672028647b0ffbd90bb88570, type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0c5939a7672028647b0ffbd90bb88570, type: 3}
@@ -26320,24 +26276,6 @@ Tilemap:
     e31: 0
     e32: 0
     e33: 1
---- !u!1 &2143477727 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 7397892147133251580, guid: 0c5939a7672028647b0ffbd90bb88570, type: 3}
-  m_PrefabInstance: {fileID: 398909246}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &2143477729
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2143477727}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e361f8f8993d1b54c867c7ba642a377a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  soundSlider: {fileID: 0}
 --- !u!1001 &323528150012172735
 PrefabInstance:
   m_ObjectHideFlags: 0

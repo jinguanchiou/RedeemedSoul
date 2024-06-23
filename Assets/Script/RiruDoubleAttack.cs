@@ -51,7 +51,7 @@ public class RiruDoubleAttack : MonoBehaviour
         {
             if (playerHealth != null)
             {
-                playerHealth.GetComponent<PlayerHealthAI>().DamagePlayer(damage);
+                playerHealth.GetComponent<PlayerHealth>().DamagePlayer(damage);
                 riruAI.FormDoubleAttack(true);
                 Transform_log = other.transform;
             }

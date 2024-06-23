@@ -49392,7 +49392,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 827390295}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 49.22377, y: -14.527329, z: 1.8379143}
+  m_LocalPosition: {x: 49.22377, y: -14.527329, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -90738,9 +90738,9 @@ MonoBehaviour:
   movementSpeed_log: 0
   JumpSpeed: 20
   ThrustSpeed: 100
-  JumpAttackCoolDownTime_log: 10
-  ThrustAttackCoolDownTime_log: 10
-  DoubleAttackCoolDownTime_log: 10
+  JumpAttackCoolDownTime_log: 5
+  ThrustAttackCoolDownTime_log: 5
+  DoubleAttackCoolDownTime_log: 5
   EnchantCoolDownTime_log: 10
   BlockCoolDownTime_log: 5
   startJumpAttackTime: 0.6

@@ -6,12 +6,10 @@ public class Return : MonoBehaviour
 {
     public GameObject target;
     private PolygonCollider2D polygon;
-    private PlayerControllerAI aI;
     private RiruAI riruAI;
     // Start is called before the first frame update
     void Start()
     {
-        aI = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerControllerAI>();
         riruAI = GameObject.FindGameObjectWithTag("Riru").GetComponent<RiruAI>();
         polygon = GetComponent<PolygonCollider2D>();
     }
@@ -27,11 +25,6 @@ public class Return : MonoBehaviour
         {
             other.transform.position = target.transform.position;
             riruAI.DecPoint(2);
-        }
-        if (other.gameObject.CompareTag("Player"))
-        {
-            other.transform.position = target.transform.position;
-            aI.DeductedPoints(3);
         }
     }
 }

@@ -6,10 +6,14 @@ public class AudioManager : MonoBehaviour
 {
     public AudioClip mainForest;
     public AudioClip bgmForest;
+    public AudioClip bgmForest_2;
     public AudioClip seSlash;
     public AudioClip seSlashHit;
     public AudioClip seSnap;
     public AudioClip seGulp;
+    public AudioClip DrawKnife;
+    public AudioClip SwingKnife;
+    public AudioClip SwordEnergy;
     List<AudioSource> audios = new List<AudioSource>();
     private void Awake()
     {
@@ -34,6 +38,12 @@ public class AudioManager : MonoBehaviour
             audio.Play();
         }
     }
+    public void Stop(int index)
+    {
+        var audio = audios[index];
+        audio.mute = true;
+        audio.Stop();
+    }
     AudioClip GetAudioClip(string name)
     {
         switch(name)
@@ -42,6 +52,8 @@ public class AudioManager : MonoBehaviour
                 return mainForest;
             case "bgmForest":
                 return bgmForest;
+            case "bgmForest_2":
+                return bgmForest_2;
             case "seSlash":
                 return seSlash;
             case "seSlashHit":
@@ -50,6 +62,12 @@ public class AudioManager : MonoBehaviour
                 return seSnap;
             case "seGulp":
                 return seGulp;
+            case "DrawKnife":
+                return DrawKnife;
+            case "SwingKnife":
+                return SwingKnife;
+            case "SwordEnergy":
+                return SwordEnergy;
         }
         return null;
     }

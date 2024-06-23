@@ -41084,17 +41084,21 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 8838542290923306842, guid: 4f37716eaa5f68a4ba93aba988dc6374, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 3.79
+      objectReference: {fileID: 0}
     - target: {fileID: 8838542291453323474, guid: 4f37716eaa5f68a4ba93aba988dc6374, type: 3}
       propertyPath: m_RootOrder
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8838542291453323474, guid: 4f37716eaa5f68a4ba93aba988dc6374, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 64.48713
+      value: 63.51
       objectReference: {fileID: 0}
     - target: {fileID: 8838542291453323474, guid: 4f37716eaa5f68a4ba93aba988dc6374, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -22.051783
+      value: -21.33
       objectReference: {fileID: 0}
     - target: {fileID: 8838542291453323474, guid: 4f37716eaa5f68a4ba93aba988dc6374, type: 3}
       propertyPath: m_LocalPosition.z
@@ -41132,6 +41136,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: PoisonMan
       objectReference: {fileID: 0}
+    - target: {fileID: 8838542291972483166, guid: 4f37716eaa5f68a4ba93aba988dc6374, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -14
+      objectReference: {fileID: 0}
     - target: {fileID: 8838542292413313243, guid: 4f37716eaa5f68a4ba93aba988dc6374, type: 3}
       propertyPath: m_LocalScale.x
       value: 16.137249
@@ -41146,7 +41154,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8838542292413313243, guid: 4f37716eaa5f68a4ba93aba988dc6374, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 2.03
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4f37716eaa5f68a4ba93aba988dc6374, type: 3}

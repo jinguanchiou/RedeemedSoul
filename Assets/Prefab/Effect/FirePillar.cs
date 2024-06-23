@@ -41,9 +41,9 @@ public class FirePillar : MonoBehaviour
         {
             Alreadyadd = true;
             transform.position = new Vector2(transform.position.x, transform.position.y + 3.52f);
+            HitBox.enabled = true;
         }
         EndTime -= Time.deltaTime;
-        HitBox.enabled = true;
         if(EndTime <= 0)
         {
             ColseHitBox();

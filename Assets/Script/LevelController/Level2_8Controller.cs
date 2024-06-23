@@ -13,6 +13,7 @@ public class Level2_8Controller : MonoBehaviour
     public Rigidbody2D riruRb;
 
     public ConversationFunction Level2_8;
+    public ConversationFunction Level2_8_2;
     public GameObject DialogBox;
     public Text DialogBoxText;
     public Transform PlayerTreanform;
@@ -30,7 +31,7 @@ public class Level2_8Controller : MonoBehaviour
         playerController = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>();
         riruRb.bodyType = RigidbodyType2D.Static;
         riruAI.OnLock = true;
-        if (Level2_8.LevelAlreadyTold)
+        if (Level2_8.LevelAlreadyTold && Level2_8_2.LevelAlreadyTold)
         {
             playerController.OnlockPlayer = false;
             Stop.SetActive(false);

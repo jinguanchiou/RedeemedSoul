@@ -20,6 +20,7 @@ public class Level2_8Controller02 : MonoBehaviour
     public Transform OtherAvatar;
 
     public ConversationFunction Level2_8_02;
+    public ConversationFunction Level2_8_01;
 
     public GameObject Stop;
     public GameObject Stop2;
@@ -29,6 +30,10 @@ public class Level2_8Controller02 : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        if(!Level2_8_02.LevelAlreadyTold)
+        {
+            Level2_8_01.LevelAlreadyTold = false;
+        }
         if(Level2_8_02.LevelAlreadyTold)
         {
             Destroy(Stop);

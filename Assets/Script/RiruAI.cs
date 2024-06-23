@@ -83,9 +83,9 @@ public class RiruAI : Agent
 
     private SpriteRenderer sr;
     private Color originalColor;
-    private PlayerHealthAI playerHealth;//之後要改回PlayerHealth
+    private PlayerHealth playerHealth;//之後要改回PlayerHealth
     private Rigidbody2D RiruRigidbody;
-    private PlayerControllerAI playerController;
+    private PlayerController playerController;
     private Transform PlayerTransfotm;
     private Riru3DController riru3DContuoller;
     // Start is called before the first frame update
@@ -94,8 +94,8 @@ public class RiruAI : Agent
         RiruRigidbody = GetComponent<Rigidbody2D>();
         RiruFeet = GetComponent<BoxCollider2D>();
         PlayerTransfotm = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
-        playerHealth = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerHealthAI>(); //之後要改回PlayerHeath
-        playerController = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerControllerAI>();
+        playerHealth = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerHealth>(); //之後要改回PlayerHeath
+        playerController = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>();
         riru3DContuoller = GameObject.FindGameObjectWithTag("Riru3D").GetComponent<Riru3DController>();
         sr = GetComponent<SpriteRenderer>();
         originalColor = sr.color;
@@ -175,6 +175,7 @@ public class RiruAI : Agent
             }
         }
         sensor.AddObservation((Vector2)transform.localPosition);
+        if(PlayerTransfotm != null)
         sensor.AddObservation((Vector2)PlayerTransfotm.localPosition);
         sensor.AddObservation(riru3DContuoller.isWalk);
         sensor.AddObservation(riru3DContuoller.isIdle);
@@ -388,7 +389,7 @@ public class RiruAI : Agent
         gb.transform.GetChild(0).GetComponent<TextMesh>().text = damage.ToString();
         health -= damage;
         AddReward(-damage * 0.005f);
-        playerController.AddPoints(damage);
+        //playerController.AddPoints(damage);
         FlashColor(0.25f);
         Instantiate(bloodEffect, transform.position, Quaternion.identity);
         GameController.camShake.Shake();
@@ -445,7 +446,7 @@ public class RiruAI : Agent
         }
         toxinTime = 3;
         TakeDamage(toxin);
-        playerController.AddPoints(toxin);
+        //playerController.AddPoints(toxin);
     }
     void ToxinTime()
     {

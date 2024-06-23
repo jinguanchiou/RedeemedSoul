@@ -444,7 +444,7 @@ MonoBehaviour:
     VectorActionDescriptions: []
     VectorActionSpaceType: 1
     hasUpgradedBrainParametersWithActionSpec: 1
-  m_Model: {fileID: 5022602860645237092, guid: a75090f42a5f37248ad9e6ecadee73a1, type: 3}
+  m_Model: {fileID: 5022602860645237092, guid: c6a78493bbbb84f4c89ac162bbaafef6, type: 3}
   m_InferenceDevice: 1
   m_BehaviorType: 0
   m_BehaviorName: RiruAI
@@ -3775,6 +3775,7 @@ MonoBehaviour:
   PlayerAvatar: {fileID: 1373584982}
   OtherAvatar: {fileID: 98847375}
   Level2_8_02: {fileID: 11400000, guid: cedeb2cb2fea71b4aba7c895c631f1c6, type: 2}
+  Level2_8_01: {fileID: 11400000, guid: 8f28a8dd3cad45047a241493ec761f8e, type: 2}
   Stop: {fileID: 12528686}
   Stop2: {fileID: 1368346209}
 --- !u!1 &373115536
@@ -42474,6 +42475,7 @@ MonoBehaviour:
   playerController: {fileID: 1420378377}
   riruRb: {fileID: 176151148}
   Level2_8: {fileID: 11400000, guid: 8f28a8dd3cad45047a241493ec761f8e, type: 2}
+  Level2_8_2: {fileID: 11400000, guid: cedeb2cb2fea71b4aba7c895c631f1c6, type: 2}
   DialogBox: {fileID: 2063935371}
   DialogBoxText: {fileID: 1972890264}
   PlayerTreanform: {fileID: 1420378376}

@@ -9,7 +9,7 @@ public class RiruThrustAttack : MonoBehaviour
     [SerializeField] private PolygonCollider2D polygon;
     private bool Trigger;
     private Transform Playertransform;
-    private PlayerHealthAI playerHealth;
+    private PlayerHealth playerHealth;
     private RiruAI riruAI;
     private Riru3DController Riru3D;
     private bool hasTurn;
@@ -17,7 +17,7 @@ public class RiruThrustAttack : MonoBehaviour
     void Start()
     {
         polygon = GetComponent<PolygonCollider2D>();
-        playerHealth = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerHealthAI>();
+        playerHealth = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerHealth>();
         playerTransform = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
         riruAI = GameObject.FindGameObjectWithTag("Riru").GetComponent<RiruAI>();
         Riru3D = GameObject.FindGameObjectWithTag("Riru3D").GetComponent<Riru3DController>();

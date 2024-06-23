@@ -42473,6 +42473,7 @@ MonoBehaviour:
   riru3D: {fileID: 1501480262}
   RiruAnim: {fileID: 1501480263}
   playerController: {fileID: 1420378377}
+  cast: {fileID: 2108684416}
   riruRb: {fileID: 176151148}
   Level2_8: {fileID: 11400000, guid: 8f28a8dd3cad45047a241493ec761f8e, type: 2}
   Level2_8_2: {fileID: 11400000, guid: cedeb2cb2fea71b4aba7c895c631f1c6, type: 2}
@@ -63026,6 +63027,17 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 7379428406026254373, guid: 0c5939a7672028647b0ffbd90bb88570, type: 3}
   m_PrefabInstance: {fileID: 2050193445}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &2108684416 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2054989874, guid: b4f673f468d044541b108c42f32fa02d, type: 3}
+  m_PrefabInstance: {fileID: 972542245}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b7c4e751c06d2e64790cf42c815b3686, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2119797072
 GameObject:
   m_ObjectHideFlags: 0

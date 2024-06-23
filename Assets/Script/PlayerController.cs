@@ -10,6 +10,7 @@ public class PlayerController : MonoBehaviour
     public float climbSpeed;
     public float restoreTime;
     public bool OnlockPlayer;
+    public bool UseingBoolSkill;
     public bool canOpenMall;
     public PlayerAttack playerAttack;
     public GameObject JumpSFX;
@@ -35,7 +36,6 @@ public class PlayerController : MonoBehaviour
     private bool isDoubleJumping;
     private bool isDoubleFalling;
     private bool HitEnemyBool= false;
-
     private float playerGravity;
 
     // Start is called before the first frame update
@@ -54,7 +54,7 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (GameController.isGameAlive == true && !HitEnemyBool && !OnlockPlayer)
+        if (GameController.isGameAlive == true && !HitEnemyBool && !OnlockPlayer && !UseingBoolSkill)
         {
             CheckAirStatus();
             if (!playerAttack.isAttacking)
@@ -86,6 +86,11 @@ public class PlayerController : MonoBehaviour
             myAnim.SetBool("Idle", true);
             myAnim.SetBool("Run", false);
         }
+    }
+    public void UseBool(bool use)
+    {
+        UseingBoolSkill = use;
+        myRigidbody.velocity = new Vector2(0, myRigidbody.velocity.y);
     }
     void CheckGrounded()
     {

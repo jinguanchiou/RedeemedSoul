@@ -10,6 +10,7 @@ public class Level2_8Controller : MonoBehaviour
     public Riru3DController riru3D;
     public Animator RiruAnim;
     public PlayerController playerController;
+    public CastSpell cast;
     public Rigidbody2D riruRb;
 
     public ConversationFunction Level2_8;
@@ -62,6 +63,7 @@ public class Level2_8Controller : MonoBehaviour
             if (currentTextIndex >= Level2_8.LevelTextMesh.Count)
             {
                 DialogBox.SetActive(false);
+                cast.OnLock = false;
                 Level2_8.LevelAlreadyTold = true;
             }
         }
@@ -91,6 +93,7 @@ public class Level2_8Controller : MonoBehaviour
             riruRb.bodyType = RigidbodyType2D.Dynamic;
             RiruAnim.SetTrigger("Start");
             playerController.IsConversation();
+            cast.OnLock = true;
             StartCoroutine(Wait());
         }
     }

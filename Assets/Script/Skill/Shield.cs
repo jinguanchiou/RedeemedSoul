@@ -22,7 +22,6 @@ public class Shield : MonoBehaviour
         playerHealth = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerHealth>();
         PlayerTransform = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
         GameManager.instance.audioManager.Play(2, "seSnap", false);
-        Protect();
     }
 
     // Update is called once per frame
@@ -42,6 +41,10 @@ public class Shield : MonoBehaviour
         if (Duration <= 3)
         {
             StartCoroutine(DestroyShield());
+        }
+        if(Duration > 0)
+        {
+            playerHealth.HasShield(true);
         }
     }
     IEnumerator DestroyShield()
@@ -76,10 +79,6 @@ public class Shield : MonoBehaviour
         playerHealth.DamagePlayer(ResidualDamage);
         yield return new WaitForSeconds(0.5f);
         Destroy(gameObject);
-    }
-    void Protect()
-    {
-        playerHealth.hasShield = true;
     }
     void ProtectDisappear()
     {

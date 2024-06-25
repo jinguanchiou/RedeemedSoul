@@ -82,6 +82,10 @@ public class PlayerHealth : MonoBehaviour
             Invoke("KillPlayer", dieTime);
         }
     }
+    public void HasShield(bool isShield)
+    {
+        hasShield = isShield;
+    }
     public void BurningPlayer(int damage)
     {
         health -= damage;

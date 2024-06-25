@@ -71,6 +71,7 @@ public class Level2_8Controller02 : MonoBehaviour
             if (currentTextIndex >= Level2_8_02.LevelTextMesh.Count)
             {
                 DialogBox.SetActive(false);
+                playerController.OnlockPlayer = false;
                 Level2_8_02.LevelAlreadyTold = true;
                 Destroy(Stop);
                 Destroy(Stop2);

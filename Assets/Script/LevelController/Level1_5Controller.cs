@@ -125,6 +125,7 @@ public class Level1_5Controller : MonoBehaviour
             if (DialogBoxText.text == "沒事，這裡交給我。")
             {
                 playerController.IsConversation();
+                StartConversation = false;
                 StartCoroutine(Energy());
             }
         }

@@ -13,6 +13,7 @@ public class PlayerController : MonoBehaviour
     public bool UseingBoolSkill;
     public bool canOpenMall;
     public PlayerAttack playerAttack;
+    public PlayerHealth playerHealth;
     public GameObject JumpSFX;
 
     private Animator myAnim;
@@ -41,6 +42,7 @@ public class PlayerController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        playerHealth = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerHealth>();
         PlayerTransform = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
         HitBox = GetComponent<PolygonCollider2D>();
         myRigidbody = GetComponent<Rigidbody2D>();
@@ -132,8 +134,11 @@ public class PlayerController : MonoBehaviour
         float originalGravity = myRigidbody.gravityScale;
         myRigidbody.gravityScale = 0f;
         HitBox.enabled = false;
+        playerHealth.hasShield = true;
         myRigidbody.velocity = new Vector2(transform.right.x * DushSpeed, 0f);
-        yield return new WaitForSeconds(DushTime);
+        yield return new WaitForSeconds(0.05f);
+        playerHealth.hasShield = false;
+        yield return new WaitForSeconds(DushTime - 0.05f);
         myRigidbody.gravityScale = originalGravity;
         HitBox.enabled = true;
         Dushing = false;
